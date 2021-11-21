@@ -1,0 +1,46 @@
+@mixin box-shadows {
+    box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+}
+@mixin box-shadow-hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+@mixin dropdown-chevron($width: 20px) {
+    margin-bottom: 0;
+    position: relative;
+    text-align: left;
+    transition: margin-bottom .3s;
+    width: 100%;
+    &::after {
+        content: '';
+        right: 1rem;
+        width: $width;
+        height: calc($width / 2);
+        position: absolute;
+        top: calc($width / 4);
+        right: 0px;
+        background-image: url('/imgs/icons/chevron-down.svg');
+        background-size: cover;
+        transform: rotate(0deg);
+        transition: transform .3s;
+    }
+    &.active {
+        margin-bottom: .5rem;
+        &::after {
+            content: '';
+            transform: rotate(180deg);
+        }
+    }
+}
+
+/*
+usage:
+    &:after {
+        @include fontawe;
+        content: fa-content($fa-var-chevron-down);
+    }
+ */
+// @mixin fontawe($weight: 300) {
+//     font-family: 'Font Awesome 5 Pro';
+//     font-weight: $weight;
+// }

@@ -1,0 +1,23 @@
+$palette: (
+    primary: #177D9A,
+    secondary: #F78C1E,
+  
+    success: #60bc63,
+    warning: #ff8127,
+    danger: #E61C24,
+  
+    l-gray: #EBEBEB,
+    d-gray: #404040,
+    blackest: #000000,
+    whitest: #ffffff,
+     
+  );
+
+$bg-1: map-get($palette, "primary");
+$bg-2: map-get($palette, "secondary");
+$bg-3: map-get($palette, "d-gray");
+
+$text-0: map-get($palette, "whitest");
+$text-1: map-get($palette, "dark-gray");
+ 
+$text-faint: map-get($palette, "l-gray"); 

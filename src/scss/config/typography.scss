@@ -1,0 +1,166 @@
+@use '../preset/' as *;
+
+@use './palette.scss' as *;
+@use './fonts/inter.scss' as *;
+
+$font-family: 'inter', sans-serif;
+
+$fa-font-path: "/fonts/fontawesome-pro";
+@import '../../../node_modules/@fortawesome/fontawesome-pro/scss/fontawesome';
+@import '../../../node_modules/@fortawesome/fontawesome-pro/scss/light';
+
+@mixin body-font-regular {
+    font-family: $font-family;
+    font-weight: 500;
+}
+@mixin body-font-semi-bold {
+    font-family: $font-family;
+    font-weight: 600;
+}
+@mixin body-font-bold {
+    font-family: $font-family;
+    font-weight: 700;
+}
+
+@mixin heading-font-regular {
+    @include body-font-regular;
+}
+@mixin heading-font-semi-bold {
+    @include body-font-semi-bold;
+}
+@mixin heading-font-bold {
+    @include body-font-bold;
+}
+
+@mixin font-color {
+    color: $text-1;
+}
+
+@mixin h1($with-margins: false) {
+    @include heading-font-semi-bold;
+    @include font-color;
+    @include clamp(18, 22);
+    line-height: 1.2;
+    @if ($with-margins) {
+        margin: -5px 0 16px;
+    }
+}
+@mixin h2($with-margins: false) {
+    @include heading-font-semi-bold;
+    @include font-color;
+    @include clamp(16, 18);
+    line-height: 1.5;
+    @if ($with-margins) {
+        margin: -4px 0 12px;
+    }
+}
+@mixin h3($with-margins: false) {
+    @include heading-font-bold;
+    @include font-color;
+    @include clamp(15, 16);
+    line-height: 1.3;
+    @if ($with-margins) {
+        margin: -3px 0 8px;
+    }
+}
+@mixin h4($with-margins: false) {
+    @include heading-font-regular;
+    @include font-color;
+    @include clamp(15, 16);
+    @if ($with-margins) {
+        margin: -1px 0 4px;
+    }
+}
+@mixin h5($with-margins: false) {
+    @include heading-font-regular;
+    @include font-color;
+    @include clamp(15, 16);
+    @if ($with-margins) {
+        margin: -1px 0 4px;
+    }
+}
+@mixin h6($with-margins: false) {
+    @include body-font-regular;
+    @include font-color;
+    @include clamp(15, 16);
+    line-height: 1.5;
+    @if ($with-margins) {
+        margin: 0 0 5px;
+    }
+}
+@mixin p($with-margins: false) {
+    @include body-font-regular;
+    @include font-color;
+    @include clamp(14, 15);
+    line-height: 1.5;
+    @if ($with-margins) {
+        margin: 0 0 5px;
+    }
+    strong {
+        font-weight: 500;
+    }
+}
+@mixin p-sml($with-margins: false) {
+    @include body-font-regular;
+    @include font-color;
+    @include clamp(12, 14);
+    line-height: 1.5;
+    @if ($with-margins) {
+        margin: 0 0 5px;
+    }
+    strong {
+        font-weight: 700;
+    }
+}
+@mixin p-tiny($with-margins: false) {
+    @include body-font-medium;
+    @include font-color;
+    font-size: 13px;
+    line-height: 1.5;
+    @if ($with-margins) {
+        margin: 0 0 5px;
+    }
+    strong {
+        font-weight: 700;
+    }
+}
+
+body {
+    @include p;
+}
+h1 {
+    @include h1(true);
+}
+h2 {
+    @include h2(true);
+}
+h3 {
+    @include h3(true);
+}
+h4 {
+    @include h4(true);
+}
+h5 {
+    @include h5(true);
+}
+h6 {
+    @include h6(true);
+}
+#{$p-els},
+label {
+    @include p(true);
+    .p-sml &, &.p-sml {
+        @include p-sml(true);
+    }
+}
+#{$text-els} {
+    @include text-alignments;
+    em {
+        font-style: normal;
+        color: $text-2;
+    }
+}
+a,
+button {
+    @include states($text-0, $text-1);
+}
