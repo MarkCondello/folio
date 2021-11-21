@@ -11,7 +11,7 @@ $palette: (
     blackest: #000000,
     whitest: #ffffff,
      
-  );
+);
 
 $bg-1: map-get($palette, "primary");
 $bg-2: map-get($palette, "secondary");

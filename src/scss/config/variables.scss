@@ -6,16 +6,16 @@ $body-max-width: 1024px;
 $content-max-width: 750px;
 
 $radius: 3px;
-$white: map-get($palette, 'whitest');
 
+$white: map-get($palette, 'whitest');
 $light-gray: map-get($palette, "l-gray");
 $dark-gray: map-get($palette, 'd-gray');
-
-$button-border-radius: $radius;
-$button-padding: .75rem 1rem;
-$clickable-f-size: 14px;
 $success-color: map-get($palette, "success");
 $error-color: map-get($palette, 'danger');
+
+$button-border-radius: $radius;
+$button-padding: 1rem 1.75rem;
+$clickable-f-size: 24px;
 
 //card settimgs
 // $card-border-radius: 8px;
@@ -71,12 +71,12 @@ $disabled-color: #A1ACBA;
 // $tile-radius: $radius;
 
 //menus
-// $menu-active-color: map-get($palette, "secondary");
-// $menu-f-size: $clickable-f-size;
-// $menu-f-weight: 600;
-// $dd-text-align: left;
-// $dd-items-padding: 0.5rem 0.75rem;
-// $dd-width: 120px;
+$menu-active-color: map-get($palette, "secondary");
+$menu-f-size: 18px;
+$menu-f-weight: 500;
+$dd-text-align: center;
+$dd-items-padding: 0.5rem 0.75rem;
+$dd-width: 120px;
 
 //button settings
 $base-buttons: (
@@ -93,9 +93,9 @@ $base-hollow-buttons: (
 );
 
 $button-small: (
-  font-size: 12px,
+  font-size: 18px,
   line-height: 1,
-  padding: .25rem .35rem,
+  padding: .5rem 1rem,
 );
 
 // button settings for solid and hollow buttons
@@ -110,8 +110,6 @@ $buttons-variants: (
     hover-color: $white,
     bg-color: map-get($palette, "secondary"),
   ),
-
-
 );
 
 /// The number of columns in a flex-col and gutter size (converted to pixel value). 

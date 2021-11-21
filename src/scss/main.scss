@@ -1,6 +1,5 @@
 
 @use './biolerplate.scss';
-
-h1 {
-    color: green
-}
+@use './config/typography.scss';
+@use './project/index.scss'
+ 

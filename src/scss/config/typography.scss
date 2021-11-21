@@ -1,13 +1,9 @@
 @use '../preset/' as *;
-
 @use './palette.scss' as *;
-@use './fonts/inter.scss' as *;
+  @use './fonts/montserrat.scss' as *;
 
-$font-family: 'inter', sans-serif;
-
-$fa-font-path: "/fonts/fontawesome-pro";
-@import '../../../node_modules/@fortawesome/fontawesome-pro/scss/fontawesome';
-@import '../../../node_modules/@fortawesome/fontawesome-pro/scss/light';
+$font-family: 'montserrat', sans-serif;
+$heading-family: Georgia, serif;
 
 @mixin body-font-regular {
     font-family: $font-family;
@@ -21,19 +17,26 @@ $fa-font-path: "/fonts/fontawesome-pro";
     font-family: $font-family;
     font-weight: 700;
 }
+@mixin body-font-light {
+    font-family: $font-family;
+    font-weight: 400;
+}
 
 @mixin heading-font-regular {
-    @include body-font-regular;
+    font-family: $heading-family;
+    font-weight: 500;
 }
 @mixin heading-font-semi-bold {
-    @include body-font-semi-bold;
+    font-family: $heading-family;
+    font-weight: 600;
 }
 @mixin heading-font-bold {
-    @include body-font-bold;
+    font-family: $heading-family;
+    font-weight: 700;
 }
 
 @mixin font-color {
-    color: $text-1;
+    color: $text-0;
 }
 
 @mixin h1($with-margins: false) {
@@ -157,10 +160,14 @@ label {
     @include text-alignments;
     em {
         font-style: normal;
-        color: $text-2;
+        color: $text-1;
     }
 }
 a,
 button {
     @include states($text-0, $text-1);
+
+    &.button {
+        @include heading-font-regular;
+    }
 }
