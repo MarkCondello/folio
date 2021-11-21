@@ -1,0 +1,12 @@
+@use '../../preset/' as *;
+@use '../../config/palette.scss' as *;
+
+body {
+  > #app {
+    @include bg-text-colors($palette);
+    > section {
+      padding-top: 65px;
+      height: 100vh;
+    }
+  }
+}

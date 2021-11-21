@@ -1,0 +1,14 @@
+
+
+body {
+  > #app {
+    >header {
+      border: 1px solid red;
+      position: fixed;
+      top: 0;
+      left:0;
+      right: 0;
+      width: 100%;
+    }
+  }
+}
