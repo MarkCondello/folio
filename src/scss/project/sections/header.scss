@@ -4,16 +4,21 @@
 body {
   > #app {
     > header {
+      // Should use a mixin for this and footer
       left: 0;
       position: fixed;
       top: 0;
       right: 0;
-      height: 10%;
+      height: 10vh;
       flex-direction: column;
       display: flex;
       justify-content: center;
       > nav {
         @include space-between-center;
+        > a {
+          @include align-center;
+          flex-direction: column;
+        }
         > ul > li {
           display: flex;
           button {

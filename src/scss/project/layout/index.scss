@@ -26,7 +26,6 @@ body {
         height: #{($i * 10) * 1%};
       }
     }
-     
   }
   > #app {
     @include bg-text-colors($palette);
@@ -35,10 +34,35 @@ body {
       max-width: $header-max-width;
     }
     > section {
-      padding: 65px 0 65px;
+      padding: 14vh 0 10vh;
       height: 100vh;
       > div {
         @include center-frame;
+          > p.intro,
+          > .plug{
+            flex: 1 1 0;
+            margin: 0;
+          }
+          > p.intro {
+            span {
+              background-color: #fff;
+              display: inline-block;
+              height: 1px;
+              margin: 0 1.5rem 4px;
+              width: 60px;
+            }
+          }
+          article {
+            .button {
+              margin-top: 1rem;
+            }
+          }
+          > .plug {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 2.5vh;
+          }
       }
     }
     > footer {
