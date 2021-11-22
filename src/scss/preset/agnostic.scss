@@ -76,9 +76,9 @@ $p-els: 'p, li, small';
     @return mix(#fff, $color, $percentage);
 }
 
-@mixin center-frame($width: 97%) {
+@mixin center-frame($width: 97%, $max-width: $body-max-width) {
     @include margin-x;
-    max-width: $body-max-width;
+    max-width: $max-width;
     width: $width;
 }
 

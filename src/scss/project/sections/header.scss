@@ -1,14 +1,27 @@
-
+@use '../../preset/' as *;
+@use '../../config/typography.scss' as *;
 
 body {
   > #app {
-    >header {
-      border: 1px solid red;
+    > header {
+      left: 0;
       position: fixed;
       top: 0;
-      left:0;
       right: 0;
-      width: 100%;
+      height: 10%;
+      flex-direction: column;
+      display: flex;
+      justify-content: center;
+      > nav {
+        @include space-between-center;
+        > ul > li {
+          display: flex;
+          button {
+            @include heading-font-regular;
+            font-size: 18px;
+          }
+        }
+      }      
     }
   }
 }

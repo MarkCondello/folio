@@ -1,12 +1,58 @@
 @use '../../preset/' as *;
 @use '../../config/palette.scss' as *;
+@use '../../config/variables.scss' as *;
 
 body {
+  hr {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid currentColor;
+  }
+  @for $i from 0 through 20 {
+    .mx-#{$i}{
+      @include margin-x(#{$i}rem);
+      &.-half {
+        @include margin-x(#{$i + .5}rem);
+      }
+    }
+    .my-#{$i}{
+      @include margin-y(#{$i}rem);
+      &.-half {
+        @include margin-y(#{$i .5}rem);
+      }
+    }
+    @if($i > 0){
+      .h-#{$i}0 {
+        height: #{($i * 10) * 1%};
+      }
+    }
+     
+  }
   > #app {
     @include bg-text-colors($palette);
+    > header {
+      @include center-frame;
+      max-width: $header-max-width;
+    }
     > section {
-      padding-top: 65px;
+      padding: 65px 0 65px;
       height: 100vh;
+      > div {
+        @include center-frame;
+      }
+    }
+    > footer {
+      @include center-frame;
+    }
+    .flex-cols {
+      @include flex-cols('lg');
+    }
+    .flex {
+      @include flex-classes;   
+      display: flex;
+      &.-column {
+        flex-direction: column;
+      }
     }
   }
 }

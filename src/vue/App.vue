@@ -1,9 +1,11 @@
 <template>
   <header>
     <nav>
-      <h1>
-  <!-- <img alt="Vue logo" src="../images/logos/vue.png"> -->
-      </h1>
+      <!-- <a href="/"> -->
+      <router-link :to="{ name: 'Home' }">
+        <gears />
+      </router-link>
+      <!-- </a> -->
       <ul>
         <li><button>Work</button></li>
         <li><button>About</button></li>
@@ -11,13 +13,26 @@
       </ul>
     </nav>
   </header>
-  <section class="intro bg-primary">
-    <button class="button">Generic button</button>
-  </section>
- </template>
+  <router-view />
+  <footer>
+    <section>
+      <nav>
+        <ul>
+          <li><a href="#" target="_blank"><linkedIn/></a></li>
+          <li><a href="#" target="_blank"><linkedIn/></a></li>
+          <li><a href="#" target="_blank"><linkedIn/></a></li>
+          <li><a href="#" target="_blank"><linkedIn/></a></li>
+        </ul>
+      </nav>
+    </section>
+  </footer>
+</template>
 
 <script>
+import gears from './components/svgs/gears.vue'
+import linkedIn from './components/svgs/linkedIn.vue'
 export default {
+  components: { gears, linkedIn },
   name: 'App',
   created () {
     this.$store.dispatch('fetchProjects')
