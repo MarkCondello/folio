@@ -12,8 +12,9 @@ body {
       display: flex;
       justify-content: center;
       > section {
-        @include space-between-center;
+        position: relative;
         > nav {
+          @include space-between-center;
           ul > li {
             display: flex;
             flex-direction: column;
@@ -31,6 +32,11 @@ body {
                 }
               }
             }
+          }
+          > button {
+            @include reset-btn;
+            position: absolute;
+            left: calc(50% - (25px / 2));
           }
         }
       }

@@ -9,13 +9,11 @@
       <hr>
       <div class="flex align-center my-1">
         <button class="button">Generic button</button>
-        <button class="button primary mx-1">Primary button</button>
-        <button class="button secondary">Secondary button</button>
+        <button class="button cta mx-1">CTA button</button>
       </div>
       <div class="flex align-center">
         <button class="button -hollow">Generic button hollow</button>
-        <button class="button primary -hollow mx-1">Primary button hollow</button>
-        <button class="button secondary -hollow">Secondary button hollow</button>
+        <button class="button cta -hollow mx-1">CTA button hollow</button>
       </div>
     </div>
   </section>

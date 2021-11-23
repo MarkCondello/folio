@@ -52,7 +52,7 @@
     line-height: $l-height;
     padding: $padding;
 }
-@mixin button-hollow-states($color: #767676, $hover-color: $color, $bg-change: "tint"){
+@mixin button-hollow-states($color: #767676, $hover-color: $color ){
     &, &:link, &:visited {
         color: $color;
         transition: color 0.2s linear, background-color 0.2s linear, border-color 0.2s linear;
@@ -63,17 +63,19 @@
         }
     }
     &:hover, &:active {
-       // color: $hover-color;
-        //border-color: $hover-color;
+        color: $hover-color;
+        border-color: $hover-color;
         svg {
             fill: $hover-color;
         }
-        @if $bg-change == "tint" {
-            background-color: tint($color, 85%);
-        }
-        @if $bg-change == "shade" {
-            background-color: shade($color, 15%);
-        }
+        background-color: rgba($color, .15);
+
+        // @if $bg-change == "tint" {
+        //     background-color: tint($color, 95%);
+        // }
+        // @if $bg-change == "shade" {
+        //     background-color: shade($color, 15%);
+        // }
     }
 }
 @mixin button-hollow($border-width: 1px) {

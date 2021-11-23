@@ -8,7 +8,7 @@ $content-max-width: 750px;
 $radius: 3px;
 
 $white: map-get($palette, 'whitest');
-$light-gray: map-get($palette, "l-gray");
+$light-gray: map-get($palette, 'l-gray');
 $dark-gray: map-get($palette, 'd-gray');
 $success-color: map-get($palette, "success");
 $error-color: map-get($palette, 'danger');
@@ -80,16 +80,16 @@ $dd-width: 120px;
 
 //button settings
 $base-buttons: (
-  color: #c7c7c7, 
+  color: $dark-gray, 
   hover-color: $dark-gray, 
-  bg-color: #f7f7f7, 
+  bg-color: map-get($palette, "secondary") , 
   bg-change: "shade", 
   intesity: 15%,
 );
 
 $base-hollow-buttons: (
   color: $light-gray, 
-  bg-change: "tint"
+  hover-color: #fff,
 );
 
 $button-small: (
@@ -100,15 +100,10 @@ $button-small: (
 
 // button settings for solid and hollow buttons
 $buttons-variants: (
-  primary: (
-    color: $white,
-    hover-color: $white,
-    bg-color: map-get($palette, "primary"),
-  ),
-  secondary: (
-    color: $white,
-    hover-color: $white,
-    bg-color: map-get($palette, "secondary"),
+  cta: (
+    color: $dark-gray,
+    hover-color: $dark-gray,
+    bg-color: #f7f7f7,
   ),
 );
 

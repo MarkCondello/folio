@@ -8,6 +8,19 @@ body {
     border: none;
     border-bottom: 1px solid currentColor;
   }
+
+  .intro {
+    font-size: 12px;
+    display: inline-block;
+    span {
+      background-color: #fff;
+      display: inline-block;
+      height: 1px;
+      margin: 0 .75rem 4px;
+      width: 40px;
+    }
+  }
+
   @for $i from 0 through 20 {
     .mx-#{$i}{
       @include margin-x(#{$i}rem);
@@ -38,31 +51,22 @@ body {
       height: 100vh;
       > div {
         @include center-frame;
-          > p.intro,
-          > .plug{
-            flex: 1 1 0;
-            margin: 0;
+        > p.intro,
+        > .plug{
+          flex: 1 1 0;
+          margin: 0;
+        }
+        article {
+          .button {
+            margin-top: 1rem;
           }
-          > p.intro {
-            span {
-              background-color: #fff;
-              display: inline-block;
-              height: 1px;
-              margin: 0 1.5rem 4px;
-              width: 60px;
-            }
-          }
-          article {
-            .button {
-              margin-top: 1rem;
-            }
-          }
-          > .plug {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            margin-top: 2.5vh;
-          }
+        }
+        > .plug {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin-top: 2.5vh;
+        }
       }
     }
     > footer {
