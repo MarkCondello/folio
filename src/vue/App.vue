@@ -10,37 +10,16 @@
     </nav>
   </header>
   <router-view />
-  <footer>
-    <section>
-      <nav>
-        <ul>
-          <li><a href="#" target="_blank"><linkedIn/></a></li>
-          <li><a href="#" target="_blank"><linkedIn/></a></li>
-          <li><a href="#" target="_blank"><linkedIn/></a></li>
-          <li><a href="#" target="_blank"><linkedIn/></a></li>
-        </ul>
-        <button><!-- Needs to be hidden on last frame of page -->
-          <chevs-down />
-        </button>
-        <a href="#" class="project-link">
-          <web-link/>
-          <span>asiamarketentry.com</span>
-          <img src="../images/logos/ame.svg" alt="Asia Market Entry logo." width="40" />
-        </a>
-        <p v-if="false" class="intro">Agency: <a href="#" target="_blank">DcodeGroup</a> <span></span> Release: August 2021</p>
-       </nav>
-    </section>
-  </footer>
+  <bottom-line />
 </template>
 
 <script>
+
 import gears from './components/svgs/gears.vue'
-import linkedIn from './components/svgs/linkedIn.vue'
-import webLink from './components/svgs/webLink.vue'
-import chevsDown from './components/svgs/chevsDown.vue'
+import bottomLine from './sections/bottomLine.vue'
 
 export default {
-  components: { gears, linkedIn, chevsDown, webLink },
+  components: { gears, bottomLine },
   name: 'App',
   created () {
     this.$store.dispatch('fetchProjects')
