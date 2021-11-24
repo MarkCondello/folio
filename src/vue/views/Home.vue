@@ -8,7 +8,7 @@
           <h2 class="lg-6 h3">Specialising in interface development & design, with a focus on intuitive user experiences.</h2>
         </div>
         <div class="flex-cols">
-          <button class="lg-3 button cta">view my work</button>
+          <button class="lg-3 button">view my work</button>
         </div>
       </article>
       <h3 class="h4 plug">I set the gears in motion...</h3>

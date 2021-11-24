@@ -25,7 +25,7 @@
         <a href="#" class="project-link">
           <web-link/>
           <span>asiamarketentry.com</span>
-          <img src="/src/images/logos/ame.svg" alt="Asia Market Entry logo."/>
+          <img src="../images/logos/ame.svg" alt="Asia Market Entry logo." width="40" />
         </a>
         <p v-if="false" class="intro">Agency: <a href="#" target="_blank">DcodeGroup</a> <span></span> Release: August 2021</p>
        </nav>
