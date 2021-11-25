@@ -13,11 +13,12 @@
       </article>
       <h3 class="h4 plug">I set the gears in motion...</h3>
     </div>
+    <aside-line scroll-message="slide..." />
   </section>
-
 </template>
 <script>
+import AsideLine from '../sections/asideLine.vue'
 export default {
-
+  components: { AsideLine }
 }
 </script>

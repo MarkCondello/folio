@@ -13,13 +13,13 @@
         <button v-show="!hideChevBtn"><!-- Needs to be hidden on last frame of page -->
           <chevs-down />
         </button>
-        <a v-if="projectLink" :href="projectLink.link" class="project-link">
+        <a v-if="projectLink && !agencyAndRelease" :href="projectLink.link" class="project-link">
           <web-link/>
           <span>{{ projectLink.linkName }}</span>
-          <img :src="projectLink.imgPath" :alt="projectLink.imgAlt" width="40" />
+          <img src="../../images/logos/ame.svg" :alt="projectLink.imgAlt" width="40" />
         </a>
-        <p v-if="agencyAndRelease && !projectLink" class="intro">Agency: <a href="#" target="_blank">DcodeGroup</a> <span></span> Release: August 2021</p>
-       </nav>
+        <p v-if="agencyAndRelease && !projectLink" class="intro">Agency: <a href="#" target="_blank">{{agencyAndRelease.agency}}</a><span></span>Release: {{ agencyAndRelease.releaseDate }}</p>
+      </nav>
     </section>
   </footer>
 </template>
@@ -43,17 +43,22 @@ export default {
     projectLink: {
       type: Object,
       default: () => {
-        return {
-          link: '#',
-          linkName: 'australiamarketnetry.com.au',
-          imgPath: '../../../images/logos/ame.svg',
-          imgAlt: 'Asia Market Entry logo.'
-        }
+        // return {
+        //   link: 'https://www.australiamarketnetry.com.au',
+        //   linkName: 'australiamarketnetry.com.au',
+        //   imgPath: '../../images/logos/ame.svg', // will be a path to the logo served from contentful
+        //   imgAlt: 'Asia Market Entry logo.'
+        // }
       }
     },
     agencyAndRelease: {
       type: Object,
-      default: () => {}
+      default: () => {
+        return {
+          agency: 'DcodeGroup',
+          releaseDate: 'August 2021'
+        }
+      }
     },
     hideChevBtn: {
       type: Boolean,

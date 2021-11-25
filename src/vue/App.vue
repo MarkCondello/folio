@@ -10,6 +10,7 @@
     </nav>
   </header>
   <router-view />
+  <!-- <img src="../images/logos/ame.svg"/> -->
   <bottom-line />
 </template>
 
