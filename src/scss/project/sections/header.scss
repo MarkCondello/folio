@@ -13,6 +13,7 @@ body {
       flex-direction: column;
       display: flex;
       justify-content: center;
+      z-index: 1;
       > nav {
         @include space-between-center;
         > a {
