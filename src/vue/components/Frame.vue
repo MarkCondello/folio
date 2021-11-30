@@ -1,5 +1,7 @@
 <template>
-  <section ref="frame" :class="bgClass" :style="`background-image: url(${ bgImgSrc });`">
+  <section ref="frame"
+    :class="bgClass"
+    :style="`background-image: url(${ bgImgSrc });`">
     <div class="flex -column justify-between h-100">
       <p v-if="introPartOne && introPartTwo" class="intro">{{ introPartOne }}<span></span>{{ introPartTwo }}</p>
       <article>
@@ -42,6 +44,20 @@ export default {
       type: Boolean,
       default: true
     }
+  },
+  data () {
+    return {
+      frameRect: null
+    }
+  },
+  mounted () {
+    this.frameRect = this.$refs.frame.getBoundingClientRect()
+    this.$refs.frame.addEventListener('scroll', function (e) {
+      console.log('scrolling')
+    })
+    // setInterval(() => {
+    //   console.log({ frameRectY: Math.floor(this.frameRect.y), wInnerH: window.innerHeight, docClientHeight: document.documentElement.clientHeight })
+    // }, 2000)
   }
 }
 </script>

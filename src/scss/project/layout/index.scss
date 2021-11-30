@@ -66,12 +66,14 @@ body {
     max-height: 100vh;
     scroll-snap-type: mandatory;
     scroll-snap-points-y: repeat(100vh);
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y mandatory; // these do not allow scroll event with js
     > header {
       @include center-frame;
       max-width: $header-max-width;
     }
     > section {
+      overflow-y: scroll;
+
       padding: 14vh 0 10vh;
       height: 100vh;
       background-size: cover;
