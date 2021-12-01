@@ -23,9 +23,9 @@
     scroll-message="Work 01. Best Rated Transport"
   >
     <template v-slot:article>
-      <h1>Quote generating system</h1>
+      <h2>Quote generating system</h2>
       <div class="flex-cols">
-        <h2 class="lg-6 h3">A custom account based application that supports customer/company accounts, & a client admin.</h2>
+        <h3 class="lg-6">A custom account based application that supports customer/company accounts,<br> & a client admin.</h3>
       </div>
       <div class="flex-cols">
         <a href="#" class="lg-3 button">view project</a>
@@ -40,14 +40,32 @@
     scroll-message="Work 02. Asia Market Entry"
   >
     <template v-slot:article>
-      <h1>Business lead-building CMS</h1>
+      <h2>Business lead-building CMS</h2>
       <div class="flex-cols">
-        <h2 class="lg-6 h3">A custom multi-site built to capture business leads & promote the client’s USP.</h2>
+        <h3 class="lg-6">A custom multi-site built to capture business leads & promote the client’s USP.</h3>
       </div>
       <div class="flex-cols">
         <a href="#" class="lg-3 button">view project</a>
       </div>
     </template>
+  </frame-panel>
+   <frame-panel
+    bg-img-src=" "
+    intro-part-one="About Me"
+    intro-part-two="WIP"
+    scroll-message="About"
+  >
+    <template v-slot:article>
+      <h2>Who am I?</h2>
+      <div class="flex-cols">
+        <h3 class="lg-6">I enjoy creating interfaces with web technologies and displaying data in visually appealing ways.<br>
+        When I am not building UI’s, I father my young family, enjoy exercising, learning new things & finding inspiration.<br>
+        To read more about my professional history please download my resume <a href="#">here</a>.
+      </h3>
+      </div>
+    </template>
+    <template v-slot:plug>Blog coming soon...</template>
+
   </frame-panel>
   <frame-panel
     intro-part-one="Contact Me"
