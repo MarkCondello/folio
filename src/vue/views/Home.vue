@@ -50,7 +50,7 @@
     </template>
   </frame-panel>
    <frame-panel
-    bg-img-src=" "
+    bg-img-src="https://thumbs.dreamstime.com/b/caring-touch-1494614.jpg"
     intro-part-one="About Me"
     intro-part-two="WIP"
     scroll-message="About"
