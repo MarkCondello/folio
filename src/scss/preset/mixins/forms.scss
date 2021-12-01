@@ -2,7 +2,8 @@
 
 @mixin input-common($input-border: 1px solid, $radius: 4px, $padding: 1rem, $placeholder-color: grey) {
     background-color: transparent;
-    border: $input-border;
+    border: none;
+    border-bottom: $input-border;
     border-radius: $radius;
     padding: $padding;
     transition: border-color 1s;

@@ -160,6 +160,10 @@ label {
         color: $text-1;
     }
 }
+#{$inputs} {
+    color: #fff;
+}
+
 a,
 button {
     @include states($text-0, $text-1);

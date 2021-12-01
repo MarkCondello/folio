@@ -52,8 +52,14 @@ export default {
   },
   mounted () {
     this.frameRect = this.$refs.frame.getBoundingClientRect()
-    this.$refs.frame.addEventListener('scroll', function (e) {
-      console.log('scrolling')
+    // document.addEventListener('pointermove', (event) => {
+    //   console.log('Pointer moved')
+    // })
+    window.addEventListener('scroll', function (e) {
+      console.log('wndow scrolled')
+    })
+    document.addEventListener('scroll', function (e) {
+      console.log('doc scrolled')
     })
     // setInterval(() => {
     //   console.log({ frameRectY: Math.floor(this.frameRect.y), wInnerH: window.innerHeight, docClientHeight: document.documentElement.clientHeight })

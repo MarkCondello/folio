@@ -1,7 +1,10 @@
 @use '../../preset/' as *;
 @use '../../config/palette.scss' as *;
 @use '../../config/variables.scss' as *;
-
+@use '../../config/mixins.scss' as *;
+html, body  {
+  height: 100%;
+}
 body {
   hr {
     width: 100%;
@@ -44,14 +47,14 @@ body {
   @for $i from 0 through 20 {
     .mx-#{$i}{
       @include margin-x(#{$i}rem);
-      &.-half {
+      &-half {
         @include margin-x(#{$i + .5}rem);
       }
     }
     .my-#{$i}{
       @include margin-y(#{$i}rem);
-      &.-half {
-        @include margin-y(#{$i .5}rem);
+      &-half {
+        @include margin-y(#{$i + .5}rem);
       }
     }
     @if($i > 0){
@@ -62,23 +65,27 @@ body {
   }
   > #app {
     @include bg-text-colors($palette);
-    overflow-y: scroll;
-    max-height: 100vh;
-    scroll-snap-type: mandatory;
-    scroll-snap-points-y: repeat(100vh);
-    scroll-snap-type: y mandatory; // these do not allow scroll event with js
+     overflow: auto;  // these do not allow scroll event with js
+    height: 100vh;
+    // scroll-snap-type: mandatory;
+    // scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+    // scroll-padding: 73px;
+
     > header {
       @include center-frame;
       max-width: $header-max-width;
     }
     > section {
-      overflow-y: scroll;
-
       padding: 14vh 0 10vh;
       height: 100vh;
       background-size: cover;
       background-position: center;
       scroll-snap-align: start;
+
+      .label-placeholder {
+        @include responsive-input();
+      }
 
       > div {
         @include center-frame;

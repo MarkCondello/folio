@@ -53,26 +53,47 @@
     intro-part-one="Contact Me"
     intro-part-two="open to work opportunities"
     scroll-message="Contact"
+    bg-class="bg-primary"
   >
     <template v-slot:article>
       <h2>Please send your enquiries here</h2>
-      <div class="flex-cols">
-        <div class="lg-9">
+      <div>
+        <form class="contact">
           <div class="flex-cols">
-            <div class="lg-4 padd">
-              <label>
-                email
-              </label>
-            </div>
-            <div class="lg-8">
-              <label>message</label>
-              <textarea></textarea>
+            <div class="lg-9">
+              <div class="flex-cols">
+                <div class="lg-4">
+                  <div class="label-placeholder">
+                    <label for="email">Your email</label>
+                    <input type="email" name="email" placeholder="Your email"  required>
+                    <p>Your email</p>
+                  </div>
+                  <div class="label-placeholder">
+                    <label for="subject">Subject</label>
+                    <input type="email" name="subject" placeholder="Subject" required>
+                    <p>Subject</p>
+                  </div>
+                  <div class="label-placeholder">
+                    <label for="name">Name</label>
+                    <input type="email" name="name" placeholder="Name" required>
+                    <p>Name</p>
+                  </div>
+                </div>
+                <div class="lg-8 -message">
+                  <label>message</label>
+                  <textarea></textarea>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="flex-cols">
-        <button class="lg-3 button">send message</button>
+          <div class="flex-cols">
+            <div class="lg-9">
+              <div class="flex-cols justify-end">
+                <button type="submit" class="lg-4 button">send message</button>
+                </div>
+            </div>
+          </div>
+        </form>
       </div>
     </template>
    </frame-panel>
