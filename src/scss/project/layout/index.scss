@@ -43,7 +43,6 @@ body {
       }
     }
   }
-
   @for $i from 0 through 20 {
     .mx-#{$i}{
       @include margin-x(#{$i}rem);
@@ -65,52 +64,11 @@ body {
   }
   > #app {
     @include bg-text-colors($palette);
-     overflow: auto;  // these do not allow scroll event with js
+    overflow: auto;  // these do not allow scroll events with js
     height: 100vh;
-    // scroll-snap-type: mandatory;
-    // scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
     scroll-snap-type: y mandatory;
-    // scroll-padding: 73px;
-
-    > header {
-      @include center-frame;
-      max-width: $header-max-width;
-    }
-    > section {
-      padding: 14vh 0 10vh;
-      height: 100vh;
-      background-size: cover;
-      background-position: center;
-      scroll-snap-align: start;
-
-      .label-placeholder {
-        @include responsive-input();
-      }
-
-      > div {
-        @include center-frame;
-        > p.intro,
-        > .plug{
-          flex: 1 1 0;
-          margin: 0;
-        }
-        article {
-          .button {
-            margin-top: 1rem;
-            text-align: center;
-          }
-        }
-        > .plug {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          margin-top: 2.5vh;
-        }
-      }
-    }
-    > footer {
-      @include center-frame;
-    }
     .flex-cols {
       @include flex-cols('lg');
     }

@@ -65,7 +65,6 @@
       </div>
     </template>
     <template v-slot:plug>Blog coming soon...</template>
-
   </frame-panel>
   <frame-panel
     intro-part-one="Contact Me"
@@ -114,55 +113,20 @@
         </form>
       </div>
     </template>
-   </frame-panel>
+  </frame-panel>
+  <bottom-line />
 </template>
 <script>
-import FramePanel from '../components/Frame.vue'
-import _ from 'lodash'
+import FramePanel from '../components/FramePanel.vue'
+import bottomLine from '../sections/bottomLine.vue'
 
 export default {
-  components: { FramePanel },
+  components: { FramePanel, bottomLine },
   data () {
     return {
       scrollDir: null,
       frameNumber: 0,
       lastScrollTop: 0
-    }
-  },
-  // created () {
-  //   window.addEventListener('scroll', this.handleScroll)
-  // },
-  // unmounted () {
-  //   window.removeEventListener('scroll', this.handleScroll)
-  // },
-  methods: {
-    handleScroll (ev) {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-      const prevFrameVal = this.frameNumber
-      // const docHeight = document.body.clientHeight
-      if (scrollTop > this.lastScrollTop) { // downscroll code
-        // window.scroll({ top: (prevFrameVal + 1) * docHeight, left: 0, behaviour: 'smooth' })
-        // document.documentElement.scrollTop = document.body.scrollTop = (prevFrameVal + 1) * docHeight
-        const runInc = _.debounce(() => {
-          if (prevFrameVal === this.frameNumber) {
-            this.frameNumber += 1
-            console.log('Reached handleScroll', this.frameNumber)
-          }
-        }, 500)
-        runInc()
-      } else { // upscroll code
-        // window.scroll({ top: (prevFrameVal - 1) * docHeight, left: 0, behaviour: 'smooth' })
-        // document.documentElement.scrollTop = document.body.scrollTop = (prevFrameVal - 1) * docHeight
-        const runDec = _.debounce(() => {
-          if (prevFrameVal === this.frameNumber && this.frameNumber > 0) {
-            this.frameNumber -= 1
-            console.log('Reached handleScroll', this.frameNumber)
-          }
-        }, 500)
-        runDec()
-      }
-      this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop // For Mobile or negative scrolling
-      // // check the scroll dir https://stackoverflow.com/questions/31223341/detecting-scroll-direction
     }
   }
 }

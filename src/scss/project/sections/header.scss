@@ -1,10 +1,12 @@
 @use '../../preset/' as *;
 @use '../../config/typography.scss' as *;
+@use '../../config/variables.scss' as *;
 
 body {
   > #app {
     > header {
-      // Should use a mixin for this and footer
+      @include center-frame;
+      max-width: $header-max-width;
       left: 0;
       position: fixed;
       top: 0;
