@@ -1,21 +1,35 @@
 const query = `{
   projectCollection {
     items {
-    sys {
-      firstPublishedAt
-    }
-    title
-    featuredImage  {
-      url
+      sys {
+        firstPublishedAt
+      }
+      client
+      clientLogo {
+        url
+        title
+        width
+        height
+        description
+      }
+      agency
+      agencyLink
+      launchDate
+      stack
+      domain
+      featuredImage  {
+        url
+        title
+        width
+        height
+        description
+      }
       title
-      width
-      height
-      description
-    }
-    content {
-      json
-    }
-      postedOn
+      slug
+      abstract
+      content {
+        json
+      }
     }
   }
 }`

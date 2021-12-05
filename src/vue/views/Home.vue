@@ -15,7 +15,7 @@
     </template>
     <template v-slot:plug>I set the gears in motion...</template>
   </frame-panel>
-  <frame-panel
+  <!-- <frame-panel
     bg-class="bg-primary"
     bg-img-src="https://media.istockphoto.com/photos/white-truck-in-motion-uk-street-picture-id1284419710?b=1&k=20&m=1284419710&s=170667a&w=0&h=i8HrBjT5uYqG1tvQnAFENs__ZmGQl3eD_TZPPO-HulA="
     intro-part-one="Best Rated Transport"
@@ -31,18 +31,19 @@
         <a href="#" class="lg-3 button">view project</a>
       </div>
     </template>
-  </frame-panel>
-  <frame-panel
+  </frame-panel> -->
+  <frame-panel v-for="(project, id) in projects"
     bg-class="bg-primary"
-    bg-img-src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGZyZWUlMjBwaWMlMjBjaXR5JTIwYml1bGRpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
-    intro-part-one="Australia Market Entry"
-    intro-part-two="Laravel, Vue, SCSS"
-    scroll-message="Work 02. Asia Market Entry"
+    :bg-img-src="project.featuredImage.url"
+    :intro-part-one="project.client"
+    :intro-part-two="project.stack"
+    :scroll-message="`Work 0${id +1}.  ${project.client}`"
+    :key="project.title"
   >
     <template v-slot:article>
-      <h2>Business lead-building CMS</h2>
+      <h2 v-html="project.title"></h2>
       <div class="flex-cols">
-        <h3 class="lg-6">A custom multi-site built to capture business leads & promote the client’s USP.</h3>
+        <h3 class="lg-6" v-html="project.abstract"></h3>
       </div>
       <div class="flex-cols">
         <a href="#" class="lg-3 button">view project</a>
@@ -119,15 +120,13 @@
 <script>
 import FramePanel from '../components/FramePanel.vue'
 import bottomLine from '../sections/bottomLine.vue'
-
+import { mapState } from 'vuex'
 export default {
   components: { FramePanel, bottomLine },
-  data () {
-    return {
-      scrollDir: null,
-      frameNumber: 0,
-      lastScrollTop: 0
-    }
+  computed: {
+    ...mapState({
+      projects: state => state.projects
+    })
   }
 }
 </script>

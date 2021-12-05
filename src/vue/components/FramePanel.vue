@@ -1,7 +1,8 @@
 <template>
   <section ref="frame"
     :class="bgClass"
-    :style="`background-image: url(${ bgImgSrc });`">
+    >
+    <span v-if="bgImgSrc" :style="`background-image: url(${ bgImgSrc });`"></span>
     <div class="flex -column justify-between h-100">
       <p v-if="introPartOne && introPartTwo" class="intro">{{ introPartOne }}<span></span>{{ introPartTwo }}</p>
       <article>
@@ -22,7 +23,6 @@
       </footer>
     </div>
     <aside-line :scroll-message="scrollMessage" :show-aside="showAside"/>
-
   </section>
 </template>
 <script>
@@ -68,10 +68,10 @@ export default {
     agencyAndRelease: {
       type: Object,
       default: () => {
-        return {
-          agency: 'DcodeGroup',
-          releaseDate: 'August 2021'
-        }
+        // return {
+        //   agency: 'DcodeGroup',
+        //   releaseDate: 'August 2021'
+        // }
       }
     }
   }
