@@ -8,14 +8,14 @@ const storeConfig = {
   mutations: {
     SET_PROJECTS (state, data) {
       state.projects = data
-      console.log('state', state.projects)
+      // console.log('state', state.projects)
     }
   },
   actions: {
     fetchProjects ({ commit }) {
       return ProjectService.getProjects()
         .then(data => {
-          console.log({ data })
+          // console.log({ data })
           commit('SET_PROJECTS', data.data.projectCollection.items)
         })
         .catch(err => {

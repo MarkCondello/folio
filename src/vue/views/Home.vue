@@ -15,31 +15,16 @@
     </template>
     <template v-slot:plug>I set the gears in motion...</template>
   </frame-panel>
-  <!-- <frame-panel
-    bg-class="bg-primary"
-    bg-img-src="https://media.istockphoto.com/photos/white-truck-in-motion-uk-street-picture-id1284419710?b=1&k=20&m=1284419710&s=170667a&w=0&h=i8HrBjT5uYqG1tvQnAFENs__ZmGQl3eD_TZPPO-HulA="
-    intro-part-one="Best Rated Transport"
-    intro-part-two="Laravel, jQuery, Vue, Foundation, SCSS"
-    scroll-message="Work 01. Best Rated Transport"
-  >
-    <template v-slot:article>
-      <h2>Quote generating system</h2>
-      <div class="flex-cols">
-        <h3 class="lg-6">A custom account based application that supports customer/company accounts,<br> & a client admin.</h3>
-      </div>
-      <div class="flex-cols">
-        <a href="#" class="lg-3 button">view project</a>
-      </div>
-    </template>
-  </frame-panel> -->
   <frame-panel v-for="(project, id) in projects"
     bg-class="bg-primary"
-    :bg-img-src="project.featuredImage.url"
     :intro-part-one="project.client"
     :intro-part-two="project.stack"
     :scroll-message="`Work 0${id +1}.  ${project.client}`"
     :key="project.title"
+    :bg-img-src='project.featuredImage ? project.featuredImage.url : ""'
+    :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }'
   >
+    <!-- :agency-and-release='{ agency: project.agency, launchDate: project.launchDate, agencyLink: project.agencyLink }' -->
     <template v-slot:article>
       <h2 v-html="project.title"></h2>
       <div class="flex-cols">
@@ -123,10 +108,8 @@ import bottomLine from '../sections/bottomLine.vue'
 import { mapState } from 'vuex'
 export default {
   components: { FramePanel, bottomLine },
-  computed: {
-    ...mapState({
-      projects: state => state.projects
-    })
-  }
+  computed: mapState({
+    projects: state => state.projects.sort((first, second) => new Date(first.sys.firstPublishedAt) - new Date(second.sys.firstPublishedAt))
+  })
 }
 </script>

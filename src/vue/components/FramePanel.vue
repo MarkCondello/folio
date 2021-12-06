@@ -13,12 +13,13 @@
       </h3>
       <footer v-if="projectLink || agencyAndRelease">
         <nav>
-        <a v-if="projectLink && !agencyAndRelease" :href="projectLink.link" class="project-link">
+        <a v-if="projectLink && !agencyAndRelease" :href="projectLink.link" class="project-link" target="_blank">
           <web-link/>
-          <span>{{ projectLink.linkName }}</span>
-          <img src="../../images/logos/ame.svg" :alt="projectLink.imgAlt" width="40" />
+          <span>{{ formattedLink(projectLink.link) }}</span>
+          <img :src="projectLink.imgSrc" :alt="projectLink.imgAlt" width="40" />
         </a>
-        <p v-if="agencyAndRelease && !projectLink" class="intro">Agency: <a href="#" target="_blank">{{agencyAndRelease.agency}}</a><span></span>Release: {{ agencyAndRelease.releaseDate }}</p>
+        <p v-if="agencyAndRelease && !projectLink" class="intro">Agency: <a :href="agencyAndRelease.agencyLink" target="_blank">{{ agencyAndRelease.agency }}</a>
+          <span></span>Release: {{ formattedDate(agencyAndRelease.launchDate) }}</p>
       </nav>
       </footer>
     </div>
@@ -38,8 +39,7 @@ export default {
     },
     bgImgSrc: {
       type: String,
-      default: null,
-      required: false
+      default: null
     },
     introPartOne: {
       type: String
@@ -55,23 +55,28 @@ export default {
       default: true
     },
     projectLink: {
-      type: Object,
-      default: () => {
-        // return {
-        //   link: 'https://www.australiamarketnetry.com.au',
-        //   linkName: 'australiamarketnetry.com.au',
-        //   imgPath: '../../images/logos/ame.svg', // will be a path to the logo served from contentful
-        //   imgAlt: 'Asia Market Entry logo.'
-        // }
-      }
+      type: Object
     },
     agencyAndRelease: {
-      type: Object,
-      default: () => {
-        // return {
-        //   agency: 'DcodeGroup',
-        //   releaseDate: 'August 2021'
-        // }
+      type: Object
+    }
+  },
+  methods: {
+    formattedDate (date) {
+      if (date) {
+        const dateObj = new Date(date)
+        console.log({ dateObj })
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        return months[dateObj.getMonth()] + ' ' + dateObj.getFullYear()
+      }
+    },
+    formattedLink (link) {
+      if (link) {
+        const linkBody = link.split('//')[1]
+        if (linkBody.slice(-1) === '/') {
+          return linkBody.slice(0, -1)
+        }
+        return linkBody
       }
     }
   }
