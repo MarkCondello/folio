@@ -27,8 +27,33 @@ const query = `{
       title
       slug
       abstract
-      content {
+      intro
+      firstProjectGoal
+      firstProjectGoalImage  {
+        url
+        title
+        width
+        height
+        description
+      }
+      secondProjectGoal {
         json
+      }
+      secondProjectGoalImage  {
+        url
+        title
+        width
+        height
+        description
+      }
+      firstSlideText
+      firstSlideLink
+      firstSlideImage  {
+        url
+        title
+        width
+        height
+        description
       }
     }
   }

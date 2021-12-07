@@ -55,10 +55,12 @@ export default {
       default: true
     },
     projectLink: {
-      type: Object
+      type: Object,
+      required: false
     },
     agencyAndRelease: {
-      type: Object
+      type: Object,
+      required: false
     }
   },
   methods: {

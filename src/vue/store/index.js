@@ -3,12 +3,16 @@ import ProjectService from '../services/ProjectService.js'
 
 const storeConfig = {
   state: {
-    projects: []
+    projects: [],
+    project: {}
   },
   mutations: {
     SET_PROJECTS (state, data) {
       state.projects = data
       // console.log('state', state.projects)
+    },
+    SET_PROJECT (state, project) {
+      state.project = project
     }
   },
   actions: {
@@ -21,9 +25,19 @@ const storeConfig = {
         .catch(err => {
           throw err
         })
+    },
+    fetchProject ({ commit, getters }, slug) {
+      const project = getters.getProjectBySlug(slug)
+      console.log({ project }, 'fetchProject')
+      commit('SET_PROJECT', project)
     }
   },
-  getters: {}
+  getters: {
+    getProjectBySlug: state => slug => {
+      console.log('reached getter', { projects: state.projects, slug })
+      return state.projects.find(project => project.slug === slug)
+    }
+  }
 }
 // below is setup for using Vue test utils
 const defaultOverrides = {

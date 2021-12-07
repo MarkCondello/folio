@@ -21,11 +21,11 @@
 import FramePanel from '../components/FramePanel.vue'
 export default {
   components: { FramePanel },
-  props : {
+  props: {
     project: {
       type: Object,
-      required: true,
+      required: true
     }
-  },
+  }
 }
 </script>
