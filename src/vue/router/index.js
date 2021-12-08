@@ -16,8 +16,8 @@ const routes = [
     component: ProjectShow,
     props: true,
     beforeEnter (routeTo, routeFrom, next) {
-      console.log('reached before enter')
-      store.dispatch('fetchProject', routeTo.params.slug)
+      console.log('reached before enter', routeTo.params)
+      store.dispatch('fetchProject', routeTo.params)
         .then((project) => {
           routeTo.params.project = project
           next()

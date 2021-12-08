@@ -13,14 +13,14 @@
       </h3>
       <footer v-if="projectLink || agencyAndRelease">
         <nav>
-        <a v-if="projectLink && !agencyAndRelease" :href="projectLink.link" class="project-link" target="_blank">
-          <web-link/>
-          <span>{{ formattedLink(projectLink.link) }}</span>
-          <img :src="projectLink.imgSrc" :alt="projectLink.imgAlt" width="40" />
-        </a>
-        <p v-if="agencyAndRelease && !projectLink" class="intro">Agency: <a :href="agencyAndRelease.agencyLink" target="_blank">{{ agencyAndRelease.agency }}</a>
+          <a v-if="projectLink && !agencyAndRelease" :href="projectLink.link" class="project-link" target="_blank">
+            <web-link/>
+            <span>{{ formattedLink(projectLink.link) }}</span>
+            <img :src="projectLink.imgSrc" :alt="projectLink.imgAlt" width="40" />
+          </a>
+          <p v-if="agencyAndRelease && !projectLink" class="intro">Agency: <a :href="agencyAndRelease.agencyLink" target="_blank">{{ agencyAndRelease.agency }}</a>
           <span></span>Release: {{ formattedDate(agencyAndRelease.launchDate) }}</p>
-      </nav>
+        </nav>
       </footer>
     </div>
     <aside-line :scroll-message="scrollMessage" :show-aside="showAside"/>

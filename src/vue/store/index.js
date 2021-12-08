@@ -19,17 +19,27 @@ const storeConfig = {
     fetchProjects ({ commit }) {
       return ProjectService.getProjects()
         .then(data => {
-          // console.log({ data })
           commit('SET_PROJECTS', data.data.projectCollection.items)
         })
         .catch(err => {
           throw err
         })
     },
-    fetchProject ({ commit, getters }, slug) {
-      const project = getters.getProjectBySlug(slug)
-      console.log({ project }, 'fetchProject')
-      commit('SET_PROJECT', project)
+    fetchProject ({ commit, getters }, params) {
+      console.log('reached fetchProject', { params })
+      localStorage.setItem('projectSlug', params.slug)
+      localStorage.setItem('contentTypeId', params.contentTypeId)
+      let item = getters.getProjectBySlug(params.slug)
+      if (item) {
+        commit('SET_PROJECT', item)
+      } else {
+        // Not an ideal solution, should query the endpoint instead. replicate issue by refreshing on show
+        setTimeout(() => {
+          console.log('project item not found, ', localStorage.getItem('projectSlug'))
+          item = getters.getProjectBySlug(localStorage.getItem('projectSlug'))
+          commit('SET_PROJECT', item)
+        }, 1500)
+      }
     }
   },
   getters: {

@@ -34,11 +34,6 @@ body {
               }
             }
           }
-          > button {
-            @include reset-btn;
-            position: absolute;
-            left: calc(50% - (25px / 2));
-          }
         }
       }
   

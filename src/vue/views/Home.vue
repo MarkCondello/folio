@@ -32,7 +32,7 @@
       </div>
       <div class="flex-cols">
         <!-- <a href="#" class="lg-3 button">view project</a> -->
-        <router-link class="lg-3 button" :to="{ name: 'project-show', params: { slug : project.slug } }">
+        <router-link class="lg-3 button" :to="{ name: 'project-show', params: { slug: project.slug, contentTypeId: project.sys.id } }">
           view project
         </router-link>
       </div>
@@ -103,7 +103,7 @@
       </div>
     </template>
   </frame-panel>
-  <bottom-line />
+  <bottom-line /><!-- Contact links -->
 </template>
 <script>
 import FramePanel from '../components/FramePanel.vue'
