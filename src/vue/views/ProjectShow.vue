@@ -23,9 +23,36 @@
         </div>
        </div>
     </template>
-    <!-- <template v-slot:plug>I set the gears in motion...</template> -->
   </frame-panel>
-  <bottom-line-show :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }' />
+    <frame-panel
+    :intro-part-one="project.client"
+    :intro-part-two="project.stack"
+    scroll-message="Project Goals"
+  >
+    <template v-slot:article>
+      <div>
+        <h3>Project Goals</h3>
+        <div class="flex-cols justify-between">
+          <div class="lg-6">
+            <h4>{{ project.firstProjectGoal }}</h4>
+          </div>
+          <div class="lg-5" :style="`background-image: url(${project.firstProjectGoalImage.url})`" >
+          </div>
+        </div>
+          <div class="flex-cols justify-between">
+          <div class="lg-6" :style="`background-image: url(${project.firstProjectGoalImage.url})`">
+          </div>
+          <div class="lg-5">
+            <h5>{{ project.firstProjectGoal }}</h5>
+          </div>
+        </div>
+      </div>
+    </template>
+  </frame-panel>
+  <bottom-line-show 
+     :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }' 
+    :agency-and-release='{ agency: project.agency, launchDate: project.launchDate, agencyLink: project.agencyLink }'
+  />
 
 </template>
 

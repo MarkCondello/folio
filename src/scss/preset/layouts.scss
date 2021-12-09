@@ -70,6 +70,10 @@ html {
     display: flex;
     align-items: center;
 }
+@mixin align-start {
+    display: flex;
+    align-items: flex-start;
+}
 @mixin space-between {
     display: flex;
     justify-content: space-between;
@@ -80,6 +84,9 @@ html {
 }
 .align-center {
     @include align-center;
+}
+.align-start {
+    @include align-start;
 }
 .space-between-center {
     @include space-between-center;

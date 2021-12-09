@@ -28,6 +28,7 @@ body {
     transition: text-decoration .3s;
     > span {
       display: inline-block;
+      font-size: 12px;
       margin: 0 .75rem;
     }
     img,
@@ -44,6 +45,9 @@ body {
     }
   }
   @for $i from 0 through 20 {
+    .gap-#{$i}0 {
+      gap: $i * 10px;
+    }
     .mx-#{$i}{
       @include margin-x(#{$i}rem);
       &-half {
