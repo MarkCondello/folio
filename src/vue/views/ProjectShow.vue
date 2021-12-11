@@ -24,33 +24,36 @@
        </div>
     </template>
   </frame-panel>
-    <frame-panel
-    :intro-part-one="project.client"
-    :intro-part-two="project.stack"
+  <frame-panel
+    intro-part-one=""
+    intro-part-two=""
+    :show-intro="false"
     scroll-message="Project Goals"
+    :show-plug="false"
   >
     <template v-slot:article>
       <div>
-        <h3>Project Goals</h3>
-        <div class="flex-cols justify-between">
+        <h3 class="h1">Project Goals</h3>
+        <div class="flex-cols justify-between pt-1 pb-2">
           <div class="lg-6">
-            <h4>{{ project.firstProjectGoal }}</h4>
+            <h4 class="h3">{{ project.firstProjectGoal }}</h4>
           </div>
-          <div class="lg-5" :style="`background-image: url(${project.firstProjectGoalImage.url})`" >
+          <div class="lg-6">
+            <div class="mx-2 pb-14" :style="`background-position: center; background-size: cover; background-image: url(${project.firstProjectGoalImage.url})`" ></div>
           </div>
         </div>
           <div class="flex-cols justify-between">
-          <div class="lg-6" :style="`background-image: url(${project.firstProjectGoalImage.url})`">
-          </div>
-          <div class="lg-5">
-            <h5>{{ project.firstProjectGoal }}</h5>
-          </div>
+            <div class="lg-6 pb-10" :style="`background-position: center; background-size: cover; background-image: url(${project.firstProjectGoalImage.url})`">
+            </div>
+            <div class="lg-6">
+              <p class="mx-2 pt-1">{{ project.firstProjectGoal }}</p>
+            </div>
         </div>
       </div>
     </template>
   </frame-panel>
-  <bottom-line-show 
-     :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }' 
+  <bottom-line-show
+    :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }'
     :agency-and-release='{ agency: project.agency, launchDate: project.launchDate, agencyLink: project.agencyLink }'
   />
 

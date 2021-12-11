@@ -45,9 +45,7 @@ body {
     }
   }
   @for $i from 0 through 20 {
-    .gap-#{$i}0 {
-      gap: $i * 10px;
-    }
+
     .mx-#{$i}{
       @include margin-x(#{$i}rem);
       &-half {
@@ -60,7 +58,28 @@ body {
         @include margin-y(#{$i + .5}rem);
       }
     }
+    .py-#{$i} {
+      @include pad-y(#{$i}rem);
+      &-half {
+        @include pad-y(#{$i + .5}rem);
+      }
+    }
+    .pb-#{$i} { 
+      padding-bottom: #{$i}rem;
+      &-half {
+        padding-bottom: #{$i + .5}rem;
+      }
+    }
+    .pt-#{$i} { 
+      padding-top: #{$i}rem;
+      &-half {
+        padding-top: #{$i + .5}rem;
+      }
+    }
     @if($i > 0){
+      .gap-#{$i}0 {
+        gap: $i * 10px;
+      }
       .h-#{$i}0 {
         height: #{($i * 10) * 1%};
       }

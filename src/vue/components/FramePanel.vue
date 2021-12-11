@@ -4,11 +4,11 @@
     >
     <span v-if="bgImgSrc" :style="`background-image: url(${ bgImgSrc });`"></span>
     <div class="flex -column justify-between h-100">
-      <p v-if="introPartOne && introPartTwo" class="intro">{{ introPartOne }}<span></span>{{ introPartTwo }}</p>
+      <p v-if="introPartOne && introPartTwo && showIntro" class="intro">{{ introPartOne }}<span></span>{{ introPartTwo }}</p>
       <article>
         <slot name="article"></slot>
       </article>
-      <h3 class="h4 plug">
+      <h3 class="h4 plug" v-if="showPlug">
         <slot name="plug"></slot>
       </h3>
       <footer v-if="projectLink || agencyAndRelease">
@@ -42,10 +42,12 @@ export default {
       default: null
     },
     introPartOne: {
-      type: String
+      type: String,
+      required: false
     },
     introPartTwo: {
-      type: String
+      type: String,
+      required: false
     },
     scrollMessage: {
       type: String
@@ -61,6 +63,14 @@ export default {
     agencyAndRelease: {
       type: Object,
       required: false
+    },
+    showIntro: {
+      type: Boolean,
+      default: true
+    },
+    showPlug: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {
