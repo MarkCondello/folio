@@ -92,7 +92,9 @@ export default {
       .then(response => response.json())
   },
   getProject (contentTypeId) {
+    console.log({ contentTypeId }, fetchOptions({ contentTypes: contentTypeId }))
     return fetch(fetchOptions().endpoint, fetchOptions({ contentTypes: contentTypeId }))
+      .then(response => response.json())
   }
 }
 // https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/content-types/content-type/get-a-single-content-type/console
