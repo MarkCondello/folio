@@ -56,6 +56,15 @@ const query = `{
         height
         description
       }
+      secondSlideText
+      secondSlideLink
+      secondSlideImage  {
+        url
+        title
+        width
+        height
+        description
+      }
     }
   }
 }`

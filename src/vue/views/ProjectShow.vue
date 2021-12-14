@@ -25,9 +25,6 @@
     </template>
   </frame-panel>
   <frame-panel
-    intro-part-one=""
-    intro-part-two=""
-    :show-intro="false"
     scroll-message="Project Goals"
     :show-plug="false"
   >
@@ -52,21 +49,73 @@
       </div>
     </template>
   </frame-panel>
+  <frame-panel
+    scroll-message="What I did"
+    :show-plug="false"
+    v-if="slides.length"
+    class="justify-center"
+  >
+    <template v-slot:article>
+      <section class="slides">
+        <article>
+          <figure :style="`background-image: url(${slides[selectedSlideIndex].image})`"></figure>
+          <!-- click to open lightbox ?? -->
+          <div>
+            <header>
+              <h3 class="h2">What I did</h3>
+              <p v-html="slides[selectedSlideIndex].text"></p>
+            </header>
+            <a :href="slides[selectedSlideIndex].link" target="_blank">
+              <web-link />
+              <h4>See details here</h4>
+            </a>
+          </div>
+        </article>
+        <footer>
+          <button v-for="(slide, index) in slides" 
+          :style="`background-image: url(${slide.image})`" 
+          :key="index"
+          @click="selectedSlideIndex = index"
+          >
+          </button>
+        </footer>
+      </section>
+    </template>
+  </frame-panel>
   <bottom-line-show
-    :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }'
+    :project-link='{ link: project.domain, imgAlt: project.title, imgSrc: project.clientLogo.url }'
     :agency-and-release='{ agency: project.agency, launchDate: project.launchDate, agencyLink: project.agencyLink }'
   />
-
 </template>
 
 <script>
 import FramePanel from '../components/FramePanel.vue'
 import bottomLineShow from '../sections/bottomLineProjectShow.vue'
+import webLink from '../components/svgs/webLink.vue'
+
 import { mapState } from 'vuex'
 export default {
-  components: { FramePanel, bottomLineShow },
+  components: { FramePanel, bottomLineShow, webLink },
+  data () {
+    return {
+      slides: [],
+      selectedSlideIndex: 0
+    }
+  },
   computed: mapState({
     project: state => state.project
-  })
+  }),
+  mounted () {
+    const slideNames = ['first', 'second', 'third', 'fourth', 'fifth']
+    slideNames.forEach(slide => {
+      if (this.project[slide + 'SlideText'] && this.project[slide + 'SlideImage'] && this.project[slide + 'SlideLink']) {
+        this.slides.push({
+          text: this.project[slide + 'SlideText'],
+          image: this.project[slide + 'SlideImage'].url,
+          link: this.project[slide + 'SlideLink']
+        })
+      }
+    });
+  }
 }
 </script>

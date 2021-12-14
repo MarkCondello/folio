@@ -3,8 +3,8 @@
     :class="bgClass"
     >
     <span v-if="bgImgSrc" :style="`background-image: url(${ bgImgSrc });`"></span>
-    <div class="flex -column justify-between h-100">
-      <p v-if="introPartOne && introPartTwo && showIntro" class="intro">{{ introPartOne }}<span></span>{{ introPartTwo }}</p>
+    <div class="flex -column justify-between h-100" v-bind="$attrs">
+      <p v-if="introPartOne && introPartTwo" class="intro">{{ introPartOne }}<span></span>{{ introPartTwo }}</p>
       <article>
         <slot name="article"></slot>
       </article>
@@ -64,10 +64,6 @@ export default {
       type: Object,
       required: false
     },
-    showIntro: {
-      type: Boolean,
-      default: true
-    },
     showPlug: {
       type: Boolean,
       default: true
@@ -77,7 +73,7 @@ export default {
     formattedDate (date) {
       if (date) {
         const dateObj = new Date(date)
-        console.log({ dateObj })
+        // console.log({ dateObj })
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         return months[dateObj.getMonth()] + ' ' + dateObj.getFullYear()
       }

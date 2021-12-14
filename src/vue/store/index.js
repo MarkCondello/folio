@@ -26,7 +26,7 @@ const storeConfig = {
         })
     },
     fetchProject ({ commit, getters }, params) {
-      console.log('reached fetchProject', { params })
+      // console.log('reached fetchProject', { params })
       localStorage.setItem('projectSlug', params.slug)
       localStorage.setItem('contentTypeId', params.contentTypeId)
       let item = getters.getProjectBySlug(params.slug)

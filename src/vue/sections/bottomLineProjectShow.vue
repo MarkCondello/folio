@@ -33,7 +33,7 @@ export default {
     formattedDate (date) {
       if (date) {
         const dateObj = new Date(date)
-        console.log({ dateObj })
+        // console.log({ dateObj })
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         return months[dateObj.getMonth()] + ' ' + dateObj.getFullYear()
       }
