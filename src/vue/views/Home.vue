@@ -10,11 +10,12 @@
         <h2 class="lg-6 h3">Specialising in interface development & design, with a focus on intuitive user experiences.</h2>
       </div>
       <div class="flex-cols">
-        <button class="lg-3 button">view my work</button>
+        <a class="lg-3 button" href="#projects">view my work</a>
       </div>
     </template>
     <template v-slot:plug>I set the gears in motion...</template>
   </frame-panel>
+
   <frame-panel v-for="(project, id) in projects"
     bg-class="bg-primary"
     :intro-part-one="project.client"
@@ -24,8 +25,8 @@
     :bg-img-src='project.featuredImage ? project.featuredImage.url : ""'
     :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }'
   >
-    <!-- :agency-and-release='{ agency: project.agency, launchDate: project.launchDate, agencyLink: project.agencyLink }' -->
     <template v-slot:article>
+      <span v-if="id === 0" id="projects"></span>
       <h2 v-html="project.title"></h2>
       <div class="flex-cols">
         <h3 class="lg-6" v-html="project.abstract"></h3>

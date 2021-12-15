@@ -26,16 +26,20 @@ const storeConfig = {
         })
     },
     fetchProject ({ commit, getters }, params) {
-      let item = getters.getProjectBySlug(params.slug)
+      const item = getters.getProjectBySlug(params.slug) // what happens if the slug can not be found??
       if (item) {
         localStorage.setItem('contentTypeId', params.contentTypeId)
-        commit('SET_PROJECT', item)
-      } else {
-        ProjectService.getProjects()
+        ProjectService.getProject(params.contentTypeId)
           .then(data => {
-            const project = data.data.projectCollection.items.filter(item => item.sys.id === localStorage.getItem('contentTypeId'))[0]
-            // console.log({ data, project })
-            commit('SET_PROJECT', project)
+            console.log({ data })
+            commit('SET_PROJECT', data.data.project)
+          })
+      } else {
+        ProjectService.getProject(localStorage.getItem('contentTypeId'))
+          .then(data => {
+            console.log({ data })
+            // const project = data.data.projectCollection.items.filter(item => item.sys.id === localStorage.getItem('contentTypeId'))[0]
+            commit('SET_PROJECT', data.data.project)
           })
         // Not an ideal solution, should query the endpoint instead. replicate issue by refreshing on show
         // setTimeout(() => {

@@ -72,8 +72,8 @@
           </div>
         </article>
         <footer>
-          <button v-for="(slide, index) in slides" 
-          :style="`background-image: url(${slide.image})`" 
+          <button v-for="(slide, index) in slides"
+          :style="`background-image: url(${slide.image})`"
           :key="index"
           @click="selectedSlideIndex = index"
           >
@@ -115,7 +115,7 @@ export default {
           link: this.project[slide + 'SlideLink']
         })
       }
-    });
+    })
   }
 }
 </script>

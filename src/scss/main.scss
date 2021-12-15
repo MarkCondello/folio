@@ -3,4 +3,8 @@
 @use './config/typography.scss';
 @use './project/index.scss';
 
+html {
+  scroll-behavior: smooth;
+}
+
  
