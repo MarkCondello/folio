@@ -32,7 +32,6 @@
         <h3 class="lg-6" v-html="project.abstract"></h3>
       </div>
       <div class="flex-cols">
-        <!-- <a href="#" class="lg-3 button">view project</a> -->
         <router-link class="lg-3 button" :to="{ name: 'project-show', params: { slug: project.slug, contentTypeId: project.sys.id } }">
           view project
         </router-link>
@@ -64,6 +63,7 @@
   >
     <template v-slot:article>
       <h2>Please send your enquiries here</h2>
+      <!-- https://stackoverflow.com/questions/49149550/how-to-send-an-email-with-vuejs/49150298 -->
       <div>
         <form class="contact">
           <div class="flex-cols">

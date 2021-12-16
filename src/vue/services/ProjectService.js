@@ -43,6 +43,10 @@ let queryProject = (contentTypeId) => `
       height
       description
     }
+    agency
+    agencyLink
+    launchDate
+    stack
     domain
     title
     intro
@@ -54,9 +58,7 @@ let queryProject = (contentTypeId) => `
       height
       description
     }
-    secondProjectGoal {
-      json
-    }
+    secondProjectGoal
     secondProjectGoalImage  {
       url
       title
@@ -85,8 +87,6 @@ let queryProject = (contentTypeId) => `
   }
 }
 `
-// Here are our options to use with fetch,
-// convert this to a function with a content type id param
 const fetchOptions = (query) => {
   return {
     spaceID: 'b26b3xfjy4l5',
@@ -103,13 +103,11 @@ const fetchOptions = (query) => {
 // Let's fetch the data - check out the browser console!
 export default {
   getProjects () {
-    // console.log(fetchOptions())
     return fetch(fetchOptions().endpoint, fetchOptions(queryProjects))
       .then(response => response.json())
   },
   getProject (contentTypeId) {
     queryProject = queryProject(contentTypeId)
-    console.log({ contentTypeId, queryProject })
     return fetch(fetchOptions().endpoint, fetchOptions(queryProject))
       .then(response => response.json())
   }

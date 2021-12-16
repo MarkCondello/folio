@@ -33,18 +33,18 @@
         <h3 class="h1">Project Goals</h3>
         <div class="flex-cols justify-between pt-1 pb-2">
           <div class="lg-6">
-            <h4 class="h3">{{ project.firstProjectGoal }}</h4>
+            <h4 class="h3" v-html="project.firstProjectGoal"></h4>
           </div>
           <div class="lg-6">
             <div class="mx-2 pb-14" :style="`background-position: center; background-size: cover; background-image: url(${project.firstProjectGoalImage.url})`" ></div>
           </div>
         </div>
-          <div class="flex-cols justify-between">
-            <div class="lg-6 pb-10" :style="`background-position: center; background-size: cover; background-image: url(${project.firstProjectGoalImage.url})`">
-            </div>
-            <div class="lg-6">
-              <p class="mx-2 pt-1">{{ project.firstProjectGoal }}</p>
-            </div>
+        <div class="flex-cols justify-between" v-if="project.secondProjectGoalImage && project.secondProjectGoal">
+          <div class="lg-6 pb-10" :style="`background-position: center; background-size: cover; background-image: url(${project.secondProjectGoalImage.url})`">
+          </div>
+          <div class="lg-6">
+            <p class="mx-2 pt-1">{{ project.secondProjectGoal }}</p>
+          </div>
         </div>
       </div>
     </template>

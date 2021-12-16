@@ -4,7 +4,7 @@
       <a :href="projectLink.link" class="project-link" target="_blank">
         <web-link/>
         <span>{{ formattedLink(projectLink.link) }}</span>
-        <img :src="projectLink.imgSrc" :alt="projectLink.imgAlt" width="40" />
+        <img :src="projectLink.imgSrc" :alt="projectLink.imgAlt" width="25" />
       </a>
     </nav>
      <nav>

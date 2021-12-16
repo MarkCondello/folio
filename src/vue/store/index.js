@@ -35,12 +35,15 @@ const storeConfig = {
             commit('SET_PROJECT', data.data.project)
           })
       } else {
+        // setTimeout(() => {
         ProjectService.getProject(localStorage.getItem('contentTypeId'))
           .then(data => {
             console.log({ data })
             // const project = data.data.projectCollection.items.filter(item => item.sys.id === localStorage.getItem('contentTypeId'))[0]
             commit('SET_PROJECT', data.data.project)
           })
+        // }, 1500)
+
         // Not an ideal solution, should query the endpoint instead. replicate issue by refreshing on show
         // setTimeout(() => {
         //   console.log('project item not found, ', localStorage.getItem('projectSlug'))
