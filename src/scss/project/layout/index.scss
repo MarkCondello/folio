@@ -52,6 +52,12 @@ body {
         @include margin-x(#{$i + .5}rem);
       }
     }
+    .mr-#{$i}{
+      margin-right: #{$i}rem;
+      &-half {
+        margin-right: #{$i + .5}rem;
+      }
+    }
     .my-#{$i}{
       @include margin-y(#{$i}rem);
       &-half {

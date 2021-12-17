@@ -62,33 +62,34 @@
     bg-class="bg-primary"
   >
     <template v-slot:article>
-      <h2>Please send your enquiries here</h2>
+      <h2 v-if="sent">Thanks for the message {{form.from_name}}. I will get back to you soon.</h2>
+      <h2 v-else>Please send your enquiries here.</h2>
       <!-- https://stackoverflow.com/questions/49149550/how-to-send-an-email-with-vuejs/49150298 -->
-      <div>
-        <form class="contact">
+      <div v-if="!sent">
+        <form class="contact" @submit="onSubmit">
           <div class="flex-cols">
             <div class="lg-9">
               <div class="flex-cols">
                 <div class="lg-4">
                   <div class="label-placeholder">
                     <label for="email">Your email</label>
-                    <input type="email" name="email" placeholder="Your email"  required>
+                    <input type="email" name="email" placeholder="Your email" required v-model="form.reply_to">
                     <p>Your email</p>
                   </div>
                   <div class="label-placeholder">
                     <label for="subject">Subject</label>
-                    <input type="email" name="subject" placeholder="Subject" required>
+                    <input type="text" name="subject" placeholder="Subject" required v-model="form.subject">
                     <p>Subject</p>
                   </div>
                   <div class="label-placeholder">
                     <label for="name">Name</label>
-                    <input type="email" name="name" placeholder="Name" required>
+                    <input type="text" name="name" placeholder="Name" required v-model="form.from_name">
                     <p>Name</p>
                   </div>
                 </div>
                 <div class="lg-8 -message">
                   <label>message</label>
-                  <textarea></textarea>
+                  <textarea v-model="form.message"></textarea>
                 </div>
               </div>
             </div>
@@ -96,8 +97,14 @@
           <div class="flex-cols">
             <div class="lg-9">
               <div class="flex-cols justify-end">
-                <button type="submit" class="lg-4 button">send message</button>
-                </div>
+                <button type="submit" class="lg-4 button flex align-center">
+                  <span v-if="loading">sending</span>
+                  <template v-else>
+                    <gears class="spin mr-1"/>
+                    <span>sending</span>
+                  </template>
+                </button>
+              </div>
             </div>
           </div>
         </form>
@@ -110,10 +117,61 @@
 import FramePanel from '../components/FramePanel.vue'
 import bottomLine from '../sections/bottomLine.vue'
 import { mapState } from 'vuex'
+import emailjs from 'emailjs-com'
+import gears from '../components/svgs/gears.vue'
 export default {
-  components: { FramePanel, bottomLine },
+  components: { FramePanel, bottomLine, gears },
+  data () {
+    return {
+      form: {
+        reply_to: '',
+        from_name: '',
+        subject: '',
+        message: ''
+      },
+      loading: false,
+      sent: false
+    }
+  },
   computed: mapState({
     projects: state => state.projects.sort((first, second) => new Date(first.sys.firstPublishedAt) - new Date(second.sys.firstPublishedAt))
-  })
+  }),
+  created () {
+    emailjs.init('user_J6qTVcfRCwXF74Vnqs6JE')
+  },
+  methods: {
+    onSubmit (e) {
+      e.preventDefault()
+      this.loading = true
+      emailjs.send('service_4c6e8rb', 'template_65qcolf', {
+        from_name: this.form.from_name,
+        reply_to: this.form.reply_to,
+        subject: this.form.subject,
+        message: this.form.message
+      })
+        .then(resp => {
+          this.sent = true
+          this.loading = false
+          console.log('Success: ', resp)
+        })
+        .catch(err => {
+          console.log(err)
+          this.sent = false
+          this.loading = false
+        })
+      // const inputs = queryString.stringify(this.form)
+      // console.log({ inputs })
+      // axios // toDo: need to check this on a server with php
+      //   .post(
+      //     process.env.BASE_URL + 'mail.php', // this was leading to a 404
+      //     inputs
+      //   )
+      //   .then(res => {
+      //     console.log(res)
+      //     this.sent = true
+      //     this.loading = false
+      //   })
+    }
+  }
 }
 </script>
