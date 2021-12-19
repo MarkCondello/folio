@@ -3,11 +3,11 @@
     <section>
       <nav>
         <ul>
-          <li><a href="#" target="_blank"><linkedIn/></a></li>
+          <li><a href="https://www.linkedin.com/in/markcondello/" target="_blank"><linkedIn/></a></li>
           <!-- <li><a href="#" target="_blank"><github/></a></li>
           Add this back in once I have tiddied up my account -->
-          <li><a href="#" target="_blank"><mail/></a></li>
-          <li><a href="#" target="_blank"><phone/></a></li>
+          <li><a href="mailto:condellomark@gmail.com"><mail/></a></li>
+          <li><a href="tel:0406046531"><phone/></a></li>
         </ul>
       </nav>
     </section>

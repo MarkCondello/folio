@@ -70,6 +70,10 @@ html {
     display: flex;
     align-items: center;
 }
+@mixin justify-center {
+    display: flex;
+    justify-content: center;
+}
 @mixin align-start {
     display: flex;
     align-items: flex-start;

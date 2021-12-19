@@ -1,11 +1,11 @@
 <template>
   <header>
     <nav>
-      <router-link :to="{ name: 'Home' }"><gears /></router-link>
+      <router-link :to="{ name: 'Home', hash: '#intro' }"><gears /></router-link>
        <ul>
-        <li><button>Work</button></li>
-        <li><button>About</button></li>
-        <li><button class="button -hollow sml">Contact</button></li>
+        <li><router-link :to="{ name: 'Home', hash: '#projects'}">Work</router-link></li>
+        <li><router-link :to="{ name: 'Home', hash: '#about'}">About</router-link></li>
+        <li><router-link class="button -hollow sml" :to="{ name: 'Home', hash: '#contact'}">Contact</router-link></li>
       </ul>
     </nav>
   </header>

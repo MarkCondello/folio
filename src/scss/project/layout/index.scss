@@ -58,6 +58,12 @@ body {
         margin-right: #{$i + .5}rem;
       }
     }
+    .ml-#{$i}{
+      margin-left: #{$i}rem;
+      &-half {
+        margin-left: #{$i + .5}rem;
+      }
+    }
     .my-#{$i}{
       @include margin-y(#{$i}rem);
       &-half {
@@ -108,5 +114,9 @@ body {
         flex-direction: column;
       }
     }
+  }
+
+  .spin {
+    @include spin(3s);
   }
 }

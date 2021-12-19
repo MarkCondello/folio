@@ -3,6 +3,7 @@ import store from '../store/'
 import Home from '../views/Home.vue'
 import Styleguide from '../views/Styleguide.vue'
 import ProjectShow from '../views/ProjectShow.vue'
+// import Vue from 'vue'
 
 const routes = [
   {
@@ -34,7 +35,22 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else if (to.hash) {
+      if (/^#\d/.test(to.hash) || document.querySelector(to.hash)) {
+        // console.log('hash val', document.querySelector(to.hash))
+        document.querySelector(to.hash).scrollIntoView({ behavior: 'smooth' })
+        // return position
+        // if the returned position is falsy or an empty object,
+        // will retain current scroll position.
+      }
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 export default router

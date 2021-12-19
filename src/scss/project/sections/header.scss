@@ -23,8 +23,9 @@ body {
           flex-direction: column;
         }
         > ul > li {
-          display: flex;
-          button {
+          @include justify-center;
+          flex-direction: column;
+          a {
             @include heading-font-regular;
             font-size: 18px;
           }
