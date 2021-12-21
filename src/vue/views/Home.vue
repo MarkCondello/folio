@@ -1,5 +1,6 @@
 <template>
   <frame-panel
+    :bg-img-src="require('@/images/photos/abstract-networks.png')"
     intro-part-one="Hi, I'm Mark Condello"
     intro-part-two="open to work opportunities"
     scroll-message="scroll down"
@@ -39,7 +40,7 @@
     </template>
   </frame-panel>
    <frame-panel
-    bg-img-src="https://thumbs.dreamstime.com/b/caring-touch-1494614.jpg"
+    :bg-img-src="require('@/images/photos/me-holding-baby.png')"
     intro-part-one="About Me"
     intro-part-two="WIP"
     scroll-message="About"

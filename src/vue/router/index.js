@@ -39,15 +39,11 @@ const router = createRouter({
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
-    } else if (to.hash) {
-      if (/^#\d/.test(to.hash) || document.querySelector(to.hash)) {
-        // console.log('hash val', document.querySelector(to.hash))
-        document.querySelector(to.hash).scrollIntoView({ behavior: 'smooth' })
-        // return position
-        // if the returned position is falsy or an empty object,
-        // will retain current scroll position.
-      }
+    } else if (to.hash && document.querySelector(to.hash)) {
+      // console.log('hash val', document.querySelector(to.hash))
+      document.querySelector(to.hash).scrollIntoView({ behavior: 'smooth' })
     } else {
+      console.log('reached else, to top pos should be set')
       return { x: 0, y: 0 }
     }
   }
