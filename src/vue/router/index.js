@@ -32,6 +32,7 @@ const routes = [
     component: Styleguide
   }
 ]
+// Need 404 and 500 error pages
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

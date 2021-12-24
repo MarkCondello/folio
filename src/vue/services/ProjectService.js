@@ -32,61 +32,61 @@ const queryProjects = `{
   }
 }`
 
-let queryProject = (contentTypeId) => `
-{
-  project (id:"${contentTypeId}") {
-    client
-    clientLogo {
-      url
+function queryProject (contentTypeId) {
+  return `{
+    project (id:"${contentTypeId}") {
+      client
+      clientLogo {
+        url
+        title
+        width
+        height
+        description
+      }
+      agency
+      agencyLink
+      launchDate
+      stack
+      domain
       title
-      width
-      height
-      description
+      intro
+      firstProjectGoal
+      firstProjectGoalImage  {
+        url
+        title
+        width
+        height
+        description
+      }
+      secondProjectGoal
+      secondProjectGoalImage  {
+        url
+        title
+        width
+        height
+        description
+      }
+      firstSlideText
+      firstSlideLink
+      firstSlideImage  {
+        url
+        title
+        width
+        height
+        description
+      }
+      secondSlideText
+      secondSlideLink
+      secondSlideImage  {
+        url
+        title
+        width
+        height
+        description
+      }
     }
-    agency
-    agencyLink
-    launchDate
-    stack
-    domain
-    title
-    intro
-    firstProjectGoal
-    firstProjectGoalImage  {
-      url
-      title
-      width
-      height
-      description
-    }
-    secondProjectGoal
-    secondProjectGoalImage  {
-      url
-      title
-      width
-      height
-      description
-    }
-    firstSlideText
-    firstSlideLink
-    firstSlideImage  {
-      url
-      title
-      width
-      height
-      description
-    }
-    secondSlideText
-    secondSlideLink
-    secondSlideImage  {
-      url
-      title
-      width
-      height
-      description
-    }
-  }
+  }`
 }
-`
 const fetchOptions = (query) => {
   return {
     spaceID: 'b26b3xfjy4l5',
@@ -107,8 +107,8 @@ export default {
       .then(response => response.json())
   },
   getProject (contentTypeId) {
-    queryProject = queryProject(contentTypeId)
-    return fetch(fetchOptions().endpoint, fetchOptions(queryProject))
+    const query = queryProject(contentTypeId)
+    return fetch(fetchOptions().endpoint, fetchOptions(query))
       .then(response => response.json())
   }
 }

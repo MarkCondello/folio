@@ -6,6 +6,7 @@ html, body  {
   height: 100%;
 }
 body {
+  background-color: $bg-3;
   hr {
     width: 100%;
     border: none;
@@ -106,6 +107,8 @@ body {
     scroll-snap-type: y mandatory;
     .flex-cols {
       @include flex-cols('lg');
+      @include flex-cols('md');
+      @include flex-cols('sm');
     }
     .flex {
       @include flex-classes;   

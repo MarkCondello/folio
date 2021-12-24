@@ -1,6 +1,7 @@
 @use '../../preset/' as *;
 @use '../../config/typography.scss' as *;
 @use '../../config/variables.scss' as *;
+@use '../../config/palette.scss' as *;
 
 body {
   > #app {
@@ -21,16 +22,50 @@ body {
         > a {
           @include align-center;
           flex-direction: column;
+          z-index: 1;
         }
-        > ul > li {
-          @include justify-center;
-          flex-direction: column;
-          a {
-            @include heading-font-regular;
-            font-size: 18px;
+        > ul {
+          > li {
+            @include justify-center;
+            flex-direction: column;
+            a {
+              @include heading-font-regular;
+              font-size: 18px;
+            }
           }
         }
-      }      
+        button {
+           @include reset-btn;
+           display: none;
+        }
+        @include media-breakpoint-down(sm) {
+          > button {
+            display: block;
+          }
+          > ul {
+            align-items: center;
+            background-color: $bg-1;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            left: -100vw;
+            position: fixed;
+            top: 0;
+            width: 100vw;
+            transition: left .5s;
+            &.active {
+              left: 0;
+            }
+            > button {
+              display: block;
+              position: absolute;
+              top: 21px;
+              right: 14px;
+              width: 20px;
+            }
+          }
+        }
+      }
     }
   }
 }

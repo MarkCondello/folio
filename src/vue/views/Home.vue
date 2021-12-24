@@ -9,10 +9,10 @@
       <span id="intro"></span>
       <h1>A Melbourne based FE Developer,</h1>
       <div class="flex-cols">
-        <h2 class="lg-6 h3">Specialising in interface development & design, with a focus on intuitive user experiences.</h2>
+        <h2 class="sm-5 md-6 lg-6 h3">Specialising in interface development & design, with a focus on intuitive user experiences.</h2>
       </div>
       <div class="flex-cols">
-        <router-link class="lg-3 button" :to="{ name: 'Home', hash: '#projects'}">view my work</router-link>
+        <router-link class="lg-2 button" :to="{ name: 'Home', hash: '#projects'}">view my work</router-link>
       </div>
     </template>
     <template v-slot:plug>I set the gears in motion...</template>
@@ -33,7 +33,7 @@
         <h3 class="lg-6" v-html="project.abstract"></h3>
       </div>
       <div class="flex-cols">
-        <router-link class="lg-3 button" :to="{ name: 'project-show', params: { slug: project.slug, contentTypeId: project.sys.id } }">
+        <router-link class="lg-2 button" :to="{ name: 'project-show', params: { slug: project.slug, contentTypeId: project.sys.id } }">
           view project
         </router-link>
       </div>
@@ -100,7 +100,7 @@
           <div class="flex-cols">
             <div class="lg-9">
               <div class="flex-cols justify-end">
-                <button type="submit" class="lg-4 button flex align-center justify-center">
+                <button type="submit" class="lg-3 button flex align-center justify-center">
                   <template v-if="loading">
                     <cog class="spin" :styles="{height: '24px', fill: 'transparent',stroke: '#404040', width: '24px'}" />
                     <span class="ml-0-half">sending now</span>

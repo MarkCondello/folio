@@ -108,7 +108,7 @@ export default {
   mounted () {
     const slideNames = ['first', 'second', 'third', 'fourth', 'fifth']
     slideNames.forEach(slide => {
-      if (this.project[slide + 'SlideText'] && this.project[slide + 'SlideImage'] && this.project[slide + 'SlideLink']) {
+      if (this.project[slide + 'SlideText'] && this.project[slide + 'SlideImage'] && this.project[slide + 'SlideImage'].url && this.project[slide + 'SlideLink']) {
         this.slides.push({
           text: this.project[slide + 'SlideText'],
           image: this.project[slide + 'SlideImage'].url,
