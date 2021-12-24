@@ -41,6 +41,9 @@ body {
         justify-content: space-between;
         align-items: center;
       }
+      @include media-breakpoint-down(sm) {
+        display: none;
+      }
     }
   }
 }

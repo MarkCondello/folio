@@ -22,7 +22,7 @@ body {
         > a {
           @include align-center;
           flex-direction: column;
-          z-index: 1;
+          z-index: 4;
         }
         > ul {
           > li {
@@ -32,6 +32,9 @@ body {
               @include heading-font-regular;
               font-size: 18px;
             }
+          }
+          > footer {
+            display: none;
           }
         }
         button {
@@ -51,8 +54,9 @@ body {
             left: -100vw;
             position: fixed;
             top: 0;
-            width: 100vw;
             transition: left .5s;
+            width: 100vw;
+            z-index: 3;
             &.active {
               left: 0;
             }
@@ -62,6 +66,11 @@ body {
               top: 21px;
               right: 14px;
               width: 20px;
+            }
+            > footer {
+              bottom: 20px;
+              display: flex;
+              position: absolute;
             }
           }
         }

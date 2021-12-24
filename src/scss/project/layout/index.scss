@@ -46,7 +46,6 @@ body {
     }
   }
   @for $i from 0 through 20 {
-
     .mx-#{$i}{
       @include margin-x(#{$i}rem);
       &-half {
@@ -118,7 +117,6 @@ body {
       }
     }
   }
-
   .spin {
     @include spin(3s);
   }

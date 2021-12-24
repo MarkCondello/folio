@@ -42,10 +42,11 @@ const router = createRouter({
       return savedPosition
     } else if (to.hash && document.querySelector(to.hash)) {
       // console.log('hash val', document.querySelector(to.hash))
-      document.querySelector(to.hash).scrollIntoView({ behavior: 'smooth' })
+      return document.querySelector(to.hash).scrollIntoView({ behavior: 'smooth' })
     } else {
-      console.log('reached else, to top pos should be set')
-      return { x: 0, y: 0 }
+      console.log('reached else, to top pos should be set, updated') // Not working
+      document.getElementById('app').scrollIntoView({ behavior: 'smooth' })
+      // return { x: 0, y: 0 }
     }
   }
 })
