@@ -1,3 +1,5 @@
+@use '../../preset/' as *;
+
 form.contact {
   margin-top: 2rem;
   .label-placeholder {
@@ -13,6 +15,18 @@ form.contact {
     padding-left: 2rem;
     textarea {
       flex : 1 1 0;
+    }
+  }
+  @include media-breakpoint-down(sm) {
+    .-message {
+      margin-top: 1.75rem;
+      padding-left: 0;
+      label {
+        font-size: 16px;
+      }
+      textarea {
+        min-height: 100px;
+      }
     }
   }
 }

@@ -6,10 +6,10 @@
   >
     <template v-slot:article>
       <div class="flex-cols">
-        <div class="lg-3">
-          <img :src="project.clientLogo.url" :alt="project.clientLogo.title" />
+        <div class="xs-1 md-3 lg-3">
+          <img class="w-100" :src="project.clientLogo.url" :alt="project.clientLogo.title" />
         </div>
-        <div class="lg-9">
+        <div class="md-9 lg-9 med-pl-2">
           <h1>{{ project.title }}</h1>
           <div class="flex-cols">
             <h2 class="h3 lg-9">{{ project.intro }}</h2>
@@ -19,7 +19,7 @@
        <div class="lg-12">
         <div class="flex-cols">
           <div class="lg-3"></div>
-          <button class="lg-3 button">view project goals</button>
+          <button class="lg-3 button med-ml-2">view project goals</button>
         </div>
        </div>
     </template>

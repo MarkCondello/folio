@@ -73,7 +73,7 @@
           <div class="flex-cols">
             <div class="lg-9">
               <div class="flex-cols">
-                <div class="lg-4">
+                <div class="xs-2 lg-4">
                   <div class="label-placeholder">
                     <label for="email">Your email</label>
                     <input type="email" name="email" placeholder="Your email" required v-model="form.reply_to">
@@ -90,8 +90,8 @@
                     <p>Name</p>
                   </div>
                 </div>
-                <div class="lg-8 -message">
-                  <label>message</label>
+                <div class="xs-2 lg-8 -message">
+                  <label>Message</label>
                   <textarea v-model="form.message"></textarea>
                 </div>
               </div>

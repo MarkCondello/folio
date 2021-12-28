@@ -42,6 +42,8 @@ body {
            display: none;
         }
         @include media-breakpoint-down(sm) {
+          padding-left: .75rem;
+          padding-right: .75rem;
           > button {
             display: block;
           }

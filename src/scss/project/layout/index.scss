@@ -88,12 +88,29 @@ body {
         padding-top: #{$i + .5}rem;
       }
     }
+    @include media-breakpoint-up(md){
+      .med-pl-#{$i} {
+        padding-left: #{$i}rem;
+        &-half {
+          padding-left: #{$i + .5}rem;
+        }
+      }
+      .med-ml-#{$i} {
+        margin-left: #{$i}rem;
+        &-half {
+           margin-left: #{$i + .5}rem;
+        }
+      }
+    }
     @if($i > 0){
       .gap-#{$i}0 {
         gap: $i * 10px;
       }
       .h-#{$i}0 {
         height: #{($i * 10) * 1%};
+      }
+      .w-#{$i}0 {
+        width: #{($i * 10) * 1%};
       }
     }
   }
@@ -105,9 +122,10 @@ body {
     scroll-snap-points-y: repeat(100vh);
     scroll-snap-type: y mandatory;
     .flex-cols {
-      @include flex-cols('lg');
-      @include flex-cols('md');
+      @include flex-cols('xs');
       @include flex-cols('sm');
+      @include flex-cols('md');
+      @include flex-cols('lg');
     }
     .flex {
       @include flex-classes;   
