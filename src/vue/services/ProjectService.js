@@ -1,3 +1,6 @@
+// import gql from 'graphql-tag'
+// ToDo: May have to remove the above and graphql deps if I can't get fragment to work
+
 const queryProjects = `{
   projectCollection {
     items {
@@ -31,10 +34,27 @@ const queryProjects = `{
     }
   }
 }`
-
+// ToDo: Could not get this fragment to work.
+// const featureFragment = gql`
+//   fragment featureFields on Feature {
+//     sys {
+//       firstPublishedAt
+//       id
+//     }
+//     title
+//     slug
+//     introImage {
+//       url
+//       title
+//       description
+//     }
+//     introText
+//   }`
 function queryProject (contentTypeId) {
-  return `{
+  return `
+  {
     project (id:"${contentTypeId}") {
+      slug
       client
       clientLogo {
         url
@@ -51,7 +71,7 @@ function queryProject (contentTypeId) {
       title
       intro
       firstProjectGoal
-      firstProjectGoalImage  {
+      firstProjectGoalImage {
         url
         title
         width
@@ -66,23 +86,37 @@ function queryProject (contentTypeId) {
         height
         description
       }
-      firstSlideText
-      firstSlideLink
-      firstSlideImage  {
-        url
-        title
-        width
-        height
-        description
+      firstSlideRef {
+        ... on Feature {
+          sys {
+            firstPublishedAt
+            id
+          }
+          title
+          slug
+          introImage {
+            url
+            title
+            description
+          }
+          introText
+        }
       }
-      secondSlideText
-      secondSlideLink
-      secondSlideImage  {
-        url
-        title
-        width
-        height
-        description
+      secondSlideRef {
+        ... on Feature {
+          sys {
+            firstPublishedAt
+            id
+          }
+          title
+          slug
+          introImage {
+            url
+            title
+            description
+          }
+          introText
+        }
       }
     }
   }`

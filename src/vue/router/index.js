@@ -3,6 +3,7 @@ import store from '../store/'
 import Home from '../views/Home.vue'
 import Styleguide from '../views/Styleguide.vue'
 import ProjectShow from '../views/ProjectShow.vue'
+import ProjectFeatureShow from '../views/ProjectFeatureShow.vue'
 // import Vue from 'vue'
 
 const routes = [
@@ -25,6 +26,21 @@ const routes = [
         })
         .catch(err => console.log(err))
     }
+  },
+  {
+    path: '/project/:slug/:featureSlug',
+    name: 'project-feature-show',
+    component: ProjectFeatureShow,
+    props: true
+    // beforeEnter (routeTo, routeFrom, next) {
+    //   console.log('reached before enter project feature show', routeTo.params)
+    //   store.dispatch('fetchProject', routeTo.params)
+    //     .then((project) => {
+    //       routeTo.params.project = project
+    //       next()
+    //     })
+    //     .catch(err => console.log(err))
+    // }
   },
   {
     path: '/styleguide',

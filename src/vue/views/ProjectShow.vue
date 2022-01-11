@@ -59,16 +59,26 @@
       <section class="slides">
         <article>
           <figure :style="`background-image: url(${slides[selectedSlideIndex].image})`"></figure>
-          <!-- click to open lightbox ?? -->
           <div>
             <header>
               <h3 class="h2">What I did</h3>
               <p v-html="slides[selectedSlideIndex].text"></p>
             </header>
-            <a :href="slides[selectedSlideIndex].link" target="_blank">
+            <router-link :to="{
+              name: 'project-feature-show',
+              params: {
+                slug: project.slug,
+                featureSlug: slides[selectedSlideIndex].slug,
+                contentTypeId: slides[selectedSlideIndex].contentTypeId
+              }
+              }">
+              <web-link />
+              <h4>See details here..</h4>
+            </router-link>
+            <!-- <a :href="slides[selectedSlideIndex].link" target="_blank">
               <web-link />
               <h4>See details here</h4>
-            </a>
+            </a> -->
           </div>
         </article>
         <footer>
@@ -107,12 +117,14 @@ export default {
   }),
   mounted () {
     const slideNames = ['first', 'second', 'third', 'fourth', 'fifth']
-    slideNames.forEach(slide => {
-      if (this.project[slide + 'SlideText'] && this.project[slide + 'SlideImage'] && this.project[slide + 'SlideImage'].url && this.project[slide + 'SlideLink']) {
+    slideNames.forEach(item => {
+      const slide = this.project[item + 'SlideRef']
+      if (slide && slide.introImage && slide.introImage.url && slide.introText && slide.slug) {
         this.slides.push({
-          text: this.project[slide + 'SlideText'],
-          image: this.project[slide + 'SlideImage'].url,
-          link: this.project[slide + 'SlideLink']
+          contentTypeId: slide.sys.id,
+          text: slide.introText,
+          image: slide.introImage.url,
+          slug: slide.slug
         })
       }
     })
