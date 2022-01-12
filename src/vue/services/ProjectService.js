@@ -121,6 +121,19 @@ function queryProject (contentTypeId) {
     }
   }`
 }
+function queryFeature (contentTypeId) {
+  return `{
+    feature (id:"${contentTypeId}") {
+      title
+      introImage {
+        url
+        title
+        description
+      }
+      introText
+    }
+  }`
+}
 const fetchOptions = (query) => {
   return {
     spaceID: 'b26b3xfjy4l5',
@@ -134,15 +147,20 @@ const fetchOptions = (query) => {
     body: JSON.stringify({ query })
   }
 }
-// Let's fetch the data - check out the browser console!
 export default {
   getProjects () {
     return fetch(fetchOptions().endpoint, fetchOptions(queryProjects))
       .then(response => response.json())
   },
   getProject (contentTypeId) {
-    const query = queryProject(contentTypeId)
-    return fetch(fetchOptions().endpoint, fetchOptions(query))
+    const querySingleProject = queryProject(contentTypeId)
+    return fetch(fetchOptions().endpoint, fetchOptions(querySingleProject))
+      .then(response => response.json())
+  },
+  // Not sure if I should have another route and request for single project features???
+  getProjectFeature (contentTypeId) {
+    const queryProjectFeature = queryFeature(contentTypeId)
+    return fetch(fetchOptions().endpoint, fetchOptions(queryProjectFeature))
       .then(response => response.json())
   }
 }

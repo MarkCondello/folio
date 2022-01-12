@@ -3,6 +3,7 @@
     :intro-part-one="project.client"
     :intro-part-two="project.stack"
     scroll-message="scroll down"
+    bg-class="bg-primary"
   >
     <template v-slot:article>
       <div class="flex-cols">
@@ -19,7 +20,7 @@
        <div class="lg-12">
         <div class="flex-cols">
           <div class="lg-3"></div>
-          <button class="lg-3 button med-ml-2">view project goals</button>
+            <router-link class="lg-3 button med-ml-2" :to="{ name: 'project-show', hash: '#goals'}">view project goals</router-link>
         </div>
        </div>
     </template>
@@ -27,9 +28,10 @@
   <frame-panel
     scroll-message="Project Goals"
     :show-plug="false"
+    bg-class="bg-primary"
   >
     <template v-slot:article>
-      <div>
+      <div id="goals">
         <h3 class="h1">Project Goals</h3>
         <div class="flex-cols justify-between pt-1 pb-2">
           <div class="lg-6">
@@ -75,10 +77,6 @@
               <web-link />
               <h4>See details here..</h4>
             </router-link>
-            <!-- <a :href="slides[selectedSlideIndex].link" target="_blank">
-              <web-link />
-              <h4>See details here</h4>
-            </a> -->
           </div>
         </article>
         <footer>

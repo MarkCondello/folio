@@ -4,15 +4,18 @@ import ProjectService from '../services/ProjectService.js'
 const storeConfig = {
   state: {
     projects: [],
-    project: {}
+    project: {},
+    projectFeature: {}
   },
   mutations: {
     SET_PROJECTS (state, data) {
       state.projects = data
-      // console.log('state', state.projects)
     },
     SET_PROJECT (state, project) {
       state.project = project
+    },
+    SET_PROJECT_FEATURE (state, projectFeature) {
+      state.projectFeature = projectFeature
     }
   },
   actions: {
@@ -25,29 +28,42 @@ const storeConfig = {
           throw err
         })
     },
-    fetchProject ({ commit, getters }, params) {
-      const item = getters.getProjectBySlug(params.slug) // what happens if the slug can not be found??
-      if (item) {
-        localStorage.setItem('contentTypeId', params.contentTypeId)
-        return ProjectService.getProject(params.contentTypeId)
-          .then(data => {
-            console.log({ data })
-            commit('SET_PROJECT', data.data.project)
-          })
+    fetchProject ({ state, commit, getters }, params) {
+      if (state.project && state.project.slug === params.slug) {
+        console.log('state project is set and is the same slug', state.project)
       } else {
-        return ProjectService.getProject(localStorage.getItem('contentTypeId'))
-          .then(data => {
-            console.log({ data })
-            commit('SET_PROJECT', data.data.project)
-          })
-
-        // Not an ideal solution, should query the endpoint instead. replicate issue by refreshing on show
-        // setTimeout(() => {
-        //   console.log('project item not found, ', localStorage.getItem('projectSlug'))
-        //   item = getters.getProjectBySlug(localStorage.getItem('projectSlug'))
-        //   commit('SET_PROJECT', item)
-        // }, 1500)
+        const item = getters.getProjectBySlug(params.slug) // what happens if the slug can not be found??
+        if (item) {
+          localStorage.setItem('projectContentTypeId', params.contentTypeId) // set th contentTypeId to localStorage so we can retrieve
+          return ProjectService.getProject(params.contentTypeId)
+            .then(data => {
+              console.log({ item, data })
+              commit('SET_PROJECT', data.data.project)
+            })
+            .catch(err => {
+              console.log('Error retrieving project', err)
+            })
+        } else if (localStorage.getItem('projectContentTypeId') !== 'undefined') {
+          console.log({ item }, 'item is not set..')
+          return ProjectService.getProject(localStorage.getItem('projectContentTypeId'))
+            .then(data => {
+              console.log({ data })
+              commit('SET_PROJECT', data.data.project)
+            })
+        } else { // local storage is not set
+          console.log('Reached local storage for project not set, params.slug:', params.slug)
+          // ToDo: Should I use a timeout here to retrieve the resource???
+        }
       }
+    },
+    fetchFeature ({ commit }, params) {
+      return ProjectService.getProjectFeature(params.contentTypeId)
+        .then(data => {
+          commit('SET_PROJECT_FEATURE', data.data.feature)
+        })
+        .catch(err => {
+          console.log('Error retrieving project feature', err)
+        })
     }
   },
   getters: {

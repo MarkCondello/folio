@@ -31,16 +31,16 @@ const routes = [
     path: '/project/:slug/:featureSlug',
     name: 'project-feature-show',
     component: ProjectFeatureShow,
-    props: true
-    // beforeEnter (routeTo, routeFrom, next) {
-    //   console.log('reached before enter project feature show', routeTo.params)
-    //   store.dispatch('fetchProject', routeTo.params)
-    //     .then((project) => {
-    //       routeTo.params.project = project
-    //       next()
-    //     })
-    //     .catch(err => console.log(err))
-    // }
+    props: true,
+    beforeEnter (routeTo, routeFrom, next) {
+      console.log('reached before enter project feature show', routeTo.params)
+      store.dispatch('fetchFeature', routeTo.params)
+        .then((projectFeature) => {
+          // routeTo.params.projectFeature = projectFeature
+          next()
+        })
+        .catch(err => console.log(err))
+    }
   },
   {
     path: '/styleguide',

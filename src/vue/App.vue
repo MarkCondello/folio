@@ -5,7 +5,7 @@
       <button @click="showNavPanel = true">
         <hamburger />
       </button>
-      <ul :class="{'active' : showNavPanel}"><!-- actoive class is only for small down -->
+      <ul :class="{'active' : showNavPanel}"><!-- active class is only for small down -->
         <button @click="showNavPanel = false">
           <close />
         </button>
@@ -33,6 +33,7 @@ export default {
     }
   },
   created () {
+    console.log('created life-cycle reached where we fetch projects')
     this.$store.dispatch('fetchProjects')
   },
   computed: {
