@@ -8,10 +8,9 @@
       <div class="flex-cols">
         <div class="md-9 lg-9 med-pl-2">
           <h1>{{projectFeature.title}}</h1>
-                        <web-link />
-
+          <web-link />
           <div class="flex-cols">
-            <!-- <h2 class="h3 lg-9">{{ project.intro }}</h2> -->
+            <h2 class="h3 lg-9">{{ projectFeature.intro }}</h2>
           </div>
         </div>
        </div>
@@ -72,20 +71,20 @@ export default {
   computed: mapState({
     project: state => state.project,
     projectFeature: state => state.projectFeature
-  }),
-  mounted () {
-    const slideNames = ['first', 'second', 'third', 'fourth', 'fifth']
-    slideNames.forEach(item => {
-      const slide = this.project[item + 'SlideRef']
-      if (slide && slide.introImage && slide.introImage.url && slide.introText && slide.slug) {
-        this.slides.push({
-          contentTypeId: slide.sys.id,
-          text: slide.introText,
-          image: slide.introImage.url,
-          slug: slide.slug
-        })
-      }
-    })
-  }
+  })
+  // mounted () {
+  //   const slideNames = ['first', 'second', 'third', 'fourth', 'fifth']
+  //   slideNames.forEach(item => {
+  //     const slide = this.project[item + 'SlideRef']
+  //     if (slide && slide.introImage && slide.introImage.url && slide.introText && slide.slug) {
+  //       this.slides.push({
+  //         contentTypeId: slide.sys.id,
+  //         text: slide.introText,
+  //         image: slide.introImage.url,
+  //         slug: slide.slug
+  //       })
+  //     }
+  //   })
+  // }
 }
 </script>

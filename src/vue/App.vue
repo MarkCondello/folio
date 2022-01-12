@@ -33,7 +33,7 @@ export default {
     }
   },
   created () {
-    console.log('created life-cycle reached where we fetch projects')
+    // console.log('created life-cycle reached where we fetch projects')
     this.$store.dispatch('fetchProjects')
   },
   computed: {

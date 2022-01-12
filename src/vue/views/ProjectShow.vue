@@ -1,7 +1,7 @@
 <template>
   <frame-panel
-    :intro-part-one="project.client"
-    :intro-part-two="project.stack"
+    intro-part-one="project.client"
+    intro-part-two="project.stack"
     scroll-message="scroll down"
     bg-class="bg-primary"
   >
@@ -117,10 +117,10 @@ export default {
     const slideNames = ['first', 'second', 'third', 'fourth', 'fifth']
     slideNames.forEach(item => {
       const slide = this.project[item + 'SlideRef']
-      if (slide && slide.introImage && slide.introImage.url && slide.introText && slide.slug) {
+      if (slide && slide.introImage && slide.introImage.url && slide.intro && slide.slug) {
         this.slides.push({
           contentTypeId: slide.sys.id,
-          text: slide.introText,
+          text: slide.intro,
           image: slide.introImage.url,
           slug: slide.slug
         })

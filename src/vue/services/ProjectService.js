@@ -99,7 +99,7 @@ function queryProject (contentTypeId) {
             title
             description
           }
-          introText
+          intro
         }
       }
       secondSlideRef {
@@ -115,7 +115,7 @@ function queryProject (contentTypeId) {
             title
             description
           }
-          introText
+          intro
         }
       }
     }
@@ -125,12 +125,13 @@ function queryFeature (contentTypeId) {
   return `{
     feature (id:"${contentTypeId}") {
       title
+      slug
       introImage {
         url
         title
         description
       }
-      introText
+      intro
     }
   }`
 }

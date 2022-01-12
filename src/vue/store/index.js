@@ -29,12 +29,13 @@ const storeConfig = {
         })
     },
     fetchProject ({ state, commit, getters }, params) {
-      if (state.project && state.project.slug === params.slug) {
-        console.log('state project is set and is the same slug', state.project)
+      console.log('reached fetchProject action', { params })
+      if (state.project && state.project.slug === params.slug && !params.getFromLocalStorage) {
+        console.log('state project is set and has the same slug', state.project)
       } else {
         const item = getters.getProjectBySlug(params.slug) // what happens if the slug can not be found??
         if (item) {
-          localStorage.setItem('projectContentTypeId', params.contentTypeId) // set th contentTypeId to localStorage so we can retrieve
+          localStorage.setItem('projectContentTypeId', params.contentTypeId) // set the contentTypeId to localStorage so we can retrieve
           return ProjectService.getProject(params.contentTypeId)
             .then(data => {
               console.log({ item, data })
@@ -43,8 +44,8 @@ const storeConfig = {
             .catch(err => {
               console.log('Error retrieving project', err)
             })
-        } else if (localStorage.getItem('projectContentTypeId') !== 'undefined') {
-          console.log({ item }, 'item is not set..')
+        } else if (localStorage.getItem('projectContentTypeId')) {
+          console.log({ item }, 'project item is not set..', 'projectContentTypeId', localStorage.getItem('projectContentTypeId'))
           return ProjectService.getProject(localStorage.getItem('projectContentTypeId'))
             .then(data => {
               console.log({ data })
@@ -56,14 +57,29 @@ const storeConfig = {
         }
       }
     },
-    fetchFeature ({ commit }, params) {
-      return ProjectService.getProjectFeature(params.contentTypeId)
-        .then(data => {
-          commit('SET_PROJECT_FEATURE', data.data.feature)
-        })
-        .catch(err => {
-          console.log('Error retrieving project feature', err)
-        })
+    fetchFeature ({ commit, state, dispatch }, params) {
+      // console.log('getContentId', localStorage.getItem('projectFeatureContentTypeId'), '!== undefined', localStorage.getItem('projectFeatureContentTypeId') !== undefined)
+      if (state.projectFeature.slug === undefined && localStorage.getItem('projectFeatureContentTypeId')) {
+        console.log('reached local storage query for feature')
+        return ProjectService.getProjectFeature(localStorage.getItem('projectFeatureContentTypeId'))
+          .then(async (data) => {
+            await dispatch('fetchProject', { getFromLocalStorage: true })
+            commit('SET_PROJECT_FEATURE', data.data.feature)
+          })
+          .catch(err => {
+            console.log('Error retrieving project feature', err)
+          })
+      } else {
+        console.log('Reached standard query for feature')
+        return ProjectService.getProjectFeature(params.contentTypeId)
+          .then(data => {
+            localStorage.setItem('projectFeatureContentTypeId', params.contentTypeId) // set the project feature Id to localStorage so we can retrieve
+            commit('SET_PROJECT_FEATURE', data.data.feature)
+          })
+          .catch(err => {
+            console.log('Error retrieving project feature', err)
+          })
+      }
     }
   },
   getters: {
