@@ -13,30 +13,28 @@ const routes = [
     component: Home
   },
   {
-    path: '/project/:slug',
+    path: '/project/:projectSlug',
     name: 'project-show',
     component: ProjectShow,
     props: true,
     beforeEnter (routeTo, routeFrom, next) {
       console.log('reached before enter', routeTo.params)
       store.dispatch('fetchProject', routeTo.params)
-        .then((project) => {
-          routeTo.params.project = project
+        .then(() => {
           next()
         })
         .catch(err => console.log(err))
     }
   },
   {
-    path: '/project/:slug/:featureSlug',
+    path: '/project/:projectSlug/:projectFeatureName',
     name: 'project-feature-show',
     component: ProjectFeatureShow,
     props: true,
     beforeEnter (routeTo, routeFrom, next) {
       console.log('reached before enter project feature show', routeTo.params)
       store.dispatch('fetchFeature', routeTo.params)
-        .then((projectFeature) => {
-          // routeTo.params.projectFeature = projectFeature
+        .then(() => {
           next()
         })
         .catch(err => console.log(err))

@@ -1,7 +1,7 @@
 <template>
   <frame-panel
-    intro-part-one="project.client"
-    intro-part-two="project.stack"
+    :intro-part-one="project.client"
+    :intro-part-two="project.stack"
     scroll-message="scroll down"
     bg-class="bg-primary"
   >
@@ -61,12 +61,12 @@
         <h3 class="h2">What I did</h3>
         <ProjectFeature
          :project="project"
-         :projectFeature="project.firstFeatureRef"
+          projectFeatureName="firstFeatureRef"
          />
         <ProjectFeature
           class="reversed"
           :project="project"
-          :projectFeature="project.secondFeatureRef"
+          projectFeatureName="secondFeatureRef"
         />
       </section>
     </template>
@@ -81,12 +81,12 @@
         <h3 class="h2">What I did</h3>
         <ProjectFeature
           :project="project"
-          :projectFeature="project.firstFeatureRef"
+          projectFeatureName="firstFeatureRef"
           />
         <ProjectFeature
           class="reversed"
           :project="project"
-          :projectFeature="project.secondFeatureRef"
+          projectFeatureName="secondFeatureRef"
         />
       </section>
     </template>

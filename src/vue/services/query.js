@@ -1,4 +1,7 @@
-const projectsQry = `{
+// import gql from 'graphql-tag'
+// ToDo: May have to remove the above and graphql deps if I can't get fragment to work
+
+const queryProjects = `{
   projectCollection {
     items {
       sys {
@@ -30,56 +33,158 @@ const projectsQry = `{
       abstract
       intro
       firstProjectGoal
-      firstProjectGoalImage  {
+      firstProjectGoalImage {
         url
         title
         width
         height
         description
       }
-      secondProjectGoal {
-        json
-      }
-      secondProjectGoalImage  {
+      secondProjectGoal
+      secondProjectGoalImage {
         url
         title
         width
         height
         description
       }
-      firstSlideText
-      firstSlideLink
-      firstSlideImage  {
-        url
-        title
-        width
-        height
-        description
+      firstFeatureRef {
+        ... on Feature {
+          sys {
+            firstPublishedAt
+            id
+          }
+          title
+          slug
+          introImage {
+            url
+            title
+            description
+          }
+          intro
+        }
       }
-      secondSlideText
-      secondSlideLink
-      secondSlideImage  {
-        url
-        title
-        width
-        height
-        description
+      secondFeatureRef {
+        ... on Feature {
+          sys {
+            firstPublishedAt
+            id
+          }
+          title
+          slug
+          introImage {
+            url
+            title
+            description
+          }
+          intro
+        }
       }
     }
   }
 }`
-
-const projectQry = (contentTypeId) => `{
+// ToDo: Could not get this fragment to work.
+// const featureFragment = gql`
+//   fragment featureFields on Feature {
+//     sys {
+//       firstPublishedAt
+//       id
+//     }
+//     title
+//     slug
+//     introImage {
+//       url
+//       title
+//       description
+//     }
+//     introText
+//   }`
+function queryProject (contentTypeId) {
+  return `
   {
-    project (id:contentTypeId) {
+    project (id:"${contentTypeId}") {
+      slug
       client
+      clientLogo {
+        url
+        title
+        width
+        height
+        description
+      }
+      agency
+      agencyLink
+      launchDate
+      stack
       domain
+      title
+      intro
+      firstProjectGoal
+      firstProjectGoalImage {
+        url
+        title
+        width
+        height
+        description
+      }
+      secondProjectGoal
+      secondProjectGoalImage {
+        url
+        title
+        width
+        height
+        description
+      }
+      firstFeatureRef {
+        ... on Feature {
+          sys {
+            firstPublishedAt
+            id
+          }
+          title
+          slug
+          introImage {
+            url
+            title
+            description
+          }
+          intro
+        }
+      }
+      secondFeatureRef {
+        ... on Feature {
+          sys {
+            firstPublishedAt
+            id
+          }
+          title
+          slug
+          introImage {
+            url
+            title
+            description
+          }
+          intro
+        }
+      }
     }
-  }
-}`
-// Here are our options to use with fetch,
-// convert this to a function with a content type id param
-function fetchOptions () {
+  }`
+}
+function queryFeature (contentTypeId) {
+  return `{
+    feature (id:"${contentTypeId}") {
+      title
+      slug
+      introImage {
+        url
+        title
+        description
+      }
+      intro
+    }
+  }`
+}
+const fetchOptions = (query) => {
   return {
     spaceID: 'b26b3xfjy4l5',
     accessToken: 'Noh2s2T65LaZCtqc_9Y2a4DSh7Qrq94keE3iaVSYR7s',
@@ -89,19 +194,23 @@ function fetchOptions () {
       Authorization: 'Bearer Noh2s2T65LaZCtqc_9Y2a4DSh7Qrq94keE3iaVSYR7s',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ projectsQry })
+    body: JSON.stringify({ query })
   }
 }
-// Let's fetch the data - check out the browser console!
 export default {
   getProjects () {
-    // console.log(fetchOptions(projectsQry))
-    return fetch(fetchOptions().endpoint, fetchOptions())
+    return fetch(fetchOptions().endpoint, fetchOptions(queryProjects))
       .then(response => response.json())
   },
   getProject (contentTypeId) {
-    console.log({ contentTypeId }, fetchOptions(projectQry(contentTypeId)))
-    return fetch(fetchOptions().endpoint, fetchOptions(projectQry(contentTypeId)))
+    const querySingleProject = queryProject(contentTypeId)
+    return fetch(fetchOptions().endpoint, fetchOptions(querySingleProject))
+      .then(response => response.json())
+  },
+  // Not sure if I should have another route and request for single project features???
+  getProjectFeature (contentTypeId) {
+    const queryProjectFeature = queryFeature(contentTypeId)
+    return fetch(fetchOptions().endpoint, fetchOptions(queryProjectFeature))
       .then(response => response.json())
   }
 }

@@ -33,7 +33,7 @@
         <h3 class="lg-6" v-html="project.abstract"></h3>
       </div>
       <div class="flex-cols">
-        <router-link class="lg-2 button" :to="{ name: 'project-show', params: { slug: project.slug, contentTypeId: project.sys.id } }">
+        <router-link class="lg-2 button" :to="{ name: 'project-show', params: { projectSlug: project.slug } }">
           view project
         </router-link>
       </div>

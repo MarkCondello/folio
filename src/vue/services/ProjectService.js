@@ -31,44 +31,6 @@ const queryProjects = `{
       title
       slug
       abstract
-    }
-  }
-}`
-// ToDo: Could not get this fragment to work.
-// const featureFragment = gql`
-//   fragment featureFields on Feature {
-//     sys {
-//       firstPublishedAt
-//       id
-//     }
-//     title
-//     slug
-//     introImage {
-//       url
-//       title
-//       description
-//     }
-//     introText
-//   }`
-function queryProject (contentTypeId) {
-  return `
-  {
-    project (id:"${contentTypeId}") {
-      slug
-      client
-      clientLogo {
-        url
-        title
-        width
-        height
-        description
-      }
-      agency
-      agencyLink
-      launchDate
-      stack
-      domain
-      title
       intro
       firstProjectGoal
       firstProjectGoalImage {
@@ -119,22 +81,25 @@ function queryProject (contentTypeId) {
         }
       }
     }
-  }`
-}
-function queryFeature (contentTypeId) {
-  return `{
-    feature (id:"${contentTypeId}") {
-      title
-      slug
-      introImage {
-        url
-        title
-        description
-      }
-      intro
-    }
-  }`
-}
+  }
+}`
+// ToDo: Could not get this fragment to work.
+// const featureFragment = gql`
+//   fragment featureFields on Feature {
+//     sys {
+//       firstPublishedAt
+//       id
+//     }
+//     title
+//     slug
+//     introImage {
+//       url
+//       title
+//       description
+//     }
+//     introText
+//   }`
+
 const fetchOptions = (query) => {
   return {
     spaceID: 'b26b3xfjy4l5',
@@ -151,17 +116,6 @@ const fetchOptions = (query) => {
 export default {
   getProjects () {
     return fetch(fetchOptions().endpoint, fetchOptions(queryProjects))
-      .then(response => response.json())
-  },
-  getProject (contentTypeId) {
-    const querySingleProject = queryProject(contentTypeId)
-    return fetch(fetchOptions().endpoint, fetchOptions(querySingleProject))
-      .then(response => response.json())
-  },
-  // Not sure if I should have another route and request for single project features???
-  getProjectFeature (contentTypeId) {
-    const queryProjectFeature = queryFeature(contentTypeId)
-    return fetch(fetchOptions().endpoint, fetchOptions(queryProjectFeature))
       .then(response => response.json())
   }
 }

@@ -1,16 +1,16 @@
 <template>
   <article>
-    <figure :style="`background-image: url(${projectFeature.introImage.url})`"></figure>
+    <figure :style="`background-image: url(${project[projectFeatureName].introImage.url})`"></figure>
     <div>
-      <p v-html="projectFeature.intro"></p>
+      <p v-html="project[projectFeatureName].intro"></p>
       <router-link :to="{
         name: 'project-feature-show',
         params: {
-          slug: project.slug,
-          featureSlug: projectFeature.slug,
-          contentTypeId: projectFeature.sys.id
+          projectSlug: project.slug,
+          projectFeatureName
         }
         }">
+          <!-- featureSlug: project[projectFeatureName].slug, -->
         <web-link />
         <h4>See details here..</h4>
       </router-link>
@@ -28,8 +28,8 @@ export default {
       type: Object,
       required: true
     },
-    projectFeature: {
-      type: Object,
+    projectFeatureName: {
+      type: String,
       required: true
     }
   }
