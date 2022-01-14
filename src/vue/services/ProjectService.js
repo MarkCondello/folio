@@ -79,14 +79,14 @@ function queryProject (contentTypeId) {
         description
       }
       secondProjectGoal
-      secondProjectGoalImage  {
+      secondProjectGoalImage {
         url
         title
         width
         height
         description
       }
-      firstSlideRef {
+      firstFeatureRef {
         ... on Feature {
           sys {
             firstPublishedAt
@@ -102,7 +102,7 @@ function queryProject (contentTypeId) {
           intro
         }
       }
-      secondSlideRef {
+      secondFeatureRef {
         ... on Feature {
           sys {
             firstPublishedAt

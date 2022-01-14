@@ -54,39 +54,40 @@
   <frame-panel
     scroll-message="What I did"
     :show-plug="false"
-    v-if="slides.length"
     class="justify-center"
   >
     <template v-slot:article>
-      <section class="slides">
-        <article>
-          <figure :style="`background-image: url(${slides[selectedSlideIndex].image})`"></figure>
-          <div>
-            <header>
-              <h3 class="h2">What I did</h3>
-              <p v-html="slides[selectedSlideIndex].text"></p>
-            </header>
-            <router-link :to="{
-              name: 'project-feature-show',
-              params: {
-                slug: project.slug,
-                featureSlug: slides[selectedSlideIndex].slug,
-                contentTypeId: slides[selectedSlideIndex].contentTypeId
-              }
-              }">
-              <web-link />
-              <h4>See details here..</h4>
-            </router-link>
-          </div>
-        </article>
-        <footer>
-          <button v-for="(slide, index) in slides"
-          :style="`background-image: url(${slide.image})`"
-          :key="index"
-          @click="selectedSlideIndex = index"
-          >
-          </button>
-        </footer>
+      <section class="project-features">
+        <h3 class="h2">What I did</h3>
+        <ProjectFeature
+         :project="project"
+         :projectFeature="project.firstFeatureRef"
+         />
+        <ProjectFeature
+          class="reversed"
+          :project="project"
+          :projectFeature="project.secondFeatureRef"
+        />
+      </section>
+    </template>
+  </frame-panel>
+    <frame-panel
+    scroll-message="What I did"
+    :show-plug="false"
+    class="justify-center"
+  >
+    <template v-slot:article>
+      <section class="project-features">
+        <h3 class="h2">What I did</h3>
+        <ProjectFeature
+          :project="project"
+          :projectFeature="project.firstFeatureRef"
+          />
+        <ProjectFeature
+          class="reversed"
+          :project="project"
+          :projectFeature="project.secondFeatureRef"
+        />
       </section>
     </template>
   </frame-panel>
@@ -99,33 +100,13 @@
 <script>
 import FramePanel from '../components/FramePanel.vue'
 import bottomLineShow from '../sections/bottomLineProjectShow.vue'
-import webLink from '../components/svgs/webLink.vue'
+import ProjectFeature from '../sections/projectFeature.vue'
 
 import { mapState } from 'vuex'
 export default {
-  components: { FramePanel, bottomLineShow, webLink },
-  data () {
-    return {
-      slides: [],
-      selectedSlideIndex: 0
-    }
-  },
+  components: { FramePanel, bottomLineShow, ProjectFeature },
   computed: mapState({
     project: state => state.project
-  }),
-  mounted () {
-    const slideNames = ['first', 'second', 'third', 'fourth', 'fifth']
-    slideNames.forEach(item => {
-      const slide = this.project[item + 'SlideRef']
-      if (slide && slide.introImage && slide.introImage.url && slide.intro && slide.slug) {
-        this.slides.push({
-          contentTypeId: slide.sys.id,
-          text: slide.intro,
-          image: slide.introImage.url,
-          slug: slide.slug
-        })
-      }
-    })
-  }
+  })
 }
 </script>

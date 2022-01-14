@@ -1,0 +1,36 @@
+@use '../../preset/' as *;
+@use '../../config/mixins.scss' as *;
+.project-features {
+  > article {
+    @include space-between-center;
+
+    > figure {
+      @include bg-cover-center;
+      height: 30vh;
+      width: 45%;
+    }
+    > div {
+      width: 55%;
+      a {
+        display: flex;
+        align-items: end;
+        margin-top: 1rem;
+        text-decoration: none;
+        h4 {
+          margin-left: 1.5rem;
+          margin-bottom: 0;
+        line-height: 1;
+        }
+      }
+    }
+    &.reversed {
+      flex-direction: row-reverse;
+      p {
+        text-align: right;
+      }
+      a {
+        justify-content: flex-end;
+      }
+    }
+  }
+}
