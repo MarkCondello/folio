@@ -48,7 +48,7 @@ const queryProjects = `{
         height
         description
       }
-      firstFeatureRef {
+      firstFeature {
         ... on Feature {
           sys {
             firstPublishedAt
@@ -64,7 +64,7 @@ const queryProjects = `{
           intro
         }
       }
-      secondFeatureRef {
+      secondFeature {
         ... on Feature {
           sys {
             firstPublishedAt

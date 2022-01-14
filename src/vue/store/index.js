@@ -33,33 +33,30 @@ const storeConfig = {
       if (project) {
         commit('SET_PROJECT', project)
       } else {
-        console.log('reached else in fetchProject')
+        // console.log('reached else in fetchProject')
         await dispatch('fetchProjects')
         project = getters.getProjectBySlug(params.projectSlug)
         commit('SET_PROJECT', project)
       }
     },
     async fetchFeature ({ commit, dispatch, getters, state }, params) {
-      console.log('reached fetchFeature action', { params })
       let feature = state.project[params.projectFeatureName]
       if (feature) {
+        // console.log('reached fetchFeature action', { params })
         commit('SET_PROJECT_FEATURE', feature)
       } else {
-        console.log('reached else in fetchFeature')
+        // console.log('reached else in fetchFeature')
         await dispatch('fetchProjects')
         const project = await getters.getProjectBySlug(params.projectSlug)
         await commit('SET_PROJECT', project)
-
         feature = state.project[params.projectFeatureName]
-        console.log({ project: state.project, feature })
+        // console.log({ project: state.project, feature })
         commit('SET_PROJECT_FEATURE', feature)
       }
-      // console.log('getContentId', localStorage.getItem('projectFeatureContentTypeId'), '!== undefined', localStorage.getItem('projectFeatureContentTypeId') !== undefined)
     }
   },
   getters: {
     getProjectBySlug: state => slug => {
-      console.log('reached getter', { projects: state.projects, slug })
       return state.projects.find(project => project.slug === slug)
     }
   }

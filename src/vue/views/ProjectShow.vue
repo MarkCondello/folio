@@ -61,12 +61,12 @@
         <h3 class="h2">What I did</h3>
         <ProjectFeature
          :project="project"
-          projectFeatureName="firstFeatureRef"
+          projectFeatureName="firstFeature"
          />
         <ProjectFeature
           class="reversed"
           :project="project"
-          projectFeatureName="secondFeatureRef"
+          projectFeatureName="secondFeature"
         />
       </section>
     </template>
@@ -81,12 +81,12 @@
         <h3 class="h2">What I did</h3>
         <ProjectFeature
           :project="project"
-          projectFeatureName="firstFeatureRef"
+          projectFeatureName="firstFeature"
           />
         <ProjectFeature
           class="reversed"
           :project="project"
-          projectFeatureName="secondFeatureRef"
+          projectFeatureName="secondFeature"
         />
       </section>
     </template>

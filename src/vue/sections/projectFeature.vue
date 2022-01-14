@@ -10,7 +10,6 @@
           projectFeatureName
         }
         }">
-          <!-- featureSlug: project[projectFeatureName].slug, -->
         <web-link />
         <h4>See details here..</h4>
       </router-link>
