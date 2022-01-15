@@ -147,6 +147,7 @@ h6 {
     @include h6(true);
 }
 #{$p-els},
+pre,
 label {
     @include p(true);
     .p-sml &, &.p-sml {
@@ -171,4 +172,8 @@ button {
     &.button {
         @include heading-font-regular;
     }
+}
+
+pre {
+    white-space: pre-line;
 }

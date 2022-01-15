@@ -8,6 +8,7 @@
       <article>
         <slot name="article"></slot>
       </article>
+      <slot name="extra-content"></slot>
       <h3 class="h4 plug" v-if="showPlug">
         <slot name="plug"></slot>
       </h3>
