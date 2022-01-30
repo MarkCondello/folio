@@ -12,7 +12,7 @@
       width: 45%;
       display: block;
       figure {
-        @include bg-cover-contain;
+        @include bg-cover-center;
         height: 100%;
         margin: 0;
         opacity: .5;

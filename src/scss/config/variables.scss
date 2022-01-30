@@ -145,3 +145,10 @@ $three-quarters: calc(3 / 4) * 100%;
 
 $one-third: calc(100 / 3) * 1%;
 $two-thirds: calc((2 / 3) * 100%);
+
+.bg-cover-center {
+  @include bg-cover-center;
+}
+.bg-contain-center {
+  @include bg-contain-center;
+}

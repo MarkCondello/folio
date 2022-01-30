@@ -95,10 +95,11 @@
     background-size: cover;
 }
 
-@mixin bg-cover-contain() { 
+@mixin bg-contain-center() { 
     @include bg-center-no-repeat;
     background-size: contain;
 }
+
 
 /*
 usage:

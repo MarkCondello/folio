@@ -23,7 +23,7 @@
       </div>
       <div class="flex-cols justify-end">
         <div class="md-9 lg-10 med-pl-2">
-          <router-link class="lg-4 button " :to="{ name: 'project-show', hash: '#goals'}">view project goals</router-link>
+          <router-link class="lg-4 button" :to="{ name: 'project-show', hash: '#goals'}">view project goals</router-link>
         </div>
       </div>
     </template>
@@ -41,7 +41,7 @@
             <h4 class="h3" v-html="project.firstProjectGoal"></h4>
           </div>
           <div class="lg-6">
-            <div class="mx-2 pb-12" :style="`background-position: center; background-size: cover; background-image: url(${project.firstProjectGoalImage.url})`" ></div>
+            <div class="mx-2 pb-12" :style="`background-position: center; background-size: cover; background-image: url(${project.firstProjectGoalImage.url})`"></div>
           </div>
         </div>
       </div>

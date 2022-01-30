@@ -1,18 +1,19 @@
 <template>
   <frame-panel
-    :intro-part-one="project.client"
-    :intro-part-two="project.stack"
+    :intro-part-one="project.title"
+    :intro-part-two="projectFeature.title"
     scroll-message="scroll down"
-    :bgImgSrc="projectFeature.introImage.url"
-    bgClass="bg-tint"
   >
+    <!-- bgClass="bg-tint" -->
     <template v-slot:article>
       <div class="flex-cols">
-        <div class="md-9 lg-9 med-pl-2">
-          <h1>{{projectFeature.title}}</h1>
-          <div class="flex-cols">
-            <h2 class="h3 lg-9">{{ projectFeature.intro }}</h2>
-          </div>
+        <div class="md-6 lg-5">
+          <figure class="bg-contain-center w-100 h-100"
+          :style="`background-image: url(${projectFeature.introImage.url})`"></figure>
+          <button class="button -hollow">View Code Here</button>
+        </div>
+        <div class="md-6 lg-7 med-pl-2">
+          <Markdown :source="projectFeature.firstSectionContent" />
         </div>
        </div>
     </template>
