@@ -40,6 +40,15 @@ body {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
+        nav {
+          .back-to {
+            // @include space-between-center;
+            svg {
+              width: 18px;
+            }
+          }
+        }
       }
       @include media-breakpoint-down(sm) {
         display: none;

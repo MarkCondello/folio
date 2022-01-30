@@ -39,7 +39,8 @@
         "sass": "^1.43.4",
         "sass-loader": "^10.2.0",
         "typescript": "~3.9.3",
-        "vue-jest": "^5.0.0-0"
+        "vue-jest": "^5.0.0-0",
+        "vue3-markdown-it": "^1.0.10"
     },
     "eslintConfig": {
         "root": true,

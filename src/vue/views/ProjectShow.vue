@@ -6,23 +6,26 @@
     bg-class="bg-primary"
   >
     <template v-slot:article>
-      <div class="flex-cols">
-        <div class="xs-1 md-3 lg-3">
-          <img class="w-100" :src="project.clientLogo.url" :alt="project.clientLogo.title" />
-        </div>
-        <div class="md-9 lg-9 med-pl-2">
+      <div class="flex-cols justify-end">
+        <div class="md-9 lg-10 med-pl-2">
           <h1>{{ project.title }}</h1>
+        </div>
+      </div>
+      <div class="flex-cols">
+        <div class="xs-1 md-3 lg-2 flex align-center justify-center">
+          <img width="120" :src="project.clientLogo.url" :alt="project.clientLogo.title" />
+        </div>
+        <div class="md-9 lg-10 med-pl-2">
           <div class="flex-cols">
             <h2 class="h3 lg-9">{{ project.intro }}</h2>
           </div>
         </div>
-       </div>
-       <div class="lg-12">
-        <div class="flex-cols">
-          <div class="lg-3"></div>
-            <router-link class="lg-3 button med-ml-2" :to="{ name: 'project-show', hash: '#goals'}">view project goals</router-link>
+      </div>
+      <div class="flex-cols justify-end">
+        <div class="md-9 lg-10 med-pl-2">
+          <router-link class="lg-4 button " :to="{ name: 'project-show', hash: '#goals'}">view project goals</router-link>
         </div>
-       </div>
+      </div>
     </template>
   </frame-panel>
   <frame-panel
@@ -60,7 +63,7 @@
   >
     <template v-slot:article>
       <section class="project-features">
-        <h3 class="h2">What I did</h3>
+        <h3>What I did</h3>
         <ProjectFeature
          :project="project"
           projectFeatureName="firstFeature"

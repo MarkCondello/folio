@@ -13,10 +13,14 @@ body {
         background-position: center;
         width: 100%;
         height: 100%;
-        opacity: .25;
+        opacity: .65;
         position: absolute;
         left: 0;
         top: 0;
+        &.bg-tint {
+          @include bg-tint();
+          opacity: .35;
+        }
       }
       .label-placeholder {
         @include responsive-input();
@@ -51,6 +55,8 @@ body {
       @include media-breakpoint-down(sm) {
         padding: 12vh 1.25rem 0;
       }
+
+    
     }
   }
 }

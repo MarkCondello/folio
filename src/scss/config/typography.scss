@@ -176,4 +176,7 @@ button {
 
 pre {
     white-space: pre-line;
+    &.code-block {
+        white-space: pre-wrap;
+    }
 }

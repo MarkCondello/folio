@@ -21,7 +21,7 @@ const queryProjects = `{
       launchDate
       stack
       domain
-      featuredImage  {
+      featuredImage {
         url
         title
         width
@@ -62,6 +62,8 @@ const queryProjects = `{
             description
           }
           intro
+          firstSectionCodeExample
+          firstSectionContent
         }
       }
       secondFeature {

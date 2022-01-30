@@ -7,18 +7,26 @@
         <img :src="projectLink.imgSrc" :alt="projectLink.imgAlt" width="25" />
       </a>
     </nav>
-     <nav>
-        <p class="intro">Agency: <a :href="agencyAndRelease.agencyLink" target="_blank">{{ agencyAndRelease.agency }}</a>
-        <span></span>Release: {{ formattedDate(agencyAndRelease.launchDate) }}</p>
-      </nav>
+    <nav v-if="agencyAndRelease">
+      <p class="intro">Agency: <a :href="agencyAndRelease.agencyLink" target="_blank">{{ agencyAndRelease.agency }}</a>
+      <span></span>Release: {{ formattedDate(agencyAndRelease.launchDate) }}</p>
+    </nav>
+    <nav v-if="backToProject">
+        <!-- <p >Back to <a :href="agencyAndRelease.agencyLink"></a> -->
+      <router-link class="back-to project-link" :to="{ name: 'project-show', params: { projectSlug: backToProject.project.slug }}">
+        <chevSquareLeft />
+        <span>Back to {{ backToProject.project.title }}</span>
+      </router-link>
+    </nav>
   </footer>
 </template>
 <script>
 import webLink from '../components/svgs/webLink.vue'
+import chevSquareLeft from '../components/svgs/chevSquareLeft.vue'
 
 export default {
   name: 'Bottom Line Project Show',
-  components: { webLink },
+  components: { webLink, chevSquareLeft },
   props: {
     projectLink: {
       type: Object,
@@ -26,7 +34,11 @@ export default {
     },
     agencyAndRelease: {
       type: Object,
-      required: true
+      required: false
+    },
+    backToProject: {
+      type: Object,
+      required: false
     }
   },
   methods: {

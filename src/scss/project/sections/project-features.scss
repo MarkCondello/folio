@@ -1,16 +1,32 @@
 @use '../../preset/' as *;
 @use '../../config/mixins.scss' as *;
 .project-features {
+  > h3 {
+    line-height: 1;
+    margin: 0;
+  }
   > article {
     @include space-between-center;
-
-    > figure {
-      @include bg-cover-center;
+    > a {
       height: 30vh;
       width: 45%;
+      display: block;
+      figure {
+        @include bg-cover-contain;
+        height: 100%;
+        margin: 0;
+        opacity: .5;
+        transition: opacity 3s;
+        width: 100%;
+      }
+      &:hover {
+        figure {
+          opacity: .9;
+        }
+      }
     }
     > div {
-      width: 55%;
+      width: 50%;
       a {
         display: flex;
         align-items: end;
@@ -19,17 +35,27 @@
         h4 {
           margin-left: 1.5rem;
           margin-bottom: 0;
-        line-height: 1;
+          line-height: 1;
         }
       }
     }
     &.reversed {
       flex-direction: row-reverse;
-      p {
+      margin-bottom: 60px;
+      * {
         text-align: right;
+      }
+      p {
+        padding-left: 15%;
       }
       a {
         justify-content: flex-end;
+      }
+    }
+    &:not(.reversed) {
+      margin: 50px 0;
+      > div p {
+        padding-right: 15%;
       }
     }
   }
