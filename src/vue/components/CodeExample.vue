@@ -1,7 +1,7 @@
 <template>
-  <div :style="{color: 'black', border: '1px solid red'}">
+  <article :style="{color: 'black', border: '1px solid black'}">
     <pre class='code-block'><code>{{demoCode}}</code></pre>
-  </div>
+  </article>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 import { createStore as vuexCreateStore } from 'vuex'
-import projectStore from './projectStore.js'
-import modalStore from './modalStore.js'
+import projectStore from './modules/projectStore.js'
+import modalStore from './modules/modalStore.js'
 
 const storeConfig = {
   modules: {

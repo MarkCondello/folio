@@ -1,9 +1,11 @@
 <template>
   <div v-if="visible"
     class="modal-wrapper"
+    :class="`${componentName}-wrapper`"
     @click.stop="closeModal"
     >
     <div class="modal">
+      <button class="close" @click="closeModal">X</button>
       <h1 :style="{color: 'black',}">Modal Wrapper</h1>
       <component
         :is="componentName"

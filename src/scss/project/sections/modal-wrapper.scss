@@ -4,57 +4,71 @@
 @use '../../config/variables.scss'as *;
 
 .modal-wrapper {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba(0,0,0,.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .modal {
-        @include box-shadows;
-        @include space-between;
-        background: white;
-        border-radius: $input-radius;
-        flex-direction: column;
-        max-width: 42rem;
-        overflow: visible;
-        padding: 1.5rem;
-        position: relative;
-        width: 100%;
-        .close {
-            @include reset-btn;
-            @include box-shadows;
-            align-items: center;
-            background-color: map-get($palette, 'whitest');
-            border-radius: 50%;
-            color: map-get($palette, 'd-gray');
-            position: absolute;
-            top: 0;
-            left: -35px;
-            height: 25px;
-            width: 25px;
-            display: flex;
-            border: none;
-            z-index: 11;
-            margin: 0;
-            flex-direction: column;
-            padding: 0;
-            justify-content: center;
-            transition: background-color .3s, color .3s;
-            &:hover {
-                background-color: map-get($palette, 'tertiary');
-                color: map-get($palette, 'l-gray');
-            }
-        }
-        .content {
-            margin-bottom: 1rem;
-        }
-        footer {
-          @include space-between;
-        }
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  .modal {
+    @include box-shadows;
+    @include space-between;
+    background: white;
+    border-radius: $input-radius;
+    flex-direction: column;
+    max-width: 42rem;
+    overflow: visible;
+    padding: 1.5rem;
+    position: relative;
+    width: 100%;
+    > button.close {
+      @include reset-btn;
+      @include box-shadows;
+      align-items: center;
+      background-color: map-get($palette, 'whitest');
+      border-radius: 50%;
+      color: map-get($palette, 'd-gray');
+      position: absolute;
+      top: 0;
+      left: -35px;
+      height: 25px;
+      width: 25px;
+      display: flex;
+      border: none;
+      z-index: 11;
+      margin: 0;
+      flex-direction: column;
+      padding: 0;
+      justify-content: center;
+      transition: background-color .3s, color .3s;
+      &:hover {
+        background-color: map-get($palette, 'tertiary');
+        color: map-get($palette, 'l-gray');
+      }
     }
+    .content {
+      margin-bottom: 1rem;
+    }
+    footer {
+      @include space-between;
+    }
+  }
+  &.CodeExample-wrapper {
+    .modal {
+      max-height: 90vh;
+      max-width: 50vw;
+      article {
+        overflow-y: scroll;
+        pre {
+          color: black;
+        }
+      }
+    }
+  }
 }
