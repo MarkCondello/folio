@@ -17,6 +17,7 @@
     </nav>
   </header>
   <router-view />
+  <modal-wrapper />
 </template>
 <script>
 
@@ -24,8 +25,9 @@ import gears from './components/svgs/gears.vue'
 import hamburger from './components/svgs/hamburger.vue'
 import close from './components/svgs/close.vue'
 import bottomLine from './sections/bottomLine.vue'
+import ModalWrapper from './components/ModalWrapper.vue'
 export default {
-  components: { gears, hamburger, close, bottomLine },
+  components: { gears, hamburger, close, bottomLine, ModalWrapper },
   name: 'App',
   data () {
     return {
@@ -38,7 +40,7 @@ export default {
   },
   computed: {
     projects () {
-      return this.$store.state.projects
+      return this.$store.state.projectStore.projects
     }
   }
 }

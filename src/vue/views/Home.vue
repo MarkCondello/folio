@@ -137,7 +137,7 @@ export default {
     }
   },
   computed: mapState({
-    projects: state => state.projects.sort((first, second) => new Date(first.sys.firstPublishedAt) - new Date(second.sys.firstPublishedAt))
+    projects: state => state.projectStore.projects.sort((first, second) => new Date(first.sys.firstPublishedAt) - new Date(second.sys.firstPublishedAt))
   }),
   created () {
     emailjs.init('user_J6qTVcfRCwXF74Vnqs6JE')

@@ -111,7 +111,7 @@ import { mapState } from 'vuex'
 export default {
   components: { FramePanel, bottomLineShow, ProjectFeature },
   computed: mapState({
-    project: state => state.project
+    project: state => state.projectStore.project
   })
 }
 </script>

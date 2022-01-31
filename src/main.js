@@ -3,7 +3,11 @@ import App from './vue/App.vue'
 import store from './vue/store'
 import router from './vue/router'
 
-createApp(App)
+import CodeExample from './vue/components/CodeExample'
+
+const app = createApp(App)
   .use(store)
   .use(router)
-  .mount('#app')
+
+app.component('CodeExample', CodeExample)
+app.mount('#app')

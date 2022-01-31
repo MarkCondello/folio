@@ -4,18 +4,20 @@
     :intro-part-two="projectFeature.title"
     scroll-message="scroll down"
   >
-    <!-- bgClass="bg-tint" -->
     <template v-slot:article>
       <div class="flex-cols">
         <div class="md-6 lg-5">
           <figure class="bg-contain-center w-100 h-100"
           :style="`background-image: url(${projectFeature.introImage.url})`"></figure>
-          <button class="button -hollow">View Code Here</button>
         </div>
         <div class="md-6 lg-7 med-pl-2">
           <Markdown :source="projectFeature.firstSectionContent" />
         </div>
        </div>
+    </template>
+    <template v-slot:plug>
+      <button class="button -hollow"
+           @click="handleViewCode">View Code Here</button>
     </template>
   </frame-panel>
   <frame-panel
@@ -25,9 +27,10 @@
   >
     <template v-slot:article>
       <pre class='code-block'>
-        <!-- <code v-html="projectFeature.firstSectionCodeExample" /> -->
+        <code>{{projectFeature.firstSectionCodeExample}}</code>
       </pre>
-      <Markdown :source="projectFeature.firstSectionContent" />
+
+      <!-- <Markdown :source="projectFeature.firstSectionContent" /> -->
       <web-link />
     </template>
   </frame-panel>
@@ -43,7 +46,7 @@ import bottomLineShow from '../sections/bottomLineProjectShow.vue'
 
 import Markdown from 'vue3-markdown-it'
 
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   components: { FramePanel, bottomLineShow, Markdown, webLink },
   data () {
@@ -53,9 +56,20 @@ export default {
     }
   },
   computed: mapState({
-    project: state => state.project,
-    projectFeature: state => state.projectFeature
-  })
+    project: state => state.projectStore.project,
+    projectFeature: state => state.projectStore.projectFeature
+  }),
+  methods: {
+    ...mapActions(['setModal']),
+    handleViewCode () {
+      if (this.projectFeature.firstSectionCodeExample) {
+        this.setModal({
+          componentName: 'CodeExample',
+          componentData: { keyReference: 'firstSectionCodeExample' }
+        })
+      }
+    }
+  }
 
 }
 </script>
