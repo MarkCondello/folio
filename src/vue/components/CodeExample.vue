@@ -1,6 +1,8 @@
 <template>
-  <article :style="{color: 'black', border: '1px solid black'}">
-    <pre class='code-block'><code>{{demoCode}}</code></pre>
+  <article>
+    <pre class='code-block'>
+      <code>{{demoCode}}</code>
+    </pre>
   </article>
 </template>
 

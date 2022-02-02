@@ -15,7 +15,9 @@
         <router-link class="lg-2 button" :to="{ name: 'Home', hash: '#projects'}">view my work</router-link>
       </div>
     </template>
-    <template v-slot:plug>I set the gears in motion...</template>
+    <template v-slot:plug>
+      <h3 class="plug">I set the gears in motion...</h3>
+    </template>
   </frame-panel>
   <frame-panel v-for="(project, id) in projects"
     bg-class="bg-primary"

@@ -52,12 +52,16 @@
         color: map-get($palette, 'l-gray');
       }
     }
-    .content {
-      margin-bottom: 1rem;
+    h3 {
+      color: map-get($palette, 'd-gray');
+      margin-bottom: 1.5rem;
     }
-    footer {
-      @include space-between;
-    }
+    // .content {
+    //   margin-bottom: 1rem;
+    // }
+    // footer {
+    //   @include space-between;
+    // }
   }
   &.CodeExample-wrapper {
     .modal {
@@ -66,7 +70,26 @@
       article {
         overflow-y: scroll;
         pre {
-          color: black;
+          background-color: map-get($palette, 'primary');
+          padding: 1rem;
+          code {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  &.ScreencaptureExample-wrapper {
+    .modal {
+      height: 100%;
+      max-height: 90vh;
+      max-width: 90vw;
+      width: 100%;
+      article {
+        height: 100%;
+        iframe {
+          height: 100%;
+          width: 100%;
         }
       }
     }

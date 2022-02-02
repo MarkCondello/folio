@@ -6,18 +6,25 @@
   >
     <template v-slot:article>
       <div class="flex-cols">
-        <div class="md-6 lg-5">
+        <a class="md-6 lg-5" :href="projectFeature.firstSectionExampleUrl" target="_blank">
           <figure class="bg-contain-center w-100 h-100"
-          :style="`background-image: url(${projectFeature.introImage.url})`"></figure>
-        </div>
-        <div class="md-6 lg-7 med-pl-2">
+          :style="`background-image: url(${projectFeature.firstSectionImage ? projectFeature.firstSectionImage.url : projectFeature.introImage.url})`"></figure>
+        </a>
+        <div class="md-6 lg-7 med-pl-4">
           <Markdown :source="projectFeature.firstSectionContent" />
         </div>
        </div>
     </template>
-    <template v-slot:plug>
-      <button class="button -hollow"
-           @click="handleViewCode">View Code Here</button>
+    <template v-slot:extra-content>
+      <section style="display: flex; gap: 1rem;">
+        <button v-if="projectFeature.firstSectionCodeExample"
+          class="button -hollow"
+          @click="handleViewCode('firstSectionCodeExample')">Code Example</button>
+        <button v-if="projectFeature.firstSectionScreencaptureUrl"
+          class="button -hollow"
+          @click="handleScreencapture(projectFeature.firstSectionScreencaptureUrl, `${projectFeature.firstSectionTitle} screencapture`)"
+        >Screencapture</button>
+      </section>
     </template>
   </frame-panel>
   <frame-panel
@@ -61,15 +68,20 @@ export default {
   }),
   methods: {
     ...mapActions(['setModal']),
-    handleViewCode () {
-      if (this.projectFeature.firstSectionCodeExample) {
-        this.setModal({
-          componentName: 'CodeExample',
-          componentData: { keyReference: 'firstSectionCodeExample' }
-        })
-      }
+    handleViewCode (reference) {
+      this.setModal({
+        componentName: 'CodeExample',
+        componentData: { keyReference: reference },
+        modalTitle: 'Code example'
+      })
+    },
+    handleScreencapture (src, title) {
+      this.setModal({
+        componentName: 'ScreencaptureExample',
+        componentData: { videoSrc: src },
+        modalTitle: title
+      })
     }
   }
-
 }
 </script>

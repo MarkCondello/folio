@@ -10,9 +10,10 @@
         <slot name="article"></slot>
       </article>
       <slot name="extra-content"></slot>
-      <h3 class="h4 plug" v-if="showPlug">
+<!-- Not sure about this plug section ??? -->
+      <div>
         <slot name="plug"></slot>
-      </h3>
+      </div>
       <footer v-if="projectLink || agencyAndRelease">
         <nav>
           <a v-if="projectLink && !agencyAndRelease" :href="projectLink.link" class="project-link" target="_blank">

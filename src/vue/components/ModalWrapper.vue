@@ -2,11 +2,11 @@
   <div v-if="visible"
     class="modal-wrapper"
     :class="`${componentName}-wrapper`"
-    @click.stop="closeModal"
+    @click.self="closeModal"
     >
     <div class="modal">
       <button class="close" @click="closeModal">X</button>
-      <h1 :style="{color: 'black',}">Modal Wrapper</h1>
+      <h3>{{ modalTitle }}</h3>
       <component
         :is="componentName"
         v-bind="componentData"
@@ -21,7 +21,8 @@ export default {
   computed: mapState({
     visible: state => state.modalStore.visible,
     componentData: state => state.modalStore.componentData,
-    componentName: state => state.modalStore.componentName
+    componentName: state => state.modalStore.componentName,
+    modalTitle: state => state.modalStore.modalTitle
   }),
   methods: {
     ...mapActions(['closeModal'])
