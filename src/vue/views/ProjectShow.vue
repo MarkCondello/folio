@@ -41,14 +41,14 @@
             <h4 class="h3" v-html="project.firstProjectGoal"></h4>
           </div>
           <div class="lg-6">
-            <div class="mx-2 pb-12" :style="`background-position: center; background-size: cover; background-image: url(${project.firstProjectGoalImage.url})`"></div>
+            <div class="mx-2 pb-12" :style="`background-repeat: no-repeat; background-position: center; background-size: contain; background-image: url(${project.firstProjectGoalImage.url})`"></div>
           </div>
         </div>
       </div>
     </template>
     <template v-slot:extra-content>
       <div class="flex-cols justify-between align-center" v-if="project.secondProjectGoalImage && project.secondProjectGoal">
-        <div class="lg-6 pb-14" :style="`background-position: center; background-size: cover; background-image: url(${project.secondProjectGoalImage.url})`">
+        <div class="lg-6 pb-14" :style="`background-repeat: no-repeat; background-position: center; background-size: contain; background-image: url(${project.secondProjectGoalImage.url})`">
         </div>
         <div class="lg-6">
           <pre class="mx-2 my-0" v-html="project.secondProjectGoal"></pre>
@@ -58,8 +58,10 @@
   </frame-panel>
   <frame-panel
     scroll-message="What I did"
+    :showAside="false"
     :show-plug="false"
     class="justify-center"
+    id="features"
   >
     <template v-slot:article>
       <section class="project-features">
@@ -76,7 +78,7 @@
       </section>
     </template>
   </frame-panel>
-    <frame-panel
+  <!-- <frame-panel
     scroll-message="What I did"
     :show-plug="false"
     class="justify-center"
@@ -95,7 +97,7 @@
         />
       </section>
     </template>
-  </frame-panel>
+  </frame-panel> -->
   <bottom-line-show
     :project-link='{ link: project.domain, imgAlt: project.title, imgSrc: project.clientLogo.url }'
     :agency-and-release='{ agency: project.agency, launchDate: project.launchDate, agencyLink: project.agencyLink }'

@@ -15,13 +15,13 @@
         @include bg-cover-center;
         height: 100%;
         margin: 0;
-        opacity: .5;
-        transition: opacity 3s;
+        opacity: 1;
+        transition: opacity 1s;
         width: 100%;
       }
       &:hover {
         figure {
-          opacity: .9;
+          opacity: .75;
         }
       }
     }
@@ -33,7 +33,7 @@
         margin-top: 1rem;
         text-decoration: none;
         h4 {
-          margin-left: 1.5rem;
+          // margin-left: 1.5rem;
           margin-bottom: 0;
           line-height: 1;
         }

@@ -19,7 +19,7 @@
           projectFeatureName
         }
         }">
-        <web-link />
+        <!-- <web-link /> -->
         <h4>See details here..</h4>
       </router-link>
     </div>
@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import webLink from '../components/svgs/webLink.vue'
+// import webLink from '../components/svgs/webLink.vue'
 
 export default {
-  components: { webLink },
+  // components: { webLink },
   props: {
     project: {
       type: Object,

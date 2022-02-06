@@ -53,7 +53,8 @@ export default {
       required: false
     },
     scrollMessage: {
-      type: String
+      type: String,
+      required: false
     },
     showAside: {
       type: Boolean,

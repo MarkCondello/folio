@@ -8,7 +8,7 @@
       <div class="flex-cols">
         <a class="md-6 lg-5" :href="projectFeature.firstSectionExampleUrl" target="_blank">
           <figure class="bg-contain-center w-100 h-100"
-          :style="`background-image: url(${projectFeature.firstSectionImage ? projectFeature.firstSectionImage.url : projectFeature.introImage.url})`"></figure>
+          :style="`padding-top: 230px; background-image: url(${projectFeature.firstSectionImage ? projectFeature.firstSectionImage.url : projectFeature.introImage.url})`"></figure>
         </a>
         <div class="md-6 lg-7 med-pl-4">
           <Markdown :source="projectFeature.firstSectionContent" />
@@ -16,14 +16,17 @@
        </div>
     </template>
     <template v-slot:extra-content>
-      <section style="display: flex; gap: 1rem;">
-        <button v-if="projectFeature.firstSectionCodeExample"
-          class="button -hollow"
-          @click="handleViewCode('firstSectionCodeExample')">Code Example</button>
+      <section style="display: flex; gap: 1rem; justify-content: center;">
         <button v-if="projectFeature.firstSectionScreencaptureUrl"
           class="button -hollow"
           @click="handleScreencapture(projectFeature.firstSectionScreencaptureUrl, `${projectFeature.firstSectionTitle} screencapture`)"
         >Screencapture</button>
+        <button v-if="projectFeature.firstSectionCodeExample"
+          class="button -hollow"
+          @click="handleViewCode('firstSectionCodeExample')"
+        >Code Example</button>
+        <a class="button -hollow" :href="projectFeature.firstSectionExampleUrl" target="_blank">Live Demo
+        </a>
       </section>
     </template>
   </frame-panel>

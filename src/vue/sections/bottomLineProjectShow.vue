@@ -13,7 +13,7 @@
     </nav>
     <nav v-if="backToProject">
         <!-- <p >Back to <a :href="agencyAndRelease.agencyLink"></a> -->
-      <router-link class="back-to project-link" :to="{ name: 'project-show', params: { projectSlug: backToProject.project.slug }}">
+      <router-link class="back-to project-link" :to="{ name: 'project-show', hash: '#features', params: { projectSlug: backToProject.project.slug }}">
         <chevSquareLeft />
         <span>Back to {{ backToProject.project.title }}</span>
       </router-link>

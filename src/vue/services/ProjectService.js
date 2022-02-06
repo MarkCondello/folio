@@ -88,6 +88,16 @@ const queryProjects = `{
             description
           }
           intro
+          firstSectionTitle
+          firstSectionExampleUrl
+          firstSectionContent
+          firstSectionImage {
+            url
+            title
+            description
+          }
+          firstSectionCodeExample
+          firstSectionScreencaptureUrl
         }
       }
     }
