@@ -3,6 +3,7 @@
     :intro-part-one="project.title"
     :intro-part-two="projectFeature.title"
     scroll-message="scroll down"
+    :showAside="projectFeature.secondSectionContent"
   >
     <template v-slot:article>
       <div class="flex-cols">
@@ -20,28 +21,47 @@
         <button v-if="projectFeature.firstSectionScreencaptureUrl"
           class="button -hollow"
           @click="handleScreencapture(projectFeature.firstSectionScreencaptureUrl, `${projectFeature.firstSectionTitle} screencapture`)"
-        >Screencapture</button>
+        >
+        <camera />
+        Screencapture</button>
         <button v-if="projectFeature.firstSectionCodeExample"
           class="button -hollow"
           @click="handleViewCode('firstSectionCodeExample')"
-        >Code Example</button>
-        <a class="button -hollow" :href="projectFeature.firstSectionExampleUrl" target="_blank">Live Demo
+        >
+        <cog-hollow styles="fill:transparent; stroke: currentColor;" />
+        Code Example</button>
+        <a class="button -hollow" :href="projectFeature.firstSectionExampleUrl" target="_blank">
+          <web-link/>
+          Live Demo
         </a>
       </section>
     </template>
   </frame-panel>
   <frame-panel
+  v-if="projectFeature.secondSectionContent"
     :intro-part-one="project.client"
     :intro-part-two="project.stack"
-    scroll-message="scroll down"
+    :showAside="false"
+    scroll-message=""
   >
     <template v-slot:article>
-      <pre class='code-block'>
-        <code>{{projectFeature.firstSectionCodeExample}}</code>
-      </pre>
-
-      <!-- <Markdown :source="projectFeature.firstSectionContent" /> -->
-      <web-link />
+      <div class="flex-cols">
+        <a class="md-6 lg-5" :href="projectFeature.firstSectionExampleUrl" target="_blank">
+          <figure class="bg-contain-center w-100 h-100"
+          :style="`padding-top: 230px; background-image: url(${projectFeature.secondSectionImage ? projectFeature.secondSectionImage.url : projectFeature.introImage.url})`"></figure>
+        </a>
+        <div class="md-6 lg-7 med-pl-4">
+          <Markdown :source="projectFeature.secondSectionContent" />
+        </div>
+       </div>
+    </template>
+    <template v-slot:extra-content v-if="projectFeature.secondSectionExampleUrl">
+      <section style="display: flex; gap: 1rem; justify-content: center;">
+        <a class="button -hollow" :href="projectFeature.secondSectionExampleUrl" target="_blank">
+          <web-link/>
+          Live Demo
+        </a>
+      </section>
     </template>
   </frame-panel>
   <bottom-line-show
@@ -53,12 +73,13 @@
 import FramePanel from '../components/FramePanel.vue'
 import webLink from '../components/svgs/webLink.vue'
 import bottomLineShow from '../sections/bottomLineProjectShow.vue'
-
+import CogHollow from '../components/svgs/cogHollow.vue'
+import Camera from '../components/svgs/camera.vue'
 import Markdown from 'vue3-markdown-it'
 
 import { mapState, mapActions } from 'vuex'
 export default {
-  components: { FramePanel, bottomLineShow, Markdown, webLink },
+  components: { FramePanel, bottomLineShow, Markdown, webLink, CogHollow, Camera },
   data () {
     return {
       slides: [],

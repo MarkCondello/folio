@@ -72,6 +72,14 @@ const queryProjects = `{
           }
           firstSectionCodeExample
           firstSectionScreencaptureUrl
+          secondSectionTitle
+          secondSectionExampleUrl
+          secondSectionContent
+          secondSectionImage {
+            url
+            title
+            description
+          }
         }
       }
       secondFeature {
@@ -98,6 +106,14 @@ const queryProjects = `{
           }
           firstSectionCodeExample
           firstSectionScreencaptureUrl
+          secondSectionTitle
+          secondSectionExampleUrl
+          secondSectionContent
+          secondSectionImage {
+            url
+            title
+            description
+          }
         }
       }
     }
