@@ -108,7 +108,6 @@
 import FramePanel from '../components/FramePanel.vue'
 import bottomLineShow from '../sections/bottomLineProjectShow.vue'
 import ProjectFeature from '../sections/projectFeature.vue'
-
 import { mapState } from 'vuex'
 export default {
   components: { FramePanel, bottomLineShow, ProjectFeature },

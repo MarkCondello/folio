@@ -69,7 +69,6 @@
       <span id="contact"></span>
       <h2 v-if="sent">Thanks for the message {{form.from_name}}.<br> I will get back to you soon.</h2>
       <h2 v-else>Please send your enquiries here.</h2>
-      <!-- https://stackoverflow.com/questions/49149550/how-to-send-an-email-with-vuejs/49150298 -->
       <div v-if="!sent">
         <form class="contact" @submit="onSubmit">
           <div class="flex-cols">
@@ -142,6 +141,7 @@ export default {
     projects: state => state.projectStore.projects.sort((first, second) => new Date(first.sys.firstPublishedAt) - new Date(second.sys.firstPublishedAt))
   }),
   created () {
+    // https://stackoverflow.com/questions/49149550/how-to-send-an-email-with-vuejs/49150298
     emailjs.init('user_J6qTVcfRCwXF74Vnqs6JE')
   },
   methods: {
@@ -164,18 +164,6 @@ export default {
           this.sent = false
           this.loading = false
         })
-      // const inputs = queryString.stringify(this.form)
-      // console.log({ inputs })
-      // axios // toDo: need to check this on a server with php
-      //   .post(
-      //     process.env.BASE_URL + 'mail.php', // this was leading to a 404
-      //     inputs
-      //   )
-      //   .then(res => {
-      //     console.log(res)
-      //     this.sent = true
-      //     this.loading = false
-      //   })
     }
   }
 }

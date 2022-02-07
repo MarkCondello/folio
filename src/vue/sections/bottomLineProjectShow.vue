@@ -12,8 +12,7 @@
       <span></span>Release: {{ formattedDate(agencyAndRelease.launchDate) }}</p>
     </nav>
     <nav v-if="backToProject">
-        <!-- <p >Back to <a :href="agencyAndRelease.agencyLink"></a> -->
-      <router-link class="back-to project-link" :to="{ name: 'project-show', hash: '#features', params: { projectSlug: backToProject.project.slug }}">
+      <router-link c lass="back-to project-link" :to="{ name: 'project-show', hash: '#features', params: { projectSlug: backToProject.project.slug }}">
         <chevSquareLeft />
         <span>Back to {{ backToProject.project.title }}</span>
       </router-link>
@@ -45,7 +44,6 @@ export default {
     formattedDate (date) {
       if (date) {
         const dateObj = new Date(date)
-        // console.log({ dateObj })
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         return months[dateObj.getMonth()] + ' ' + dateObj.getFullYear()
       }

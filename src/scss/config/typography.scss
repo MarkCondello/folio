@@ -1,6 +1,6 @@
 @use '../preset/' as *;
 @use './palette.scss' as *;
-  @use './fonts/montserrat.scss' as *;
+@use './fonts/montserrat.scss' as *;
 
 $font-family: 'montserrat', sans-serif;
 $heading-family: Georgia, serif;
@@ -124,7 +124,6 @@ $heading-family: Georgia, serif;
         font-weight: 700;
     }
 }
-
 body {
     @include p;
 }
@@ -164,26 +163,20 @@ label {
 #{$inputs} {
     color: #fff;
 }
-
 a,
 button {
     @include states($text-0, $text-1);
-
     &.button {
         @include heading-font-regular;
+        align-items: center;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
     }
 }
-
 pre {
     white-space: pre-line;
     &.code-block {
         white-space: pre-wrap;
     }
-}
-
-.button {
-    align-items: center;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
 }
