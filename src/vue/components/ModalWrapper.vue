@@ -1,4 +1,5 @@
 <template>
+
   <div v-if="visible"
     class="modal-wrapper"
     :class="`${componentName}-wrapper`"

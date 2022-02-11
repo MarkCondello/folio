@@ -7,9 +7,15 @@
   >
     <template v-slot:article>
       <div class="flex-cols">
-        <a class="md-6 lg-5" :href="projectFeature.firstSectionExampleUrl" target="_blank">
+        <button class="md-6 lg-5"
+          @click="handleSlideshow"
+          v-if="projectFeature.firstSectionSlideShowCollection.items.length">
           <figure class="bg-contain-center w-100 h-100"
-          :style="`padding-top: 230px; background-image: url(${projectFeature.firstSectionImage ? projectFeature.firstSectionImage.url : projectFeature.introImage.url})`"></figure>
+          :style="`padding-top: 230px; background-image: url(${projectFeature.firstSectionSlideShowCollection.items[0].url})`"></figure>
+        </button>
+        <a v-else class="md-6 lg-5" :href="projectFeature.firstSectionExampleUrl" target="_blank">
+          <figure class="bg-contain-center w-100 h-100"
+          :style="`padding-top: 230px; background-image: url(${projectFeature.introImage.url})`"></figure>
         </a>
         <div class="md-6 lg-7 med-pl-4">
           <Markdown :source="projectFeature.firstSectionContent" />
@@ -91,7 +97,7 @@ export default {
     projectFeature: state => state.projectStore.projectFeature
   }),
   methods: {
-    ...mapActions(['setModal']),
+    ...mapActions(['setModal', 'setLightBox']),
     handleViewCode (reference) {
       this.setModal({
         componentName: 'CodeExample',
@@ -104,6 +110,11 @@ export default {
         componentName: 'ScreencaptureExample',
         componentData: { videoSrc: src },
         modalTitle: title
+      })
+    },
+    handleSlideshow () {
+      this.setLightBox({
+        componentData: this.projectFeature.firstSectionSlideShowCollection.items
       })
     }
   }

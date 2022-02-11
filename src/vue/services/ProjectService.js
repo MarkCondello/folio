@@ -72,6 +72,18 @@ const queryProjects = `{
           }
           firstSectionCodeExample
           firstSectionScreencaptureUrl
+          firstSectionSlideShowCollection(limit: 6) {
+            items {
+              sys {
+                id
+              }
+              description
+              height
+              title
+              url
+              width
+            }
+          }
           secondSectionTitle
           secondSectionExampleUrl
           secondSectionContent

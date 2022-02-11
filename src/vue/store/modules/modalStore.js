@@ -8,7 +8,6 @@ export default {
   },
   mutations: {
     SET_MODAL_ATTRS (state, { componentData, componentName, modalTitle }) {
-      // console.log('from mutation', componentData, componentName)
       state.visible = true
       state.componentData = componentData
       state.componentName = componentName

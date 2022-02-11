@@ -5,6 +5,7 @@ import router from './vue/router'
 
 import CodeExample from './vue/components/CodeExample'
 import ScreencaptureExample from './vue/components/ScreencaptureExample'
+// import LightBox from './vue/components/LightBox'
 
 const app = createApp(App)
   .use(store)
@@ -12,4 +13,5 @@ const app = createApp(App)
 
 app.component('CodeExample', CodeExample)
 app.component('ScreencaptureExample', ScreencaptureExample)
+// app.component('LightBox', LightBox)
 app.mount('#app')

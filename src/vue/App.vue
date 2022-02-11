@@ -16,6 +16,8 @@
       </ul>
     </nav>
   </header>
+  <light-box />
+
   <router-view />
   <modal-wrapper />
 </template>
@@ -26,8 +28,9 @@ import hamburger from './components/svgs/hamburger.vue'
 import close from './components/svgs/close.vue'
 import bottomLine from './sections/bottomLine.vue'
 import ModalWrapper from './components/ModalWrapper.vue'
+import LightBox from './components/LightBox.vue'
 export default {
-  components: { gears, hamburger, close, bottomLine, ModalWrapper },
+  components: { gears, hamburger, close, bottomLine, ModalWrapper, LightBox },
   name: 'App',
   data () {
     return {
