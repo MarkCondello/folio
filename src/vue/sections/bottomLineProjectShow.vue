@@ -12,7 +12,7 @@
       <span></span>Release: {{ formattedDate(agencyAndRelease.launchDate) }}</p>
     </nav>
     <nav v-if="backToProject">
-      <router-link c lass="back-to project-link" :to="{ name: 'project-show', hash: '#features', params: { projectSlug: backToProject.project.slug }}">
+      <router-link class="back-to project-link" :to="{ name: 'project-show', hash: '#features', params: { projectSlug: backToProject.project.slug }}">
         <chevSquareLeft />
         <span>Back to {{ backToProject.project.title }}</span>
       </router-link>

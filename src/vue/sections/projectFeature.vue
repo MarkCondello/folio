@@ -10,15 +10,23 @@
       <figure :style="`background-image: url(${project[projectFeatureName].introImage.url})`"></figure>
     </router-link>
     <div>
-      <h3 v-html="project[projectFeatureName].title"></h3>
-      <p v-html="project[projectFeatureName].intro"></p>
       <router-link :to="{
         name: 'project-feature-show',
         params: {
           projectSlug: project.slug,
           projectFeatureName
         }
-        }">
+      }">
+        <h3 v-html="project[projectFeatureName].title" />
+      </router-link>
+      <p v-html="project[projectFeatureName].intro" />
+      <router-link :to="{
+        name: 'project-feature-show',
+        params: {
+          projectSlug: project.slug,
+          projectFeatureName
+        }
+      }">
         <h4>See details here..</h4>
       </router-link>
     </div>
