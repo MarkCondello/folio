@@ -33,7 +33,6 @@
       align-items: center;
       background-color: map-get($palette, 'whitest');
       border-radius: 50%;
-      color: map-get($palette, 'd-gray');
       position: absolute;
       top: 0;
       left: -35px;
@@ -47,9 +46,16 @@
       padding: 0;
       justify-content: center;
       transition: background-color .3s, color .3s;
+ 
       &:hover {
-        background-color: map-get($palette, 'tertiary');
-        color: map-get($palette, 'l-gray');
+        background-color: map-get($palette, 'l-grey');
+        svg {
+          fill: map-get($palette, 'backest');
+        }
+      }
+      svg {
+        fill: map-get($palette, 'd-gray');
+        width: 10px;
       }
     }
     h3 {

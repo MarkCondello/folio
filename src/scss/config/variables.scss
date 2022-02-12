@@ -12,6 +12,7 @@ $light-gray: map-get($palette, 'l-gray');
 $dark-gray: map-get($palette, 'd-gray');
 $success-color: map-get($palette, "success");
 $error-color: map-get($palette, 'danger');
+$secondary: map-get($palette, 'secondary');
 
 $button-border-radius: $radius;
 $button-padding: .75rem 1.5rem;

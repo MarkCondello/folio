@@ -1,16 +1,27 @@
 <template>
+<!-- ToDo: Would be nicer with a transition -->
   <div
     class="light-box-wrapper"
     @click.self="closeLightBox"
     v-if="slides && visible"
     >
       <div class="light-box">
-        <button class="close" @click="closeLightBox">X</button>
+        <button
+          class="close"
+          @click="closeLightBox"
+        >
+          <close />
+        </button>
         <figure>
-          <!-- convert to inlie styles and transition the width height vals -->
-          <img :src="slides[activeSlideIndex].url"
-          :width="slides[activeSlideIndex].width"
-          :height="slides[activeSlideIndex].height" />
+          <!-- ToDo: Would be nicer with a transition -->
+          <img
+            v-for="(slide, id) in slides"
+            v-show="id === activeSlideIndex"
+            :key="slide.sys.id"
+            :src="slide.url"
+            :width="slides.width"
+            :height="slides.height"
+          />
         </figure>
         <footer>
           <p v-html="slides[activeSlideIndex].title" />
@@ -18,16 +29,23 @@
         </footer>
       </div>
       <nav>
-        <button class="prev" @click="prevSlide"> prev </button>
-        <button class="next" @click="nextSlide"> next </button>
+        <button class="prev" @click="prevSlide">
+          <chev-square-left/>
+         </button>
+        <button class="next" @click="nextSlide">
+          <chev-square-right/>
+        </button>
       </nav>
   </div>
 </template>
 
 <script>
+import ChevSquareLeft from './svgs/chevSquareLeft.vue'
+import ChevSquareRight from './svgs/chevSquareRight.vue'
+import Close from './svgs/close.vue'
 import { mapState, mapActions } from 'vuex'
 export default {
-
+  components: { ChevSquareLeft, ChevSquareRight, Close },
   data () {
     return {
       activeSlideIndex: 0

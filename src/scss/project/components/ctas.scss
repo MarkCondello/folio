@@ -1,0 +1,23 @@
+@use '../../preset/' as *;
+@use '../../config/palette.scss' as *;
+@use '../../config/variables.scss' as *;
+@use '../../config/mixins.scss' as *;
+
+.feature-light-show-trigger {
+  @include reset-btn();
+  figure {
+    color: $secondary;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1rem;
+    position: relative;
+    transition: color .5;
+    &:hover {
+      color: mix(#000, $secondary, 15%);
+    }
+    svg {
+       width: 20px;
+     
+    }
+  }
+}

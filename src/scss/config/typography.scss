@@ -103,7 +103,7 @@ $heading-family: Georgia, serif;
 @mixin p-sml($with-margins: false) {
     @include body-font-light;
     @include font-color;
-    @include clamp(12, 14);
+    @include clamp(10, 12);
     line-height: 1.5;
     @if ($with-margins) {
         margin: 0 0 5px;
@@ -152,6 +152,9 @@ label {
     .p-sml &, &.p-sml {
         @include p-sml(true);
     }
+}
+small {
+    @include p-sml(true);
 }
 #{$text-els} {
     @include text-alignments;

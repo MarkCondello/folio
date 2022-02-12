@@ -6,7 +6,12 @@
     @click.self="closeModal"
     >
     <div class="modal">
-      <button class="close" @click="closeModal">X</button>
+      <button
+          class="close"
+          @click="closeModal"
+        >
+        <close />
+      </button>
       <h3>{{ modalTitle }}</h3>
       <component
         :is="componentName"
@@ -18,7 +23,10 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import Close from './svgs/close.vue'
+
 export default {
+  components: { Close },
   computed: mapState({
     visible: state => state.modalStore.visible,
     componentData: state => state.modalStore.componentData,

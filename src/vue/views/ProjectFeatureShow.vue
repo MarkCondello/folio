@@ -7,15 +7,23 @@
   >
     <template v-slot:article>
       <div class="flex-cols">
-        <button class="md-6 lg-5"
+        <button class="md-6 lg-5 feature-light-show-trigger"
+          v-if="projectFeature.firstSectionSlideShowCollection.items.length"
           @click="handleSlideshow"
-          v-if="projectFeature.firstSectionSlideShowCollection.items.length">
+          >
           <figure class="bg-contain-center w-100 h-100"
-          :style="`padding-top: 230px; background-image: url(${projectFeature.firstSectionSlideShowCollection.items[0].url})`"></figure>
+          :style="`min-height: 200px; background-image: url(${projectFeature.firstSectionSlideShowCollection.items[0].url})`">
+            <search />
+          </figure>
         </button>
-        <a v-else class="md-6 lg-5" :href="projectFeature.firstSectionExampleUrl" target="_blank">
+        <a
+          v-else
+          class="md-6 lg-5"
+          :href="projectFeature.firstSectionExampleUrl"
+          target="_blank"
+        >
           <figure class="bg-contain-center w-100 h-100"
-          :style="`padding-top: 230px; background-image: url(${projectFeature.introImage.url})`"></figure>
+          :style="`min-height: 200px; background-image: url(${projectFeature.introImage.url})`"></figure>
         </a>
         <div class="md-6 lg-7 med-pl-4">
           <Markdown :source="projectFeature.firstSectionContent" />
@@ -81,11 +89,12 @@ import webLink from '../components/svgs/webLink.vue'
 import bottomLineShow from '../sections/bottomLineProjectShow.vue'
 import CogHollow from '../components/svgs/cogHollow.vue'
 import Camera from '../components/svgs/camera.vue'
+import Search from '../components/svgs/search.vue'
 import Markdown from 'vue3-markdown-it'
 
 import { mapState, mapActions } from 'vuex'
 export default {
-  components: { FramePanel, bottomLineShow, Markdown, webLink, CogHollow, Camera },
+  components: { FramePanel, bottomLineShow, Markdown, webLink, CogHollow, Camera, Search },
   data () {
     return {
       slides: [],

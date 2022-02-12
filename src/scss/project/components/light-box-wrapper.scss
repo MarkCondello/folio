@@ -11,7 +11,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(0,0,0,.5);
+  background: rgba(0,0,0,.65);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,13 +19,7 @@
   width: 100vw;
   .light-box {
     @include box-shadows;
-    // @include space-between;
-    // background: white;
-    // flex-direction: column;
-    // overflow: visible;
-    // padding: 1.5rem;
     position: relative;
-    // width: 100%;
     
     //ToDo: Add this to a mixin 
     > button.close {
@@ -34,7 +28,6 @@
       align-items: center;
       background-color: map-get($palette, 'whitest');
       border-radius: 50%;
-      color: map-get($palette, 'd-gray');
       position: absolute;
       top: 0;
       left: -35px;
@@ -49,25 +42,38 @@
       justify-content: center;
       transition: background-color .3s, color .3s;
       &:hover {
-        background-color: map-get($palette, 'tertiary');
-        color: map-get($palette, 'l-gray');
+        background-color: mix(#000, map-get($palette, 'whitest'), 15%);
+        svg {
+          fill: map-get($palette, 'backest');
+        }
+      }
+      svg {
+        fill: mix(#fff, map-get($palette, 'd-gray'), 15%) ;
+        width: 10px;
       }
     }
+
     figure {
       img {
         background-color: #fff;
-        min-width: 50%;
         min-width: 40vw;
-        min-height: 40vw;
-        max-width: 95vw;
-        max-height: 95vh;
         padding: 2rem;
-
+        max-height: calc(100vh - 100px);
+        min-height: 40vh;
+        width: 100%;
+        padding: 2rem;
+        object-fit: contain;
+        // transition: all 1s;
       }
     }
     footer {
+      position: absolute;
       background-color: transparent;
-      border: 1px solid black; 
+      // border: 1px solid black; 
+      p {
+        margin: 0;
+        line-height: 1;
+      }
     }
   }
   nav {
@@ -77,7 +83,13 @@
     top: 50%;
     width: 100%;
     left: 0;
+    button {
+      @include reset-btn();
+      color: $secondary;
+      width: 25px;
+      &:hover {
+        color: mix(#000, $secondary, 15%);
+      }
+    }
   }
- 
-  
 }
