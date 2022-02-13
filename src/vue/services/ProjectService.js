@@ -2,7 +2,7 @@
 // ToDo: May have to remove the above and graphql deps if I can't get fragment to work
 
 const queryProjects = `{
-  projectCollection {
+  projectCollection(limit: 6) {
     items {
       sys {
         firstPublishedAt
@@ -48,6 +48,47 @@ const queryProjects = `{
         height
         description
       }
+      featuresCollection (limit: 4) {
+        items {
+          ... on Feature {
+            sys {
+              firstPublishedAt
+              id
+            }
+            title
+            slug
+            introImage {
+              url
+              title
+              description
+            }
+            intro
+            featureDetailsCollection (limit:6) {
+              items {
+                ... on FeatureDetails {
+                   title,
+                  content
+                  exampleUrl
+                  screencaptureUrl
+                  codeExample
+                  slideShowCollection(limit: 10) {
+                    items {
+                      sys {
+                        id
+                      }
+                      description
+                      height
+                      title
+                      url
+                      width
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       firstFeature {
         ... on Feature {
           sys {
@@ -62,6 +103,7 @@ const queryProjects = `{
             description
           }
           intro
+          
           firstSectionTitle
           firstSectionExampleUrl
           firstSectionContent
