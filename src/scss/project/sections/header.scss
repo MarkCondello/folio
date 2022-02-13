@@ -7,7 +7,7 @@ body {
   > #app {
     > header {
       @include center-frame;
-      max-width: $header-max-width;
+      // max-width: $header-max-width;
       left: 0;
       position: fixed;
       top: 0;

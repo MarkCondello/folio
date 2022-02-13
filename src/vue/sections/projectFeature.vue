@@ -1,6 +1,6 @@
 <template>
   <article>
-      <router-link :to="{
+    <router-link :to="{
       name: 'project-feature-show',
       params: {
         projectSlug: project.slug,
@@ -20,13 +20,16 @@
         <h3 v-html="project[projectFeatureName].title" />
       </router-link>
       <p v-html="project[projectFeatureName].intro" />
-      <router-link :to="{
-        name: 'project-feature-show',
-        params: {
-          projectSlug: project.slug,
-          projectFeatureName
-        }
-      }">
+      <router-link
+        class="button"
+        :to="{
+          name: 'project-feature-show',
+          params: {
+            projectSlug: project.slug,
+            projectFeatureName
+          }
+        }"
+      >
         <h4>See details here..</h4>
       </router-link>
     </div>

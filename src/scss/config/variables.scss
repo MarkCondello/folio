@@ -2,7 +2,7 @@
 @use './mixins.scss' as *;
 
 $header-max-width: 1114px;
-$body-max-width: 1024px;
+$body-max-width: 1400px;
 $content-max-width: 750px;
 
 $radius: 3px;
@@ -81,8 +81,8 @@ $dd-width: 120px;
 
 //button settings
 $base-buttons: (
-  color: $dark-gray, 
-  hover-color: $dark-gray, 
+  color: $white, 
+  hover-color: $light-gray, 
   bg-color: map-get($palette, "secondary") , 
   bg-change: "shade", 
   intesity: 15%,
