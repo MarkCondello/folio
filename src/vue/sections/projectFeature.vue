@@ -4,29 +4,29 @@
       name: 'project-feature-show',
       params: {
         projectSlug: project.slug,
-        projectFeatureName
+        projectFeatureSlug: projectFeature.slug
       }
     }">
-      <figure :style="`background-image: url(${project[projectFeatureName].introImage.url})`"></figure>
+      <figure :style="`background-image: url(${projectFeature.introImage.url})`"></figure>
     </router-link>
     <div>
       <router-link :to="{
         name: 'project-feature-show',
         params: {
           projectSlug: project.slug,
-          projectFeatureName
+          projectFeatureSlug: projectFeature.slug
         }
       }">
-        <h3 v-html="project[projectFeatureName].title" />
+        <h3 v-html="projectFeature.title" />
       </router-link>
-      <p v-html="project[projectFeatureName].intro" />
+      <p v-html="projectFeature.intro" />
       <router-link
         class="button"
         :to="{
           name: 'project-feature-show',
           params: {
             projectSlug: project.slug,
-            projectFeatureName
+            projectFeatureSlug: projectFeature.slug
           }
         }"
       >
@@ -43,8 +43,8 @@ export default {
       type: Object,
       required: true
     },
-    projectFeatureName: {
-      type: String,
+    projectFeature: {
+      type: Object,
       required: true
     }
   }

@@ -49,9 +49,8 @@
       </div>
     </template>
     <template v-slot:extra-content>
-      <div class="flex-cols   align-center" v-if="project.secondProjectGoalImage && project.secondProjectGoal">
+      <div class="flex-cols align-center" v-if="project.secondProjectGoalImage && project.secondProjectGoal">
         <img :src="project.secondProjectGoalImage.url" style="height: 30vh; object-fit: contain;"/>
-
         <!-- <div class="lg-6 pb-14" :style="`background-repeat: no-repeat; background-position: center; background-size: contain; background-image: url(${project.secondProjectGoalImage.url})`">
         </div> -->
         <div class="lg-6">
@@ -62,42 +61,45 @@
   </frame-panel>
   <frame-panel
     scroll-message="What I did"
-    :showAside="false"
+    :showAside="project.featuresCollection.items.length > 2"
     :show-plug="false"
     class="justify-center"
     id="features"
+    v-if="project.featuresCollection.items.length"
+  >
+    <template v-slot:article>
+      <section class="project-features">
+        <h3>What I did</h3>
+         <ProjectFeature
+         :project="project"
+          :projectFeature="project.featuresCollection.items[0]"
+         />
+        <ProjectFeature
+          class="reversed"
+          :project="project"
+          :projectFeature="project.featuresCollection.items[1]"
+        />
+      </section>
+    </template>
+  </frame-panel>
+<!-- <frame-panel
+    scroll-message="What I did"
+    :showAside="false"
+    :show-plug="false"
+    class="justify-center"
+    v-if="project.featuresCollection.items.length > 2 && project.featuresCollection.items.length < 4"
   >
     <template v-slot:article>
       <section class="project-features">
         <h3>What I did</h3>
         <ProjectFeature
          :project="project"
-          projectFeatureName="firstFeature"
+          projectFeatureName="project.featuresCollection.items[2]"
          />
         <ProjectFeature
           class="reversed"
           :project="project"
-          projectFeatureName="secondFeature"
-        />
-      </section>
-    </template>
-  </frame-panel>
-  <!-- <frame-panel
-    scroll-message="What I did"
-    :show-plug="false"
-    class="justify-center"
-  >
-    <template v-slot:article>
-      <section class="project-features">
-        <h3 class="h2">What I did</h3>
-        <ProjectFeature
-          :project="project"
-          projectFeatureName="firstFeature"
-          />
-        <ProjectFeature
-          class="reversed"
-          :project="project"
-          projectFeatureName="secondFeature"
+          projectFeatureName="project.featuresCollection.items[3]"
         />
       </section>
     </template>
@@ -114,7 +116,11 @@ import bottomLineShow from '../sections/bottomLineProjectShow.vue'
 import ProjectFeature from '../sections/projectFeature.vue'
 import { mapState } from 'vuex'
 export default {
-  components: { FramePanel, bottomLineShow, ProjectFeature },
+  components: {
+    FramePanel,
+    bottomLineShow,
+    ProjectFeature
+  },
   computed: mapState({
     project: state => state.projectStore.project
   })

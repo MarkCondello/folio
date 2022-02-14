@@ -38,14 +38,20 @@ export default {
       }
     },
     async fetchFeature ({ commit, dispatch, getters, state }, params) {
-      let feature = state.project[params.projectFeatureName]
-      if (feature) {
+      let feature = null
+      if (state.project && state.project.featuresCollection) {
+        feature = getters.getProjectFeatureBySlug(params.projectFeatureSlug)
+        // console.log('fetchFeature: ', { feature })
+      }
+      if (feature != null) {
+        // console.log('feature is set')
         commit('SET_PROJECT_FEATURE', feature)
       } else {
         await dispatch('fetchProjects')
         const project = await getters.getProjectBySlug(params.projectSlug)
+        // console.log('Reached else', { project })
         await commit('SET_PROJECT', project)
-        feature = state.project[params.projectFeatureName]
+        feature = await getters.getProjectFeatureBySlug(params.projectFeatureSlug)
         commit('SET_PROJECT_FEATURE', feature)
       }
     }
@@ -53,6 +59,10 @@ export default {
   getters: {
     getProjectBySlug: state => slug => {
       return state.projects.find(project => project.slug === slug)
+    },
+    getProjectFeatureBySlug: state => slug => {
+      console.log('state.project.featuresCollection', state.project.featuresCollection)
+      return state.project.featuresCollection.items.find(feature => feature.slug === slug)
     },
     getProjectFeatureCodeExample: state => key => {
       console.log('reached getProjectFeatureCodeExample', key)

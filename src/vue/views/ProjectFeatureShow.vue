@@ -1,77 +1,54 @@
 <template>
+
   <frame-panel
     :intro-part-one="project.title"
     :intro-part-two="projectFeature.title"
     scroll-message="scroll down"
-    :showAside="projectFeature.secondSectionContent"
+    v-for="(feature, index) in projectFeature.featureDetailsCollection.items"
+    :key="index"
+    :showAside="projectFeature.featureDetailsCollection.items.length > index + 1"
   >
+    <h2>Inside Frame panel loop </h2>
     <template v-slot:article>
       <div class="flex-cols">
         <button class="md-6 lg-5 feature-light-show-trigger"
-          v-if="projectFeature.firstSectionSlideShowCollection.items.length"
-          @click="handleSlideshow"
+          v-if="feature.slideShowCollection && feature.slideShowCollection.items.length"
+          @click="handleSlideshow(feature.slideShowCollection.items)"
           >
           <figure class="bg-contain-center w-100 h-100"
-          :style="`min-height: 200px; background-image: url(${projectFeature.firstSectionSlideShowCollection.items[0].url})`">
+          :style="`min-height: 200px; background-image: url(${feature.slideShowCollection.items[0].url})`">
             <search />
           </figure>
         </button>
         <a
           v-else
           class="md-6 lg-5"
-          :href="projectFeature.firstSectionExampleUrl"
+          :href="feature.exampleUrl"
           target="_blank"
         >
           <figure class="bg-contain-center w-100 h-100"
           :style="`min-height: 200px; background-image: url(${projectFeature.introImage.url})`"></figure>
         </a>
         <div class="md-6 lg-7 med-pl-4">
-          <Markdown :source="projectFeature.firstSectionContent" />
+          <Markdown :source="feature.content" />
         </div>
        </div>
     </template>
     <template v-slot:extra-content>
       <section style="display: flex; gap: 1rem; justify-content: center;">
-        <button v-if="projectFeature.firstSectionScreencaptureUrl"
+        <button v-if="feature.screencaptureUrl"
           class="button -hollow"
-          @click="handleScreencapture(projectFeature.firstSectionScreencaptureUrl, `${projectFeature.firstSectionTitle} screencapture`)"
+          @click="handleScreencapture(feature.screencaptureUrl, `${feature.title} screencapture`)"
         >
         <camera />
         Screencapture</button>
-        <button v-if="projectFeature.firstSectionCodeExample"
+        <button v-if="feature.codeExample"
           class="button -hollow"
-          @click="handleViewCode('firstSectionCodeExample')"
+          @click="handleViewCode(feature.codeExample)"
         >
         <cog-hollow styles="fill:transparent; stroke: currentColor;" />
         Code Example</button>
-        <a class="button -hollow" :href="projectFeature.firstSectionExampleUrl" target="_blank">
-          <web-link/>
-          Live Demo
-        </a>
-      </section>
-    </template>
-  </frame-panel>
-  <frame-panel
-  v-if="projectFeature.secondSectionContent"
-    :intro-part-one="project.client"
-    :intro-part-two="project.stack"
-    :showAside="false"
-    scroll-message=""
-  >
-    <template v-slot:article>
-      <div class="flex-cols">
-        <a class="md-6 lg-5" :href="projectFeature.firstSectionExampleUrl" target="_blank">
-          <figure class="bg-contain-center w-100 h-100"
-          :style="`padding-top: 230px; background-image: url(${projectFeature.secondSectionImage ? projectFeature.secondSectionImage.url : projectFeature.introImage.url})`"></figure>
-        </a>
-        <div class="md-6 lg-7 med-pl-4">
-          <Markdown :source="projectFeature.secondSectionContent" />
-        </div>
-       </div>
-    </template>
-    <template v-slot:extra-content v-if="projectFeature.secondSectionExampleUrl">
-      <section style="display: flex; gap: 1rem; justify-content: center;">
-        <a class="button -hollow" :href="projectFeature.secondSectionExampleUrl" target="_blank">
+        <a class="button -hollow" :href="feature.exampleUrl" target="_blank">
           <web-link/>
           Live Demo
         </a>
@@ -121,9 +98,9 @@ export default {
         modalTitle: title
       })
     },
-    handleSlideshow () {
+    handleSlideshow (items) {
       this.setLightBox({
-        componentData: this.projectFeature.firstSectionSlideShowCollection.items
+        componentData: items
       })
     }
   }

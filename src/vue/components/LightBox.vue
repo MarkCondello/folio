@@ -51,9 +51,6 @@ export default {
       activeSlideIndex: 0
     }
   },
-  mounted () {
-    console.log('MOUNTED LIGHTBOX')
-  },
   computed: mapState({
     visible: state => state.lightBoxStore.visible,
     slides: state => state.lightBoxStore.slides

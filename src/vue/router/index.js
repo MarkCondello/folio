@@ -27,12 +27,12 @@ const routes = [
     }
   },
   {
-    path: '/project/:projectSlug/:projectFeatureName',
+    path: '/project/:projectSlug/:projectFeatureSlug',
     name: 'project-feature-show',
     component: ProjectFeatureShow,
     props: true,
     beforeEnter (routeTo, routeFrom, next) {
-      console.log('reached before enter project feature show', routeTo.params)
+      // console.log('reached before enter project feature show', routeTo.params)
       store.dispatch('fetchFeature', routeTo.params)
         .then(() => {
           next()
