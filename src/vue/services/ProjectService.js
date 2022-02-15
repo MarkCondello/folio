@@ -66,7 +66,7 @@ const queryProjects = `{
             featureDetailsCollection (limit:6) {
               items {
                 ... on FeatureDetails {
-                   title,
+                  title,
                   content
                   exampleUrl
                   screencaptureUrl
@@ -86,87 +86,6 @@ const queryProjects = `{
                 }
               }
             }
-          }
-        }
-      }
-      firstFeature {
-        ... on Feature {
-          sys {
-            firstPublishedAt
-            id
-          }
-          title
-          slug
-          introImage {
-            url
-            title
-            description
-          }
-          intro
-          
-          firstSectionTitle
-          firstSectionExampleUrl
-          firstSectionContent
-          firstSectionImage {
-            url
-            title
-            description
-          }
-          firstSectionCodeExample
-          firstSectionScreencaptureUrl
-          firstSectionSlideShowCollection(limit: 6) {
-            items {
-              sys {
-                id
-              }
-              description
-              height
-              title
-              url
-              width
-            }
-          }
-          secondSectionTitle
-          secondSectionExampleUrl
-          secondSectionContent
-          secondSectionImage {
-            url
-            title
-            description
-          }
-        }
-      }
-      secondFeature {
-        ... on Feature {
-          sys {
-            firstPublishedAt
-            id
-          }
-          title
-          slug
-          introImage {
-            url
-            title
-            description
-          }
-          intro
-          firstSectionTitle
-          firstSectionExampleUrl
-          firstSectionContent
-          firstSectionImage {
-            url
-            title
-            description
-          }
-          firstSectionCodeExample
-          firstSectionScreencaptureUrl
-          secondSectionTitle
-          secondSectionExampleUrl
-          secondSectionContent
-          secondSectionImage {
-            url
-            title
-            description
           }
         }
       }
