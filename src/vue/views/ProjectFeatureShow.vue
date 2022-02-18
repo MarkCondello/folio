@@ -17,7 +17,9 @@
           @click="handleSlideshow(feature.slideShowCollection.items)"
           >
           <figure class="bg-contain-center w-100 h-100">
-            <search />
+            <span>
+              <search />
+            </span>
             <img style="width:100%;" :src="feature.slideShowCollection.items[0].url" :alt="feature.slideShowCollection.items[0].title" />
           </figure>
         </button>

@@ -14,18 +14,18 @@
     transition: color .5;
     &:hover {
       color: mix(#000, $secondary, 15%);
-      svg {
+      span {
         background-color: rgba(#fff, .75);
-        padding: 1.25rem;
+        padding: 1.65rem;
       }
     }
-    svg {
+    span {
       position: absolute;
       top: calc(50% - 50px);
       left: calc(50% - 50px);
       z-index: 2;
       width: 100px;
-      padding: 1.5rem;
+      padding: 2rem;
       //border: 1px solid red;
       border-radius: 50%;
       background-color: rgba(#fff, .25);
