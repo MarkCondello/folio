@@ -28,7 +28,7 @@
           <small>Image {{ activeSlideIndex + 1 }} of {{ slides.length }}</small>
         </footer>
       </div>
-      <nav>
+      <nav v-if="slides.length > 1">
         <button class="prev" @click="prevSlide">
           <chev-square-left/>
          </button>

@@ -9,15 +9,27 @@
     color: $secondary;
     display: flex;
     justify-content: flex-end;
-    padding-right: 1rem;
+    // padding-right: 1rem;
     position: relative;
     transition: color .5;
     &:hover {
       color: mix(#000, $secondary, 15%);
+      svg {
+        background-color: rgba(#fff, .75);
+        padding: 1.25rem;
+      }
     }
     svg {
-       width: 20px;
-     
+      position: absolute;
+      top: calc(50% - 50px);
+      left: calc(50% - 50px);
+      z-index: 2;
+      width: 100px;
+      padding: 1.5rem;
+      //border: 1px solid red;
+      border-radius: 50%;
+      background-color: rgba(#fff, .25);
+      transition: all .3s;
     }
   }
 }

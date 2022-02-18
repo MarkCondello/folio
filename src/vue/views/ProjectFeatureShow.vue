@@ -8,28 +8,20 @@
     :key="index"
     :showAside="projectFeature.featureDetailsCollection.items.length > index + 1"
   >
-    <h2>Inside Frame panel loop </h2>
     <template v-slot:article>
       <div class="flex-cols">
+        <div v-if="index % 2 === 1" class="md-6 lg-7 med-pr-4">
+          <Markdown :source="feature.content" />
+        </div>
         <button class="md-6 lg-5 feature-light-show-trigger"
-          v-if="feature.slideShowCollection && feature.slideShowCollection.items.length"
           @click="handleSlideshow(feature.slideShowCollection.items)"
           >
-          <figure class="bg-contain-center w-100 h-100"
-          :style="`min-height: 200px; background-image: url(${feature.slideShowCollection.items[0].url})`">
+          <figure class="bg-contain-center w-100 h-100">
             <search />
+            <img style="width:100%;" :src="feature.slideShowCollection.items[0].url" :alt="feature.slideShowCollection.items[0].title" />
           </figure>
         </button>
-        <a
-          v-else
-          class="md-6 lg-5"
-          :href="feature.exampleUrl"
-          target="_blank"
-        >
-          <figure class="bg-contain-center w-100 h-100"
-          :style="`min-height: 200px; background-image: url(${projectFeature.introImage.url})`"></figure>
-        </a>
-        <div class="md-6 lg-7 med-pl-4">
+        <div v-if="index % 2 === 0" class="md-6 lg-7 med-pl-4">
           <Markdown :source="feature.content" />
         </div>
        </div>

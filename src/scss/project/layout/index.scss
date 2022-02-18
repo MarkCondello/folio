@@ -105,6 +105,18 @@ body {
            margin-left: #{$i + .5}rem;
         }
       }
+      .med-pr-#{$i} {
+        padding-right: #{$i}rem;
+        &-half {
+          padding-right: #{$i + .5}rem;
+        }
+      }
+      .med-mr-#{$i} {
+        margin-right: #{$i}rem;
+        &-half {
+           margin-right: #{$i + .5}rem;
+        }
+      }
     }
     @if($i > 0){
       .gap-#{$i}0 {
