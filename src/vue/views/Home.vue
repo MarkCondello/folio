@@ -52,8 +52,8 @@
       <h2>Who am I?</h2>
       <div class="flex-cols">
         <h3 class="lg-6">I enjoy creating interfaces with web technologies and displaying data in visually appealing ways.<br>
-        When I am not building UI’s, I father my young family, enjoy exercising, learning new things & finding inspiration.<br>
-        To read more about my professional history please download my resume <a href="#">here</a>.
+        When I am not building UI\’s, I father my young family, enjoy exercising, learning new things & finding inspiration.<br>
+        To read more about my professional history please download my resume <a :href="resumeFile" target="_blank">here</a>.
       </h3>
       </div>
     </template>
@@ -118,15 +118,18 @@
   <bottom-line /><!-- Contact links -->
 </template>
 <script>
+import resume from '../../downloads/resume_mark_condello.pdf'
 import FramePanel from '../components/FramePanel.vue'
 import bottomLine from '../sections/bottomLine.vue'
 import { mapState } from 'vuex'
 import emailjs from 'emailjs-com'
 import cog from '../components/svgs/cogHollow.vue'
+// const resumeFile = require('../../downloads/resume_mark_condello.pdf')
 export default {
   components: { FramePanel, bottomLine, cog },
   data () {
     return {
+      resumeFile: resume,
       form: {
         reply_to: '',
         from_name: '',

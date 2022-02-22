@@ -51,14 +51,12 @@ body {
           position: absolute;
           right: 0;
           bottom: -50px;
-          z-index: 0;
+          z-index: 1;
         }
       }
       @include media-breakpoint-down(sm) {
         padding: 12vh 1.25rem 0;
       }
-
-    
     }
   }
 }

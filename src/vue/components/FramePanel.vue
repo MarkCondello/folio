@@ -3,7 +3,9 @@
     <span
       v-if="bgImgSrc"
       :class="bgClass"
-      :style="`background-image: url(${ bgImgSrc });`"></span>
+      :style="`background-image: url(${ bgImgSrc });`"
+    >
+    </span>
     <div class="flex -column justify-between h-100" v-bind="$attrs">
       <p v-if="introPartOne && introPartTwo" class="intro">{{ introPartOne }}<span></span>{{ introPartTwo }}</p>
       <article>
