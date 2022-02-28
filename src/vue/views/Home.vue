@@ -52,7 +52,7 @@
       <h2>Who am I?</h2>
       <div class="flex-cols">
         <h3 class="lg-6">I enjoy creating interfaces with web technologies and displaying data in visually appealing ways.<br>
-        When I am not building UI\’s, I father my young family, enjoy exercising, learning new things & finding inspiration.<br>
+        When I am not building UI’s, I father my young family, enjoy exercising, learning new things & finding inspiration.<br>
         To read more about my professional history please download my resume <a :href="resumeFile" target="_blank">here</a>.
       </h3>
       </div>

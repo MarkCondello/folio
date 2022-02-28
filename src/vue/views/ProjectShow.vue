@@ -39,11 +39,10 @@
         <h3 class="h1" style="margin: 0;">Project Goals</h3>
         <div class="flex-cols justify-center align-center pt-1 pb-2">
           <div class="lg-6">
-            <h4 class="h3" v-html="project.firstProjectGoal"></h4>
+            <h4 class="h3 mx-2" v-html="project.firstProjectGoal"></h4>
           </div>
           <div class="lg-4">
             <img :src="project.firstProjectGoalImage.url" style="height: 30vh; object-fit: contain;"/>
-            <!-- <div class="mx-2 pb-12" :style="`background-repeat: no-repeat; background-position: center; background-size: contain; background-image: url(${project.firstProjectGoalImage.url})`"></div> -->
           </div>
         </div>
       </div>
@@ -51,8 +50,6 @@
     <template v-slot:extra-content>
       <div class="flex-cols align-center" v-if="project.secondProjectGoalImage && project.secondProjectGoal">
         <img :src="project.secondProjectGoalImage.url" style="height: 30vh; object-fit: contain;"/>
-        <!-- <div class="lg-6 pb-14" :style="`background-repeat: no-repeat; background-position: center; background-size: contain; background-image: url(${project.secondProjectGoalImage.url})`">
-        </div> -->
         <div class="lg-6">
           <pre class="mx-2 my-0" v-html="project.secondProjectGoal"></pre>
         </div>
