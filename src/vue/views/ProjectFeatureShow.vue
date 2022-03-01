@@ -42,7 +42,7 @@
         >
         <cog-hollow styles="fill:transparent; stroke: currentColor;" />
         Code Example</button>
-        <a class="button -hollow" :href="feature.exampleUrl" target="_blank">
+        <a v-if="feature.exampleUrl" class="button -hollow" :href="feature.exampleUrl" target="_blank">
           <web-link/>
           Live Demo
         </a>

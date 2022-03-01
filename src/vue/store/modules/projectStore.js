@@ -65,7 +65,7 @@ export default {
       return state.project.featuresCollection.items.find(feature => feature.slug === slug)
     },
     getProjectFeatureCodeExample: state => key => {
-      console.log('reached getProjectFeatureCodeExample', key)
+      // console.log('reached getProjectFeatureCodeExample', key)
       return state.projectFeature[key]
     }
   }

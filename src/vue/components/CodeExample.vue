@@ -1,7 +1,7 @@
 <template>
   <article>
     <pre class='code-block'>
-      <code>{{demoCode}}</code>
+      <code>{{keyReference}}</code>
     </pre>
   </article>
 </template>
@@ -9,13 +9,15 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 export default {
+  props: {
+    keyReference: {
+      type: String
+    }
+  },
   data () {
     return {
       demoCode: null
     }
-  },
-  mounted () {
-    this.demoCode = this.getProjectFeatureCodeExample(this.componentData.keyReference)
   },
   computed: {
     ...mapState({
