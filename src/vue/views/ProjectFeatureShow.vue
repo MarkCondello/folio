@@ -20,7 +20,7 @@
             <span>
               <search />
             </span>
-            <img style="width:100%;" :src="feature.slideShowCollection.items[0].url" :alt="feature.slideShowCollection.items[0].title" />
+            <img style="width:100%; object-fit: contain;" :src="feature.slideShowCollection.items[0].url" :alt="feature.slideShowCollection.items[0].title" />
           </figure>
         </button>
         <div v-if="index % 2 === 0" class="md-6 lg-7 med-pl-4">
