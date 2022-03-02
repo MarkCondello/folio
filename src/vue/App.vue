@@ -9,7 +9,7 @@
         <button @click="showNavPanel = false">
           <close />
         </button>
-        <li><router-link @click="showNavPanel = false" :to="{ name: 'Home', hash: '#projects'}">Work</router-link></li>
+        <li v-if="projects.length"><router-link @click="showNavPanel = false" :to="{ name: 'Home', hash: '#projects'}">Work</router-link></li>
         <li><router-link @click="showNavPanel = false" :to="{ name: 'Home', hash: '#about'}">About</router-link></li>
         <li><router-link @click="showNavPanel = false" class="button -hollow sml" :to="{ name: 'Home', hash: '#contact'}">Contact</router-link></li>
         <bottom-line />

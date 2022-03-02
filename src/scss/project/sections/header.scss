@@ -40,6 +40,9 @@ body {
         button {
            @include reset-btn;
            display: none;
+           svg {
+             fill: #fff;
+           }
         }
         @include media-breakpoint-down(sm) {
           padding-left: .75rem;

@@ -4,10 +4,12 @@
 body {
   > #app {
     > section {
+      // border: 5px solid red;
       padding: 14vh 0 10vh;
       height: 100vh;
-      scroll-snap-align: start;
+      overflow: hidden;
       position: relative;
+      scroll-snap-align: start;
       > span {
         background-size: cover;
         background-position: center;
@@ -55,7 +57,7 @@ body {
         }
       }
       @include media-breakpoint-down(sm) {
-        padding: 12vh 1.25rem 0;
+        padding: 12vh 1.25rem 1rem;
       }
     }
   }

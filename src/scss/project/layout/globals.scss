@@ -1,0 +1,158 @@
+@use '../../preset/' as *;
+@use '../../config/palette.scss' as *;
+@use '../../config/variables.scss' as *;
+@use '../../config/mixins.scss' as *;
+
+html, body {
+  height: 100%;
+}
+body {
+  background-color: $bg-3;
+  hr {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid currentColor;
+  }
+  figure {
+    margin: 0;
+  }
+  .intro {
+    font-size: 12px;
+    display: inline-block;
+    span {
+      background-color: #fff;
+      display: inline-block;
+      height: 1px;
+      margin: 0 .75rem 4px;
+      width: 40px;
+    }
+  }
+  a.project-link {
+    @include space-between-center;
+    text-decoration: none;
+    transition: text-decoration .3s;
+    > span {
+      display: inline-block;
+      font-size: 12px;
+      margin: 0 .75rem;
+    }
+    img,
+    svg {
+      opacity: .5;
+      transition: opacity .3s;
+    }
+    &:hover {
+      text-decoration: underline;
+      img,
+      svg {
+        opacity: 1;
+        text-decoration: none
+      }
+    }
+  }
+  @for $i from 0 through 20 {
+    .mx-#{$i}{
+      @include margin-x(#{$i}rem);
+      &-half {
+        @include margin-x(#{$i + .5}rem);
+      }
+    }
+    .mr-#{$i}{
+      margin-right: #{$i}rem;
+      &-half {
+        margin-right: #{$i + .5}rem;
+      }
+    }
+    .ml-#{$i}{
+      margin-left: #{$i}rem;
+      &-half {
+        margin-left: #{$i + .5}rem;
+      }
+    }
+    .my-#{$i}{
+      @include margin-y(#{$i}rem);
+      &-half {
+        @include margin-y(#{$i + .5}rem);
+      }
+    }
+    .py-#{$i} {
+      @include pad-y(#{$i}rem);
+      &-half {
+        @include pad-y(#{$i + .5}rem);
+      }
+    }
+    .pb-#{$i} { 
+      padding-bottom: #{$i}rem;
+      &-half {
+        padding-bottom: #{$i + .5}rem;
+      }
+    }
+    .pt-#{$i} { 
+      padding-top: #{$i}rem;
+      &-half {
+        padding-top: #{$i + .5}rem;
+      }
+    }
+    @include media-breakpoint-up(md){
+      .med-pl-#{$i} {
+        padding-left: #{$i}rem;
+        &-half {
+          padding-left: #{$i + .5}rem;
+        }
+      }
+      .med-ml-#{$i} {
+        margin-left: #{$i}rem;
+        &-half {
+           margin-left: #{$i + .5}rem;
+        }
+      }
+      .med-pr-#{$i} {
+        padding-right: #{$i}rem;
+        &-half {
+          padding-right: #{$i + .5}rem;
+        }
+      }
+      .med-mr-#{$i} {
+        margin-right: #{$i}rem;
+        &-half {
+           margin-right: #{$i + .5}rem;
+        }
+      }
+    }
+    @if($i > 0){
+      .gap-#{$i}0 {
+        gap: $i * 10px;
+      }
+      .h-#{$i}0 {
+        height: #{($i * 10) * 1%};
+      }
+      .w-#{$i}0 {
+        width: #{($i * 10) * 1%};
+      }
+    }
+  }
+  > #app {
+    @include bg-text-colors($palette);
+    overflow: auto;  // these do not allow scroll events with js
+    height: 100vh;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+    .flex-cols {
+      @include flex-cols('xs');
+      @include flex-cols('sm');
+      @include flex-cols('md');
+      @include flex-cols('lg');
+    }
+    .flex {
+      @include flex-classes;
+      display: flex;
+      &.-column {
+        flex-direction: column;
+      }
+    }
+  }
+  .spin {
+    @include spin(3s);
+  }
+}
