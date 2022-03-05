@@ -1,6 +1,6 @@
 <template>
   <frame-panel
-    :bg-img-src="require('@/images/photos/abstract-networks.png')"
+    :bg-img-src="require('@/images/photos/abstract-network.png')"
     intro-part-one="Hi, I'm Mark Condello"
     intro-part-two="open to work opportunities"
     scroll-message="scroll down"
