@@ -1,0 +1,108 @@
+@use 'sass:math';
+
+$inputs: '[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='phone'], [type='color'], select, textarea';
+$text-els: 'h1, h2, h3, h4, h5, p, li, td, th';
+$p-els: 'p, li, td';
+
+@mixin margin-x($l: auto) {
+    margin-left: $l;
+    margin-right: $l;
+}
+@mixin margin-y($l, $l2: null) {
+    margin-top: $l;
+    @if ($l2 == null) {
+        margin-bottom: $l;
+    } @else {
+        margin-bottom: $l2;
+    }
+}
+@mixin pad-x($l) {
+    padding-left: $l;
+    padding-right: $l;
+}
+@mixin pad-y($l, $l2: null) {
+    padding-top: $l;
+    @if ($l2 == null) {
+        padding-bottom: $l;
+    } @else {
+        padding-bottom: $l2;
+    }
+}
+
+@mixin clamp($sml, $full, $propName: "font-size") {
+    #{$propName}: #{(math.div($full, 11))}vw;
+    #{$propName}: clamp(#{$sml}px, #{(math.div($full, 11))}vw, #{$full}px);
+}
+@mixin clamp-y($sml, $full, $propName: "padding") {
+    #{$propName}-top: #{(math.div($full, 11))}vw;
+    #{$propName}-bottom: #{(math.div($full, 11))}vw;
+    #{$propName}-top: clamp(#{$sml}px, #{(math.div($full, 11))}vw, #{$full}px);
+    #{$propName}-bottom: clamp(#{$sml}px, #{(math.div($full, 11))}vw, #{$full}px);
+}
+@mixin clamp-x($sml, $full, $propName: "padding") {
+    #{$propName}-left: #{(math.div($full, 11))}vw;
+    #{$propName}-right: #{(math.div($full, 11))}vw;
+    #{$propName}-left: clamp(#{$sml}px, #{(math.div($full, 11))}vw, #{$full}px);
+    #{$propName}-right: clamp(#{$sml}px, #{(math.div($full, 11))}vw, #{$full}px);
+}
+
+@mixin hover($initVal, $hoverVal, $propName: "color") {
+    #{$propName}: $initVal;
+    transition: #{$propName} 0.2s linear;
+    &:hover {
+        #{$propName}: $hoverVal;
+    }
+}
+
+@mixin inset($in: 0) {
+    position: absolute;
+    top: $in;
+    left: $in;
+    right: $in;
+    bottom: $in;
+}
+
+@mixin truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+@mixin center-frame($body-max-width: 1400px, $width: 92%) {
+    @include margin-x;
+    max-width: $body-max-width;
+    width: $width;
+}
+
+@mixin cols-of($colWidth, $colGap: 25px, $max: 1fr, $bp: 400px){
+    display: grid;
+    gap: $colGap;
+    grid-template-columns: repeat(auto-fit, minmax($colWidth, $max));
+    > * {
+        max-width: 100%;
+    }
+    @media (max-width: #{$bp}) {
+        grid-template-columns: repeat(auto-fit, minmax(100%, $max));
+    }
+}
+
+@mixin inset($amt: 0) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+@mixin hide-vertical-scrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+    &::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+        width: 0;
+    }
+}

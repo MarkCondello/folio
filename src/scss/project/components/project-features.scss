@@ -1,4 +1,6 @@
-@use '../../preset/' as *;
+@use '../../preset/base.scss' as *;
+@use '../../preset/layouts.scss' as *;
+
 @use '../../config/mixins.scss' as *;
 .project-features {
   > h3 {

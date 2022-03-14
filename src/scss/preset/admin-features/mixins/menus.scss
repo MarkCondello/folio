@@ -1,9 +1,15 @@
 @use '../' as *;
 
-@mixin menus($active-color: map-get($preset-palette, "secondary"), $f-size: 14px, $f-weight: bold, $dd-text-align: center, $dd-items-padding: 0.25rem .5rem, $dd-width: 80px){
-    display: flex;
+@mixin menus(
+        $active-color: map-get($preset-palette, "secondary"),
+        $f-size: 14px,
+        $f-weight: bold,
+        $dd-text-align: left,
+        $dd-items-padding: 0.25rem .5rem,
+        $dd-width: 80px
+    ) {
     @include reset-ul;
-    //generic menu
+    display: flex;
     > li {
         padding: .5rem;
         position: relative;
@@ -11,9 +17,9 @@
         > a,
         > button {
             line-height: 1;
-            text-decoration: none; 
-            transition: color 1s;  
-            font-size: $f-size; 
+            text-decoration: none;
+            transition: color .3s;
+            font-size: $f-size;
             font-weight: $f-weight;
             &:hover {
                 text-decoration: underline;
@@ -21,20 +27,18 @@
             }
             &.active {
                 color: $active-color;
+                + ul {
+                    opacity: 1;
+                    padding: .25rem 0;
+                    height: auto;
+                }
             }
         }
         button {
             @include reset-btn;
         }
-        &:hover {
-            ul {
-                opacity: 1;
-                padding: .25rem 0;
-                height: auto;
-            }
-        }
         > ul {
-            @include dropdown($dd-items-padding, $dd-width);
+            @include dropdown($dd-items-padding);
             li {
                 text-align: $dd-text-align;
             }
@@ -50,9 +54,11 @@
                 border-radius: 0;
                 box-shadow: none;
             }
-            &:hover {
-                > ul {
-                    margin-top: .5rem;
+            a, button {
+                &.active {
+                    + ul {
+                        margin-top: .5rem;
+                    }
                 }
             }
         }

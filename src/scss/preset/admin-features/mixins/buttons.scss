@@ -10,22 +10,27 @@
     outline: none;
     padding: $padd;
     text-decoration: none;
-    &:disabled { //ToDo: need colour changes if button is disabled
+    &:disabled {
         cursor: not-allowed;
     }
 }
-@mixin button-common-states($color: #8a8a8a, $hover-color: $color, $bg-color: #e6e6e6, $bg-change: "shade", $intesity: 15%){
+@mixin button-common-states(
+        $color: #8a8a8a,
+        $hover-color: $color,
+        $bg-color: #e6e6e6,
+        $bg-change: "shade",
+        $intesity: 15%
+    ){
     &, &:link, &:visited {
         color: $color;
         background-color: $bg-color;
-        border: none;
         transition: color 0.2s linear, background-color 0.2s linear;
         svg {
             fill: $color;
             transition: fill 0.2s linear,
         }
     }
-    &:hover  {
+    &:hover, &:active {
         color: $hover-color;
         svg {
             fill: $hover-color;
@@ -37,22 +42,25 @@
             background-color: tint($bg-color, $intesity);
         }
     }
-    &:active,
-    &.active {
-        color: $hover-color;
-        svg {
-            fill: $hover-color;
-        }
-        background-color: shade($bg-color, 25%);
+    &:disabled {
+        color: tint($color, 25%);
+        background-color: tint($bg-color, 25%);
     }
-
 }
-@mixin button-sml($f-size: 14px, $l-height: 1, $padding: .5rem) {
+@mixin button-sml(
+        $f-size: 14px,
+        $l-height: 1,
+        $padding: .5rem
+    ) {
     font-size: $f-size;
     line-height: $l-height;
     padding: $padding;
 }
-@mixin button-hollow-states($color: #767676, $hover-color: $color ){
+@mixin button-hollow-states(
+        $color: #767676,
+        $hover-color: #8a8a8a,
+        $bg-change: "tint"
+    ){
     &, &:link, &:visited {
         color: $color;
         transition: color 0.2s linear, background-color 0.2s linear, border-color 0.2s linear;
@@ -67,15 +75,17 @@
         border-color: $hover-color;
         svg {
             fill: $hover-color;
+         }
+        @if $bg-change == "tint" {
+            background-color: tint($color, 85%);
         }
-        background-color: rgba($color, .15);
-
-        // @if $bg-change == "tint" {
-        //     background-color: tint($color, 95%);
-        // }
-        // @if $bg-change == "shade" {
-        //     background-color: shade($color, 15%);
-        // }
+        @if $bg-change == "shade" {
+            background-color: shade($color, 15%);
+        }
+    }
+    &:disabled {
+        color: tint($color, 25%);
+        background-color: tint($hover-color, 25%);
     }
 }
 @mixin button-hollow($border-width: 1px) {
@@ -101,7 +111,7 @@
             right: calc(#{$iconSize} / 2);
             top: calc(50% - (#{$iconSize} / 2));
         }
-    }    
+    }
     &.icon-left {
         @include btn-icon-base($iconSize);
         padding-left: calc(2 * #{$iconSize});
@@ -111,5 +121,5 @@
             left: calc(#{$iconSize} / 2);
             top: calc(50% - (#{$iconSize} / 2));
         }
-    } 
+    }
 }

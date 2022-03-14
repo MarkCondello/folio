@@ -1,4 +1,5 @@
-@use '../preset/' as *;
+@use '../preset/base.scss' as *;
+@use '../preset/admin-features/helpers.scss' as *;
 @use './palette.scss' as *;
 @import './montserrat.scss';
 

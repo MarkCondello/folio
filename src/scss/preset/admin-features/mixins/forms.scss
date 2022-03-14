@@ -1,22 +1,30 @@
 @use '../'as *;
+@use '../../layouts.scss' as *;
 
-@mixin input-common($input-border: 1px solid, $radius: 4px, $padding: 1rem, $placeholder-color: grey) {
-    background-color: transparent;
-    border: none;
-    border-bottom: $input-border;
+@mixin input-common(
+        $input-border: 1px solid,
+        $radius: 4px,
+        $padding: 1rem,
+        $placeholder-color: map-get($preset-palette, 'medium-gray'),
+        $bg: transparent
+    ) {
+    background-color: $bg;
+    border: $input-border;
     border-radius: $radius;
-    padding: $padding;
+    padding: .75rem;
     transition: border-color 1s;
     width: 100%;
     &[disabled],
     &::placeholder {
         color: $placeholder-color;
     }
+    &[disabled] {
+        cursor: not-allowed;
+    }
     &:focus {
         outline: none;
     }
 }
-
 @mixin forms($form-error: map-get($preset-palette, 'danger')) {
     > div,
     > fieldset > div {
@@ -38,9 +46,6 @@
             label,
             small {
                 color: $form-error;
-                span {
-                    margin-right: 10px;
-                }
             }
             input {
                 border-color: $form-error;
@@ -52,26 +57,24 @@
                 display: none;
             }
             button {
+                @include reset-btn;
                 height: 100%;
                 position: absolute;
                 right: 0;
                 top: 0;
                 width: 40px;
-                @include reset-btn;
                 svg {
                     width: 10px;
                 }
             }
         }
     }
-
-    // ToDo: provide support for select-filters
     .select-filter-input {
         display: inline-flex;
         flex-direction: column;
         position: relative;
         > div {
-            @include align-center ;
+            @include align-center;
             background-color: map-get($preset-palette, "light-gray");
             border-radius: 4px;
             padding: .75rem;
@@ -85,12 +88,12 @@
                 margin-right: 3rem;
             }
             button {
+                @include reset-btn;
                 height: 100%;
                 position: absolute;
                 right: 0;
                 top: 0;
                 width: 40px;
-                @include reset-btn;
                 i,
                 span,
                 svg {
@@ -107,12 +110,15 @@
             }
         }
         ul {
-            width: 100%;
-            top: 46px;
-            left: 0;
             @include dropdown;
+            left: 0;
+            top: 46px;
+            width: 100%;
             li button {
                 @include reset-btn;
+                font-size: 14px;
+                text-align: left;
+                padding: 0.5rem 0.75rem;
             }
             &.open {
                 height: auto;

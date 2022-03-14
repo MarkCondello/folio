@@ -1,4 +1,8 @@
-@use '../../preset/' as *;
+@use '../../preset/base.scss' as *;
+@use '../../preset/breakpoints.scss' as *;
+@use '../../preset/layouts.scss' as *;
+
+@use '../../config/variables.scss' as *;
 
 body {
   > #app {
@@ -50,7 +54,7 @@ body {
           }
         }
       }
-      @include media-breakpoint-down(sm) {
+      @include media-breakpoint-down(sm, $breakpoints) {
         display: none;
       }
     }

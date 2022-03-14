@@ -7,7 +7,6 @@
         $tab-padding: 0 1.25rem .75rem,
         $tab-panel-padding: 1rem,
     ) {
-    overflow-x: hidden;
     > ul {
         @include hrs;
         overflow-x: auto;
@@ -22,7 +21,7 @@
             background-color: $active-tab-color;
             outline: 1px solid rgba($tab-color, .25);
         }
-        li {
+        > li {
             border-bottom: 1px solid transparent;
             transition: border-color 1s;
             padding: $tab-padding;

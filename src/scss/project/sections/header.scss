@@ -1,4 +1,10 @@
-@use '../../preset/' as *;
+@use '../../preset/admin-features/mixins/menus.scss' as *;
+@use '../../preset/admin-features/helpers.scss' as *;
+@use '../../preset/base.scss' as *;
+@use '../../preset/layouts.scss' as *;
+@use '../../preset/breakpoints.scss' as *;
+
+
 @use '../../config/typography.scss' as *;
 @use '../../config/variables.scss' as *;
 @use '../../config/palette.scss' as *;
@@ -25,6 +31,14 @@ body {
           z-index: 4;
         }
         > ul {
+          @include menus(
+            $menu-active-color,
+            $menu-f-size,
+            $menu-f-weight,
+            $menu-text-align,
+            $dd-items-padding,
+            $dd-width,
+          );
           > li {
             @include justify-center;
             flex-direction: column;
@@ -44,7 +58,7 @@ body {
              fill: #fff;
            }
         }
-        @include media-breakpoint-down(sm) {
+        @include media-breakpoint-down(sm, $breakpoints) {
           padding-left: .75rem;
           padding-right: .75rem;
           > button {

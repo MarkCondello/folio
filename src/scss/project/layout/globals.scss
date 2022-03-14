@@ -1,4 +1,8 @@
-@use '../../preset/' as *;
+@use '../../preset/base.scss' as *;
+@use '../../preset/breakpoints.scss' as *;
+@use '../../preset/layouts.scss' as *;
+@use '../../preset/admin-features/helpers.scss' as *;
+
 @use '../../config/palette.scss' as *;
 @use '../../config/variables.scss' as *;
 @use '../../config/mixins.scss' as *;
@@ -93,7 +97,7 @@ body {
         padding-top: #{$i + .5}rem;
       }
     }
-    @include media-breakpoint-up(md){
+    @include media-breakpoint-up(md, $breakpoints){
       .med-pl-#{$i} {
         padding-left: #{$i}rem;
         &-half {
@@ -133,17 +137,22 @@ body {
   }
   > #app {
     @include bg-text-colors($palette);
-    overflow: auto;  // these do not allow scroll events with js
-    height: 100vh;
-    scroll-snap-type: mandatory;
-    scroll-snap-points-y: repeat(100vh);
-    scroll-snap-type: y mandatory;
-    .flex-cols {
-      @include flex-cols('xs');
-      @include flex-cols('sm');
-      @include flex-cols('md');
-      @include flex-cols('lg');
-    }
+    // @include media-breakpoint-up(md){
+      border: 1px solid yellow;
+      overflow: auto;  // these do not allow scroll events with js
+      height: 100vh;
+      scroll-snap-type: mandatory;
+      scroll-snap-points-y: repeat(100vh);
+      scroll-snap-type: y mandatory;
+    // }
+
+    @include flex-cols($columns, $breakpoints);
+    // .flex-cols {
+    //   @include flex-cols('xs');
+    //   @include flex-cols('sm');
+    //   @include flex-cols('md');
+    //   @include flex-cols('lg');
+    // }
     .flex {
       @include flex-classes;
       display: flex;
@@ -153,6 +162,6 @@ body {
     }
   }
   .spin {
-    @include spin(3s);
+    // @include spin(3s); ToDO
   }
 }

@@ -1,4 +1,7 @@
-@use '../../preset' as *;
+@use '../../preset/base.scss' as *;
+@use '../../preset/layouts.scss' as *;
+@use '../../preset/admin-features/helpers.scss' as *;
+
 @use '../../config/mixins.scss'as *;
 @use '../../config/palette.scss'as *;
 @use '../../config/variables.scss'as *;

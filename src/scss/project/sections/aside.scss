@@ -1,4 +1,6 @@
-@use '../../preset/' as *;
+@use '../../preset/layouts.scss' as *;
+@use '../../preset/breakpoints.scss' as *;
+
 @use '../../config/variables.scss' as *;
 
 body {
@@ -26,11 +28,10 @@ body {
             display: block;
           }
         }
-
-        @include media-breakpoint-only(lg) {
+        @include media-breakpoint-only(lg, $breakpoints) {
           right: -100px
         }
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(md, $breakpoints) {
           border: 1px solid red;
           display: none;
         }

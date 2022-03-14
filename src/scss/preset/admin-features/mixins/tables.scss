@@ -1,0 +1,213 @@
+@use '../' as *;
+
+@mixin tables(
+        $bg-color: map-get($preset-palette, 'off-white'),
+        $border-color: map-get($preset-palette, 'light-gray'),
+        $palette: $preset-palette, 
+        $table-header-color: map-get($preset-palette, 'secondary'),
+        $actions-max-width: 30px,
+    ) {
+    border-collapse: separate;
+    border-spacing: 0 .5rem;
+    width: 100%;
+    th,
+    td {
+        @include text-alignments;
+        font-size: 14px;
+        padding: .5rem;
+    }
+    thead {
+        background-color: transparent;
+        border: none;
+        th {
+            color: $table-header-color;
+            font-weight: 500;
+            text-align: left;
+        }
+    }
+    tbody {
+        background-color: transparent;
+        tr {
+            background-color: $bg-color;
+            position: relative;
+            &[data-href] {
+                cursor: pointer;
+                transition: background-color .3s;
+                &:hover {
+                    background-color: rgba($border-color, .9);
+                }
+            }
+            @each $color,
+            $val in $palette {
+                &.bg-#{"" + $color} {
+                    background-color: $val;
+                    td {
+                        &:first-child,
+                        &:last-child{
+                            &::before,
+                            &::after {
+                                background-color: $val;
+                            }
+                        }
+                    }
+                }
+                &.text-#{"" + $color} {
+                    color: $val;
+                }
+            }
+            td {
+                font-weight: 400;
+                margin: 0;
+                &.actions {
+                    width: $actions-max-width;
+                    @include ellipsis;
+                    > menu {
+                        margin: 0;
+                    }
+                    > div {
+                        max-width: $actions-max-width;
+                        margin-left: auto;
+                        position: relative;
+                        h3, h4, h5 {
+                            font-size: 1rem;
+                        }
+                        > button {
+                            @include reset-btn;
+                            color: $border-color;
+                            display: inline-block;
+                            font-size: 1.5rem;
+                            line-height: 0;
+                            vertical-align: text-top;
+                            &.active {
+                                + ul {
+                                    opacity: 1;
+                                    overflow: visible;
+                                    padding: 0.25rem 0 .5rem;
+                                    height: auto;
+                                }
+                            }
+                        }
+                        > ul {
+                            right: 0;
+                            width: 160px;
+                            @include dropdown;
+                            &::after {
+                                content: '';
+                                background-color: #fff;
+                                border-left: 2px solid rgba($border-color, .5);
+                                border-top: 1px solid rgba($border-color, .5);
+                                height: 10px;
+                                position: absolute;
+                                right: 18px;
+                                top: -6px;
+                                transform: rotate(45deg);
+                                width: 10px;
+                                z-index: 11;
+                            }
+                            hr {
+                                margin: 10px 0 5px;
+                            }
+                            h4 {
+                                line-height: 1;
+                                margin: 0;
+                                padding: 0.75rem .75rem .5rem;
+                            }
+                            li {
+                                button {
+                                    @include reset-btn;
+                                    padding: 0.5rem 0.75rem;
+                                    text-align: left;
+                                }
+                                a {
+                                    padding: 0.5rem 0.75rem;
+                                }
+                                a,
+                                button {
+                                    color: grey;
+                                    font-weight: 400;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.striped {
+        tbody {
+            tr {
+                &:nth-child(odd) {
+                    td {
+                        background-color: $border-color;
+                        &:first-child,
+                        &:last-child{
+                            &::before,
+                            &::after {
+                                background-color: $border-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin responsive-table($border-color: map-get($preset-palette, 'light-gray')) {
+    thead,
+    colgroup {
+        display: none;
+    }
+    tbody {
+        tr {
+            border-bottom: 1px solid $border-color;
+            border-top: 1px solid $border-color;
+            border-left: 1px solid $border-color;
+            border-right: 1px solid $border-color;
+            display: block;
+            margin-bottom: 1rem;
+            padding-bottom: .5rem;
+            padding-top: 1rem;
+            td {
+                border-top: none;
+                border-bottom: none;
+                border-left: none;
+                border-right: none;
+                display: flex;
+                position: inherit;
+                &:first-child {
+                    padding-left: .5rem;
+                }
+                &[data-header]:before {
+                    content: attr(data-header);
+                    display: block;
+                    color: $table-header-color;
+                    font-weight: bold;
+                    margin-right: 1rem;
+                    text-align: left;
+                    width: 50%;
+                }
+                &[data-header]>* ::not('.tag') {
+                    display: block;
+                    margin-top: 0;
+                    padding-left: .5em;
+                    width: 50%;
+                }
+                &[data-header] #{$inputs} {
+                    display: block;
+                    margin-top: 0;
+                    padding-left: .5em;
+                    width: 50%;
+                }
+                &.actions {
+                    border: none;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    width: auto;
+                    z-index: 2;
+                }
+            }
+        }
+    }
+}

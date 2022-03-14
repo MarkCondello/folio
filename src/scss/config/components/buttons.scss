@@ -1,4 +1,5 @@
-@use '../mixins/buttons.scss' as *;
+@use '../../preset/admin-features/mixins/buttons.scss' as *;
+@use '../variables.scss' as *;
 @use '../../config/variables.scss' as *;
 
 @function varients($map, $varient, $attribute) {
@@ -10,7 +11,7 @@
 }
 
 .button {
-    @include button-base($button-border-radius, $clickable-f-size, $button-padding);  
+    @include button-base($button-border-radius, $clickable-f-size, $button-padding);
     &:not(.-hollow){
         @if (variable-exists('base-buttons')) {
             @include button-common-states(map-values($base-buttons)...);
@@ -55,39 +56,5 @@
             }
         }
     }
-    @include btn-with-icon($clickable-f-size); 
-}
-
-.btn-group {
-    display: inline-flex;
-    label.checkbox-btn,
-    label.radio-btn {
-        margin-right: 1px;
-        input + span {
-            border-radius: 0;
-        };
-        &:first-of-type {
-             input + span {
-                border-radius: $button-border-radius 0 0 $button-border-radius;
-            }
-        }
-        &:last-of-type {
-            margin-right: 0;
-            input + span {
-                border-radius: 0 $button-border-radius $button-border-radius 0;
-            }
-        }
-    }
-    .button {
-        border-radius: 0;
-        &:last-of-type {
-            border-radius: 0 $button-border-radius $button-border-radius 0;
-        }
-        &:first-of-type {
-            border-radius: $button-border-radius 0 0 $button-border-radius;
-        }
-        &:not(:last-child) {
-            margin-right: 1px;
-        }
-    }
+    @include btn-with-icon($clickable-f-size);
 }

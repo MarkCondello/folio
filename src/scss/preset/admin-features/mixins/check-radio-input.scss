@@ -1,9 +1,14 @@
+@use '../' as *;
 
-
-@mixin check-radio-inputs($border: "1px solid", $icon: ✓, $checked-color: map-get($preset-palette, 'success'), $checked-bg-color: map-get($preset-palette, 'whitest')) {
+@mixin check-radio-inputs(
+        $border: "1px solid", 
+        $icon: ✓, 
+        $checked-color: map-get($preset-palette, 'success'), 
+        $checked-bg-color: map-get($preset-palette, 'whitest')
+    ) {
     display: block;
     position: relative;
-    margin-bottom: 1rem;
+    margin: 0;
     input{
         opacity: 0;
         position: absolute;
@@ -39,7 +44,7 @@
             }
         }
         &:checked + span:before {
-            color: $checked-color; ;
+            color: $checked-color;
             border-color: $checked-color;
             background-color: $checked-bg-color;
         }

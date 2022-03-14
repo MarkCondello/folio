@@ -1,4 +1,5 @@
-@use '../../preset/' as *;
+@use '../../preset/layouts' as *;
+@use '../../preset/admin-features/helpers.scss' as *;
 @use '../../config/mixins.scss' as *;
 .slides {
   > article {

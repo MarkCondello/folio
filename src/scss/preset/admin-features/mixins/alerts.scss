@@ -1,4 +1,5 @@
 @use '../' as *;
+@use '../../layouts.scss' as *;
 
 @mixin alerts($palette: $preset-palette) {
     @include space-between-center;
@@ -22,7 +23,7 @@
                 color: $val;
             }
             button {
-                color: $val;  
+                color: $val;
             }
         }
     }

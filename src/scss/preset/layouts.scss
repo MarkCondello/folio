@@ -1,6 +1,5 @@
 @use 'sass:math';
 @use './breakpoints.scss' as *;
-@use '../config/variables.scss' as *;
 
 html {
     box-sizing: border-box;
@@ -36,47 +35,50 @@ html {
     }
 }
 
-@mixin flex-cols($breakpoint: xs) {
-    $column: map-get($columns, $breakpoint);
-    @if $column == null {
-      @error 'Column `#{$breakpoint}` not found.';
-    }
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    $cols: map-get($column, columns);
-    $gutter: map-get($column, gutter);
-    @include media-breakpoint-up($breakpoint) {
-        @for $i from 1 through $cols {
-            .#{$breakpoint}-#{$i} {
-                width: math.div($i, $cols) * 100 * 1%;
-                border: none;
+@mixin flex-cols($columns, $breakpoints) {
+    .flex-cols {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        @each $size, $val in $columns {
+            $width: map-get($breakpoints, $size);
+            @if $width == null {
+              @error 'Column `#{$breakpoint}` not found.';
             }
-            .#{$breakpoint}-#{$i}.padd {
-                padding-left: #{$gutter}px;
-                padding-right: #{$gutter}px;
-            }
-            .#{$breakpoint}-#{$i}.mrg {
-                margin-left: #{$gutter}px;
-                margin-right: #{$gutter}px;
-                width: calc((#{math.div($i, $cols) * 100 * 1%}) - #{$gutter * 2}px);
+            $cols: map-get($val, columns);
+            $gutter: map-get($val, gutter);
+            @for $i from 1 through $cols {
+                .#{$size}-#{$i} {
+                    width: math.div($i, $cols) * 100 * 1%;
+                    border: none;
+                }
+                .#{$size}-#{$i}.padd {
+                    padding-left: #{$gutter}px;
+                    padding-right: #{$gutter}px;
+                }
+                .#{$size}-#{$i}.mrg {
+                    margin-left: #{$gutter}px;
+                    margin-right: #{$gutter}px;
+                    width: calc((#{math.div($i, $cols) * 100 * 1%}) - #{$gutter * 2}px);
+                }
             }
         }
+        @include flex-classes;
     }
-    @include flex-classes;
 }
 
 @mixin align-center {
     display: flex;
     align-items: center;
 }
+@mixin align-justify-center-column {
+    @include align-center;
+    flex-direction: column;
+    justify-content: center;
+}
 @mixin justify-center {
     display: flex;
     justify-content: center;
-}
-@mixin align-start {
-    display: flex;
-    align-items: flex-start;
 }
 @mixin space-between {
     display: flex;
@@ -86,11 +88,13 @@ html {
     @include space-between;
     align-items: center;
 }
+@mixin flex-vertical($gap: 0) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
 .align-center {
     @include align-center;
-}
-.align-start {
-    @include align-start;
 }
 .space-between-center {
     @include space-between-center;
@@ -99,11 +103,10 @@ html {
     display: flex;
     @include flex-classes;
 }
-.f-flow {
+.flex-flow {
     flex-flow: wrap;
 }
 
-//Grid helpers
 @mixin grids($cols: 1, $colGap : 0px,  $rowGap : 0px, $rows: 0) {
     display: grid;
     grid-gap: $rowGap $colGap;
@@ -115,8 +118,7 @@ html {
         grid-template-rows: auto;
     }
 }
-
-@mixin cols-of($colWidth, $colGap: 2rem, $max: 1fr, $bp: 400px){
+@mixin cols-of($colWidth, $bp: 600px, $colGap: 2rem, $max: 1fr){
     display: grid;
     gap: $colGap;
     grid-template-columns: repeat(auto-fit, minmax($colWidth, $max));
@@ -124,15 +126,6 @@ html {
         max-width: 100%;
     }
     @media (max-width: #{$bp}) {
-        grid-template-columns: repeat(auto-fit, minmax(100%, $max));
-    }
-}
-
-@for $i from 1 through 20 {
-    .cols-of-#{$i * 50} {
-        @include cols-of(#{$i * 50}px, 2rem, 1fr, #{$i * 75}px);
-        &.-no-max {
-            grid-template-columns: repeat(auto-fit, #{$i * 50}px);
-        }
+        grid-template-columns: 1fr;
     }
 }
