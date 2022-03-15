@@ -139,7 +139,7 @@ body {
   > #app {
     @include bg-text-colors($palette);
     @include media-breakpoint-up(md, $breakpoints){
-      border: 1px solid red;
+      // border: 1px solid red;
       overflow: auto;  // these do not allow scroll events with js
       height: 100vh;
       scroll-snap-type: mandatory;
