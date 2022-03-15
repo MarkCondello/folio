@@ -123,6 +123,104 @@ body {
            margin-right: #{$i + .5}rem;
         }
       }
+      .med-pb-#{$i} {
+        padding-bottom: #{$i}rem;
+        &-half {
+          padding-bottom: #{$i + .5}rem;
+        }
+      }
+      .med-mb-#{$i} {
+        margin-bottom: #{$i}rem;
+        &-half {
+           margin-bottom: #{$i + .5}rem;
+        }
+      }
+      .med-pt-#{$i} {
+        padding-top: #{$i}rem;
+        &-half {
+          padding-top: #{$i + .5}rem;
+        }
+      }
+      .med-mt-#{$i} {
+        margin-top: #{$i}rem;
+        &-half {
+           margin-top: #{$i + .5}rem;
+        }
+      }
+      .med-my-#{$i}{
+        @include margin-y(#{$i}rem);
+        &-half {
+          @include margin-y(#{$i + .5}rem);
+        }
+      }
+      .med-mx-#{$i}{
+        @include margin-x(#{$i}rem);
+        &-half {
+          @include margin-x(#{$i + .5}rem);
+        }
+      }
+    }
+    @include media-breakpoint-down(sm, $breakpoints){
+      .sml-pl-#{$i} {
+        padding-left: #{$i}rem;
+        &-half {
+          padding-left: #{$i + .5}rem;
+        }
+      }
+      .sml-ml-#{$i} {
+        margin-left: #{$i}rem;
+        &-half {
+           margin-left: #{$i + .5}rem;
+        }
+      }
+      .sml-pr-#{$i} {
+        padding-right: #{$i}rem;
+        &-half {
+          padding-right: #{$i + .5}rem;
+        }
+      }
+      .sml-mr-#{$i} {
+        margin-right: #{$i}rem;
+        &-half {
+           margin-right: #{$i + .5}rem;
+        }
+      }
+      .sml-pb-#{$i} {
+        padding-bottom: #{$i}rem;
+        &-half {
+          padding-bottom: #{$i + .5}rem;
+        }
+      }
+      .sml-mb-#{$i} {
+        margin-bottom: #{$i}rem;
+        &-half {
+           margin-bottom: #{$i + .5}rem;
+        }
+      }
+      .sml-pt-#{$i} {
+        padding-top: #{$i}rem;
+        &-half {
+          padding-top: #{$i + .5}rem;
+        }
+      }
+      .sml-mt-#{$i} {
+        margin-top: #{$i}rem;
+        &-half {
+           margin-top: #{$i + .5}rem;
+        }
+      }
+      .sml-my-#{$i}{
+        @include margin-y(#{$i}rem);
+        &-half {
+          @include margin-y(#{$i + .5}rem);
+        }
+      }
+      .sml-mx-#{$i}{
+        @include margin-x(#{$i}rem);
+        &-half {
+          @include margin-x(#{$i + .5}rem);
+        }
+      }
     }
     @if($i > 0){
       .gap-#{$i}0 {
@@ -134,6 +232,16 @@ body {
       .w-#{$i}0 {
         width: #{($i * 10) * 1%};
       }
+    }
+  }
+  @include media-breakpoint-down(md, $breakpoints){
+    .hide-med-down {
+      display: none;
+    }
+  }
+  @include media-breakpoint-down(sm, $breakpoints){
+    .hide-sml-down {
+      display: none;
     }
   }
   > #app {

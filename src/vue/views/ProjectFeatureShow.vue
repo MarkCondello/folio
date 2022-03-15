@@ -1,5 +1,4 @@
 <template>
-
   <frame-panel
     :intro-part-one="project.title"
     :intro-part-two="projectFeature.title"

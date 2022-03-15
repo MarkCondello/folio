@@ -1,4 +1,5 @@
 <template>
+<!-- Refactor into css file -->
   <frame-panel
     :intro-part-one="project.client"
     :intro-part-two="project.stack"
@@ -12,10 +13,10 @@
         </div>
       </div>
       <div class="flex-cols">
-        <div class="xs-1 md-3 lg-2 flex align-center justify-center">
+        <div class="sml-my-2 md-3 lg-2 flex align-center justify-center">
           <img width="120" :src="project.clientLogo.url" :alt="project.clientLogo.title" />
         </div>
-        <div class="md-9 lg-10 med-pl-2">
+        <div class="sml-my-1 md-9 lg-10 med-pl-2">
           <div class="flex-cols">
             <h2 class="h3 lg-9">{{ project.intro }}</h2>
           </div>
@@ -29,29 +30,34 @@
       </div>
     </template>
   </frame-panel>
+  <!-- Refactor into css file -->
+
   <frame-panel
     scroll-message="Project Goals"
     :show-plug="false"
     bg-class="bg-primary"
+    class="project-goals"
   >
     <template v-slot:article>
       <div id="goals">
         <h3 class="h1" style="margin: 0;">Project Goals</h3>
         <div class="flex-cols justify-center align-center pt-1 pb-2">
           <div class="lg-6">
-            <h4 class="h3 mx-2" v-html="project.firstProjectGoal"></h4>
+            <h4 class="h3 med-mx-2" v-html="project.firstProjectGoal"></h4>
           </div>
           <div class="lg-4">
-            <img :src="project.firstProjectGoalImage.url" style="height: 30vh; object-fit: contain;"/>
+            <img class="sml-mt-2" :src="project.firstProjectGoalImage.url" style="height: 30vh; object-fit: contain; width: 100%;"/>
           </div>
         </div>
       </div>
     </template>
     <template v-slot:extra-content>
       <div class="flex-cols align-center" v-if="project.secondProjectGoalImage && project.secondProjectGoal">
-        <img :src="project.secondProjectGoalImage.url" style="height: 30vh; object-fit: contain;"/>
+       <div class="lg-4">
+        <img class="hide-med-down" :src="project.secondProjectGoalImage.url" style="height: 30vh; object-fit: contain; width: 100%;"/>
+       </div>
         <div class="lg-6">
-          <pre class="mx-2 my-0" v-html="project.secondProjectGoal"></pre>
+          <pre class="med-mx-2 my-0" v-html="project.secondProjectGoal"></pre>
         </div>
       </div>
     </template>

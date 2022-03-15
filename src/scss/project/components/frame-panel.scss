@@ -68,6 +68,13 @@ body {
       @include media-breakpoint-down(sm, $breakpoints) {
         padding: 12vh 1.25rem 1rem;
       }
+
+      // &.project-goals {
+      //   border: 2px solid red;
+      //   #goals {
+
+      //   }
+      // }
     }
   }
 }
