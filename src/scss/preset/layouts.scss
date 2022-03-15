@@ -43,7 +43,7 @@ html {
         @each $size, $val in $columns {
             $width: map-get($breakpoints, $size);
             @if $width == null {
-              @error 'Column `#{$breakpoint}` not found.';
+              @error 'Column `#{$breakpoints}` not found.';
             }
             $cols: map-get($val, columns);
             $gutter: map-get($val, gutter);
