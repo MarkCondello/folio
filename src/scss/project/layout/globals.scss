@@ -12,6 +12,7 @@ html, body {
 }
 body {
   background-color: $bg-3;
+  margin: 0;
   hr {
     width: 100%;
     border: none;
@@ -137,22 +138,16 @@ body {
   }
   > #app {
     @include bg-text-colors($palette);
-    // @include media-breakpoint-up(md){
-      border: 1px solid yellow;
+    @include media-breakpoint-up(md, $breakpoints){
+      border: 1px solid red;
       overflow: auto;  // these do not allow scroll events with js
       height: 100vh;
       scroll-snap-type: mandatory;
       scroll-snap-points-y: repeat(100vh);
       scroll-snap-type: y mandatory;
-    // }
+    }
 
     @include flex-cols($columns, $breakpoints);
-    // .flex-cols {
-    //   @include flex-cols('xs');
-    //   @include flex-cols('sm');
-    //   @include flex-cols('md');
-    //   @include flex-cols('lg');
-    // }
     .flex {
       @include flex-classes;
       display: flex;

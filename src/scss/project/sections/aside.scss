@@ -32,7 +32,6 @@ body {
           right: -100px
         }
         @include media-breakpoint-down(md, $breakpoints) {
-          border: 1px solid red;
           display: none;
         }
       }

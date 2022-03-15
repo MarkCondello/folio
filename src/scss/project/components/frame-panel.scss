@@ -1,4 +1,5 @@
 @use '../../preset/base.scss' as *;
+@use '../../preset/layouts.scss' as *;
 @use '../../preset/breakpoints.scss' as *;
 
 @use '../../config/mixins.scss' as *;
@@ -7,7 +8,6 @@
 body {
   > #app {
     > section {
-      // border: 5px solid red;
       padding: 14vh 0 10vh;
       height: 100vh;
       overflow: hidden;
@@ -47,9 +47,8 @@ body {
           }
         }
         > .plug {
-          display: flex;
+          @include justify-center;
           flex-direction: column;
-          justify-content: center;
           margin-top: 2.5vh;
         }
         > footer {

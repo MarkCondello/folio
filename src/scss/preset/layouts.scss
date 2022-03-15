@@ -47,19 +47,21 @@ html {
             }
             $cols: map-get($val, columns);
             $gutter: map-get($val, gutter);
-            @for $i from 1 through $cols {
-                .#{$size}-#{$i} {
-                    width: math.div($i, $cols) * 100 * 1%;
-                    border: none;
-                }
-                .#{$size}-#{$i}.padd {
-                    padding-left: #{$gutter}px;
-                    padding-right: #{$gutter}px;
-                }
-                .#{$size}-#{$i}.mrg {
-                    margin-left: #{$gutter}px;
-                    margin-right: #{$gutter}px;
-                    width: calc((#{math.div($i, $cols) * 100 * 1%}) - #{$gutter * 2}px);
+            @include media-breakpoint-up($size, $breakpoints) {
+                @for $i from 1 through $cols {
+                    .#{$size}-#{$i} {
+                        width: math.div($i, $cols) * 100 * 1%;
+                        border: none;
+                    }
+                    .#{$size}-#{$i}.padd {
+                        padding-left: #{$gutter}px;
+                        padding-right: #{$gutter}px;
+                    }
+                    .#{$size}-#{$i}.mrg {
+                        margin-left: #{$gutter}px;
+                        margin-right: #{$gutter}px;
+                        width: calc((#{math.div($i, $cols) * 100 * 1%}) - #{$gutter * 2}px);
+                    }
                 }
             }
         }
