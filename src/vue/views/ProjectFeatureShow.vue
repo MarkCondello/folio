@@ -1,14 +1,15 @@
 <template>
   <frame-panel
-    :intro-part-one="project.title"
-    :intro-part-two="projectFeature.title"
-    scroll-message="scroll down"
     v-for="(feature, index) in projectFeature.featureDetailsCollection.items"
+    :intro-part-one="index === 0 ? project.title : null"
+    :intro-part-two="index === 0 ? projectFeature.title : null"
+    scroll-message="scroll down"
     :key="index"
     :showAside="projectFeature.featureDetailsCollection.items.length > index + 1"
   >
     <template v-slot:article>
-      <div class="flex-cols">
+      <div class="flex-cols" :class="{ reverse: index % 2 === 1}">
+        <!-- reverse class is not included yet -->
         <div v-if="index % 2 === 1" class="md-6 lg-7 med-pr-4">
           <Markdown :source="feature.content" />
         </div>
@@ -19,7 +20,7 @@
             <span>
               <search />
             </span>
-            <img style="width:100%; object-fit: contain;" :src="feature.slideShowCollection.items[0].url" :alt="feature.slideShowCollection.items[0].title" />
+            <img class="sml-my-3" style="width:100%; object-fit: contain;" :src="feature.slideShowCollection.items[0].url" :alt="feature.slideShowCollection.items[0].title" />
           </figure>
         </button>
         <div v-if="index % 2 === 0" class="md-6 lg-7 med-pl-4">
@@ -28,7 +29,7 @@
        </div>
     </template>
     <template v-slot:extra-content>
-      <section style="display: flex; gap: 1rem; justify-content: center;">
+      <section class="sml-mt-3" style="display: flex; gap: 1rem; justify-content: center;">
         <button v-if="feature.screencaptureUrl"
           class="button -hollow"
           @click="handleScreencapture(feature.screencaptureUrl, `${feature.title} screencapture`)"

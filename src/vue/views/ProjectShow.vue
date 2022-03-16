@@ -8,7 +8,7 @@
   >
     <template v-slot:article>
       <div class="flex-cols justify-end">
-        <div class="md-9 lg-10 med-pl-2">
+        <div class="sm-6 md-9 lg-10 med-pl-2">
           <h1>{{ project.title }}</h1>
         </div>
       </div>
@@ -23,8 +23,8 @@
         </div>
       </div>
       <div class="flex-cols justify-end">
-        <div class="md-9 lg-10 med-pl-2">
-          <router-link class="lg-3 button" :to="{ name: 'project-show', hash: '#goals'}">
+        <div class="xs-2 sm-6 md-9 lg-10 med-pl-2">
+          <router-link class="xs-2 sm-4 md-4 lg-3 button" :to="{ name: 'project-show', hash: '#goals'}">
              view project goals</router-link>
         </div>
       </div>
@@ -72,7 +72,7 @@
   >
     <template v-slot:article>
       <section class="project-features">
-        <h3>What I did</h3>
+        <h3 class="h2">What I did</h3>
          <ProjectFeature
          :project="project"
           :projectFeature="project.featuresCollection.items[0]"
@@ -94,7 +94,7 @@
   >
     <template v-slot:article>
       <section class="project-features">
-        <h3>What I did</h3>
+        <h3 class="h2">What I did</h3>
         <ProjectFeature
          :project="project"
           projectFeatureName="project.featuresCollection.items[2]"

@@ -1,7 +1,9 @@
 @use '../../preset/base.scss' as *;
+@use '../../preset/breakpoints.scss' as *;
 @use '../../preset/layouts.scss' as *;
 
 @use '../../config/mixins.scss' as *;
+@use '../../config/variables.scss' as *;
 .project-features {
   > h3 {
     line-height: 1;
@@ -37,17 +39,16 @@
         margin-top: 1rem;
         text-decoration: none;
         h4 {
-          // margin-left: 1.5rem;
           margin-bottom: 0;
           line-height: 1;
         }
       }
     }
+    @include media-breakpoint-up(md, $breakpoints){
     &.reversed {
       flex-direction: row-reverse;
       margin-bottom: 40px;
       > div {
-        // justify-content: flex-end;
         align-items: flex-end;
       }
       * {
@@ -72,7 +73,21 @@
       }
       > a {
         margin-right: 2rem;
-       
+      }
+    }
+  }
+    @include media-breakpoint-down(sm, $breakpoints){
+      flex-direction: column;
+      margin: 4rem 0;
+      > a {
+        height: 20vh;
+        width: 100%;
+        }
+      > div {
+        width: 95%;
+        p {
+          display: none;
+        }
       }
     }
   }

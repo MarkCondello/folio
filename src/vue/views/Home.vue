@@ -5,6 +5,7 @@
     intro-part-two="open to work opportunities"
     scroll-message="scroll down"
   >
+  <!-- Frame panel should accept a prop for an anchor id which is above the content area -->
     <template v-slot:article>
       <span id="intro"></span>
       <h1>A Melbourne based FE Developer,</h1>
@@ -29,7 +30,7 @@
     :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }'
   >
     <template v-slot:article>
-      <span v-if="id === 0" id="projects"></span>
+    <span v-if="id === 0" id="projects"></span>
       <h2 v-html="project.title"></h2>
       <div class="flex-cols">
         <h3 class="lg-6" v-html="project.abstract"></h3>

@@ -1,0 +1,16 @@
+@use '../../preset/admin-features/mixins/menus.scss' as *;
+@use '../../preset/base.scss' as *;
+
+@use '../../config/variables.scss' as *;
+
+menu > ul,
+nav > ul {
+  @include menus(
+    $menu-active-color,
+    $menu-f-size,
+    $menu-f-weight,
+    left,
+    $dd-items-padding,
+    $dd-width
+  );
+}

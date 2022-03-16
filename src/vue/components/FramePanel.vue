@@ -1,5 +1,5 @@
 <template>
-  <section ref="frame" >
+  <section ref="frame">
     <span
       v-if="bgImgSrc"
       :class="bgClass"
