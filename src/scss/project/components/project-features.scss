@@ -80,13 +80,12 @@
       flex-direction: column;
       margin: 4rem 0;
       > a {
-        height: 20vh;
         width: 100%;
         }
       > div {
-        width: 95%;
-        p {
-          display: none;
+        width: 100%;
+        a.button {
+          width: 50vw;
         }
       }
     }

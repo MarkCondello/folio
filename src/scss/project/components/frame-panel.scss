@@ -55,7 +55,7 @@ body {
           position: absolute;
           right: 0;
           bottom: -50px;
-          z-index: 1;
+          z-index: 0;
         }
       }
       @include media-breakpoint-down(md, $breakpoints) {
