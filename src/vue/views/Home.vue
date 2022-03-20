@@ -161,7 +161,7 @@ export default {
         .then(resp => {
           this.sent = true
           this.loading = false
-          console.log('Success: ', resp)
+          // console.log('Success: ', resp)
         })
         .catch(err => {
           console.log(err)

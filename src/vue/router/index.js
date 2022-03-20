@@ -4,7 +4,6 @@ import Home from '../views/Home.vue'
 import Styleguide from '../views/Styleguide.vue'
 import ProjectShow from '../views/ProjectShow.vue'
 import ProjectFeatureShow from '../views/ProjectFeatureShow.vue'
-// import Vue from 'vue'
 
 const routes = [
   {
@@ -18,7 +17,7 @@ const routes = [
     component: ProjectShow,
     props: true,
     beforeEnter (routeTo, routeFrom, next) {
-      console.log('reached before enter', routeTo.params)
+      // console.log('reached before enter', routeTo.params)
       store.dispatch('fetchProject', routeTo.params)
         .then(() => {
           next()
