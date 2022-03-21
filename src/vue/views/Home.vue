@@ -4,10 +4,9 @@
     intro-part-one="Hi, I'm Mark Condello"
     intro-part-two="open to work opportunities"
     scroll-message="scroll down"
+    anchor-id="intro"
   >
-  <!-- Frame panel should accept a prop for an anchor id which is above the content area -->
     <template v-slot:article>
-      <span id="intro"></span>
       <h1>A Melbourne based FE Developer,</h1>
       <div class="flex-cols">
         <h2 class="sm-5 md-6 lg-6 h3">Specialising in interface development & design, with a focus on intuitive user experiences.</h2>
@@ -28,9 +27,10 @@
     :key="project.title"
     :bg-img-src='project.featuredImage ? project.featuredImage.url : ""'
     :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }'
+
+    :anchor-id="id === 0 ? 'projects' : null"
   >
     <template v-slot:article>
-    <span v-if="id === 0" id="projects"></span>
       <h2 v-html="project.title"></h2>
       <div class="flex-cols">
         <h3 class="lg-6" v-html="project.abstract"></h3>
@@ -47,9 +47,9 @@
     intro-part-one="About Me"
     intro-part-two="WIP"
     scroll-message="About"
+    anchor-id="about"
   >
     <template v-slot:article>
-      <span id="about"></span>
       <h2>Who am I?</h2>
       <div class="flex-cols">
         <h3 class="lg-6">I enjoy creating interfaces with web technologies and displaying data in visually appealing ways.<br>
@@ -65,9 +65,9 @@
     intro-part-two="open to work opportunities"
     scroll-message="Contact"
     bg-class="bg-primary"
+    anchor-id="contact"
   >
     <template v-slot:article>
-      <span id="contact"></span>
       <h2 v-if="sent">Thanks for the message {{form.from_name}}.<br> I will get back to you soon.</h2>
       <h2 v-else>Please send your enquiries here.</h2>
       <div v-if="!sent">

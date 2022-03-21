@@ -33,10 +33,6 @@ body {
       > div {
         @include center-frame;
         position: relative;
-        > p.intro,
-        > .plug{
-          margin: 0;
-        }
         > .plug {
           flex: 1 1 0;
         }
@@ -60,8 +56,10 @@ body {
       }
       @include media-breakpoint-down(md, $breakpoints) {
         > div {
-          > footer { 
-            bottom: 10px;
+          > footer {
+            bottom: auto;
+            position: relative;
+            right: auto;
           }
         }
       }
@@ -75,13 +73,6 @@ body {
           min-height: 75vh;
         }
       }
-
-      // &.project-goals {
-      //   border: 2px solid red;
-      //   #goals {
-
-      //   }
-      // }
     }
   }
 }

@@ -25,12 +25,22 @@ body {
   .intro {
     font-size: 12px;
     display: inline-block;
+    margin: 0;
     span {
       background-color: #fff;
       display: inline-block;
       height: 1px;
       margin: 0 .75rem 4px;
       width: 40px;
+    }
+    @include media-breakpoint-down(sm, $breakpoints){
+      margin-bottom: 1.5rem;
+    }
+  }
+  .plug {
+    margin: 0;
+    @include media-breakpoint-down(sm, $breakpoints){
+      margin-top: 1.5rem;
     }
   }
   a.project-link {

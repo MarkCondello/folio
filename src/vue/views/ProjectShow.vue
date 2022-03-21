@@ -31,15 +31,15 @@
     </template>
   </frame-panel>
   <!-- Refactor into css file -->
-
   <frame-panel
     scroll-message="Project Goals"
     :show-plug="false"
     bg-class="bg-primary"
     class="project-goals"
+    anchor-id="goals"
   >
     <template v-slot:article>
-      <div id="goals">
+      <div>
         <h3 class="h1" style="margin: 0;">Project Goals</h3>
         <div class="flex-cols justify-center align-center pt-1 pb-2">
           <div class="lg-6">
@@ -67,7 +67,7 @@
     :showAside="project.featuresCollection.items.length > 2"
     :show-plug="false"
     class="justify-center"
-    id="features"
+    anchor-id="features"
     v-if="project.featuresCollection.items.length"
   >
     <template v-slot:article>

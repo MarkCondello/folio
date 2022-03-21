@@ -8,8 +8,8 @@
     :showAside="projectFeature.featureDetailsCollection.items.length > index + 1"
   >
     <template v-slot:article>
-      <div class="flex-cols" :class="{ reverse: index % 2 === 1}">
         <!-- reverse class is not included yet -->
+      <div class="flex-cols" :class="{ reverse: index % 2 === 1}">
         <div v-if="index % 2 === 1" class="md-6 lg-7 med-pr-4">
           <Markdown :source="feature.content" />
         </div>

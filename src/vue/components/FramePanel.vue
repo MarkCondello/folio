@@ -1,5 +1,6 @@
 <template>
   <section ref="frame">
+    <span v-if="anchorId" :id="anchorId"></span>
     <span
       v-if="bgImgSrc"
       :class="bgClass"
@@ -73,6 +74,10 @@ export default {
     showPlug: {
       type: Boolean,
       default: true
+    },
+    anchorId: {
+      type: String,
+      required: false
     }
   },
   methods: {
