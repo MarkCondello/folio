@@ -9,6 +9,7 @@
     </span>
     <div class="flex -column justify-between h-100" v-bind="$attrs">
       <p v-if="introPartOne && introPartTwo" class="intro">{{ introPartOne }}<span></span>{{ introPartTwo }}</p>
+      <p v-if="introPartOne && !introPartTwo" class="intro">{{ introPartOne }}</p>
       <article>
         <slot name="article"></slot>
       </article>
@@ -29,7 +30,7 @@
         </nav>
       </footer>
     </div>
-    <aside-line :scroll-message="scrollMessage" :show-aside="showAside"/>
+    <aside-line :scroll-message="scrollMessage" :show-aside="showAside" :class="{ flip : rotateAside }" />
   </section>
 </template>
 <script>
@@ -62,6 +63,10 @@ export default {
     showAside: {
       type: Boolean,
       default: true
+    },
+    rotateAside: {
+      type: Boolean,
+      default: false
     },
     projectLink: {
       type: Object,

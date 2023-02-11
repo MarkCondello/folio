@@ -2,14 +2,14 @@
   <frame-panel
     :bg-img-src="require('@/images/photos/abstract-network.png')"
     intro-part-one="Hi, I'm Mark Condello"
-    intro-part-two="open to work opportunities"
-    scroll-message="scroll down"
+    intro-part-two="return true;"
+    :scroll-message="projects[0].client"
     anchor-id="intro"
   >
     <template v-slot:article>
       <h1>A Melbourne based FE Developer,</h1>
       <div class="flex-cols">
-        <h2 class="sm-5 md-6 lg-6 h3">Specialising in interface development & design, with a focus on intuitive user experiences.</h2>
+        <h2 class="sm-5 md-6 lg-6 h3">Specialising in interface development &amp; design, with a focus on intuitive user experiences.</h2>
       </div>
       <div class="flex-cols">
         <router-link class="lg-2 button" :to="{ name: 'Home', hash: '#projects'}">view my work</router-link>
@@ -23,14 +23,15 @@
     bg-class="bg-primary"
     :intro-part-one="project.client"
     :intro-part-two="project.stack"
-    :scroll-message="`Work 0${id +1}.  ${project.client}`"
     :key="project.title"
+    :scroll-message="id != projects.length - 1 ? projects[id + 1].client : 'About me'"
     :bg-img-src='project.featuredImage ? project.featuredImage.url : ""'
     :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }'
-
     :anchor-id="id === 0 ? 'projects' : null"
   >
+    <!--  -->
     <template v-slot:article>
+      <!-- <pre>{{ projects }}</pre> -->
       <h2 v-html="project.title"></h2>
       <div class="flex-cols">
         <h3 class="lg-6" v-html="project.abstract"></h3>
@@ -44,16 +45,16 @@
   </frame-panel>
    <frame-panel
     :bg-img-src="require('@/images/photos/me-holding-baby.png')"
-    intro-part-one="About Me"
+    intro-part-one="About me"
     intro-part-two="WIP"
-    scroll-message="About"
+    scroll-message="Contact me"
     anchor-id="about"
   >
     <template v-slot:article>
       <h2>Who am I?</h2>
       <div class="flex-cols">
         <h3 class="lg-6">I enjoy creating interfaces with web technologies and displaying data in visually appealing ways.<br>
-        When I am not building UI’s, I father my young family, enjoy exercising, learning new things & finding inspiration.<br>
+        When I am not building UI’s, I father my young family, enjoy exercising, learning new things &amp; finding inspiration.<br>
         To read more about my professional history please download my resume <a :href="resumeFile" target="_blank">here</a>.
       </h3>
       </div>
@@ -61,9 +62,10 @@
     <template v-slot:plug>Blog coming soon...</template>
   </frame-panel>
   <frame-panel
-    intro-part-one="Contact Me"
-    intro-part-two="open to work opportunities"
-    scroll-message="Contact"
+    intro-part-one="Contact me"
+    intro-part-two="let's chat"
+    scroll-message="About me"
+    rotate-aside="true"
     bg-class="bg-primary"
     anchor-id="contact"
   >

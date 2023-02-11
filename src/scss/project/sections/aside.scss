@@ -34,6 +34,10 @@ body {
         @include media-breakpoint-down(md, $breakpoints) {
           display: none;
         }
+
+        &.flip {
+          transform: rotate(90deg);
+        }
       }
     }
   }
