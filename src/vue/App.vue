@@ -38,6 +38,7 @@ export default {
   },
   created () {
     this.$store.dispatch('fetchProjects')
+    this.$store.dispatch('fetchBlogs')
   },
   computed: {
     projects () {

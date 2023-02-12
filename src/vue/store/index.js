@@ -1,5 +1,6 @@
 import { createStore as vuexCreateStore } from 'vuex'
 import projectStore from './modules/projectStore.js'
+import blogStore from './modules/blogStore.js'
 import modalStore from './modules/modalStore.js'
 import lightBoxStore from './modules/lightBoxStore.js'
 // https://www.digitalocean.com/community/tutorials/vuejs-vuex-persist-state
@@ -13,10 +14,12 @@ const vuexLocalStorage = new VuexPersist({
 const storeConfig = {
   modules: {
     projectStore,
+    blogStore,
     modalStore,
     lightBoxStore
   }
 }
+
 // below is setup for using Vue test utils
 const defaultOverrides = {
   state: () => {

@@ -1,5 +1,6 @@
 <template>
   <frame-panel
+    v-if="projects.length"
     :bg-img-src="require('@/images/photos/abstract-network.png')"
     intro-part-one="Hi, I'm Mark Condello"
     intro-part-two="return true;"
