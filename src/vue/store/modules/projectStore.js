@@ -1,4 +1,5 @@
-import ProjectService from '../../services/ProjectService.js'
+import { apolloClient } from '../../services/Apollo'
+import gql from 'graphql-tag'
 
 export default {
   state: {
@@ -18,14 +19,104 @@ export default {
     }
   },
   actions: {
-    fetchProjects ({ commit }) {
-      return ProjectService.getProjects()
-        .then(data => {
-          commit('SET_PROJECTS', data.data.projectCollection.items)
-        })
-        .catch(err => {
-          throw err
-        })
+    async fetchProjects ({ commit }) {
+      const { data } = await apolloClient.query({
+        query: gql`
+        query {
+          projectCollection(limit: 6) {
+            items {
+              sys {
+                firstPublishedAt
+                id
+              }
+              client
+              clientLogo {
+                url
+                title
+                width
+                height
+                description
+              }
+              agency
+              agencyLink
+              launchDate
+              stack
+              domain
+              featuredImage {
+                url
+                title
+                width
+                height
+                description
+              }
+              title
+              slug
+              abstract
+              intro
+              firstProjectGoal
+              firstProjectGoalImage {
+                url
+                title
+                width
+                height
+                description
+              }
+              secondProjectGoal
+              secondProjectGoalImage {
+                url
+                title
+                width
+                height
+                description
+              }
+              featuresCollection (limit: 4) {
+                items {
+                  ... on Feature {
+                    sys {
+                      firstPublishedAt
+                      id
+                    }
+                    title
+                    slug
+                    introImage {
+                      url
+                      title
+                      description
+                    }
+                    intro
+                    featureDetailsCollection (limit:6) {
+                      items {
+                        ... on FeatureDetails {
+                          title,
+                          content
+                          exampleUrl
+                          screencaptureUrl
+                          codeExample
+                          slideShowCollection(limit: 10) {
+                            items {
+                              sys {
+                                id
+                              }
+                              description
+                              height
+                              title
+                              url
+                              width
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }`
+      })
+
+      // console.log('Reached fetchPrjects', data)
+      commit('SET_PROJECTS', data.projectCollection.items)
     },
     async fetchProject ({ dispatch, commit, getters }, params) {
       // console.log('fetchProject action test123', { params })
