@@ -23,7 +23,7 @@ export default {
       const { data } = await apolloClient.query({
         query: gql`
         {
-          projectCollection(limit: 5) {
+          projectCollection(limit: 6) {
             items {
               sys {
                 firstPublishedAt

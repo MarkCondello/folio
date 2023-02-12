@@ -35,3 +35,9 @@ Rather than creating first and second for project features etc we can do somethi
         }
     }
 }
+
+
+## Helpful info / resources
+
+- [graphQL contentful playground](https://graphql.contentful.com/content/v1/spaces/b26b3xfjy4l5/explore?access_token=Noh2s2T65LaZCtqc_9Y2a4DSh7Qrq94keE3iaVSYR7s)
+- [graphQL entry limits](https://github.com/vercel/next.js/discussions/33642)
