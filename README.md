@@ -1,4 +1,4 @@
-# folio
+# Folio website
 
 ## Project setup
 ```
