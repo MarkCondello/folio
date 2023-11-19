@@ -30,7 +30,7 @@
           }
         }"
       >
-        <h4>See details here..</h4>
+        <h4>See details here</h4>
       </router-link>
     </div>
   </article>

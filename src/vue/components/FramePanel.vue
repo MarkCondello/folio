@@ -8,8 +8,14 @@
     >
     </span>
     <div class="flex -column justify-between h-100" v-bind="$attrs">
-      <p v-if="introPartOne && introPartTwo" class="intro">{{ introPartOne }}<span></span>{{ introPartTwo }}</p>
-      <p v-if="introPartOne && !introPartTwo" class="intro">{{ introPartOne }}</p>
+      <p v-if="introPartOne" class="intro">
+        <router-link v-if="introPartOneLink" :to="introPartOneLink">{{ introPartOne }}</router-link>
+        <template v-else>{{ introPartOne }}</template>
+        <template v-if="introPartTwo">
+        <span></span>
+        {{ introPartTwo }}
+        </template>
+      </p>
       <article>
         <slot name="article"></slot>
       </article>
@@ -50,6 +56,10 @@ export default {
     },
     introPartOne: {
       type: String,
+      required: false
+    },
+    introPartOneLink: {
+      type: Object,
       required: false
     },
     introPartTwo: {

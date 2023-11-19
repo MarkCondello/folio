@@ -6,6 +6,8 @@
     scroll-message="scroll down"
     :key="index"
     :showAside="projectFeature.featureDetailsCollection.items.length > index + 1"
+
+    :intro-part-one-link="{ name: 'project-show', params: { projectSlug: project.slug }}"
   >
     <template v-slot:article>
         <!-- reverse class is not included yet -->
