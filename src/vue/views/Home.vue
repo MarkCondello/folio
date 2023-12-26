@@ -30,9 +30,7 @@
     :project-link='{ link: project.domain, imgAlt: project.title, imgAlt: project.clientLogo.description, imgSrc: project.clientLogo.url }'
     :anchor-id="id === 0 ? 'projects' : null"
   >
-    <!--  -->
     <template v-slot:article>
-      <!-- <pre>{{ projects }}</pre> -->
       <h2 v-html="project.title"></h2>
       <div class="flex-cols">
         <h3 class="lg-6" v-html="project.abstract"></h3>
@@ -55,7 +53,7 @@
       <h2>Who am I?</h2>
       <div class="flex-cols">
         <h3 class="lg-6">I enjoy creating interfaces with web technologies and displaying data in visually appealing ways.<br>
-        When I am not building UI’s, I father my young family, enjoy exercising, learning new things &amp; finding inspiration.<br>
+        When I am not building UI's, I father my young family, enjoy exercising, learning new things &amp; finding inspiration.<br>
         To read more about my professional history please download my resume <a :href="resumeFile" target="_blank">here</a>.
       </h3>
       </div>
@@ -148,19 +146,22 @@ export default {
     projects: state => state.projectStore.projects.sort((first, second) => new Date(first.sys.firstPublishedAt) - new Date(second.sys.firstPublishedAt))
   }),
   created () {
-    // https://stackoverflow.com/questions/49149550/how-to-send-an-email-with-vuejs/49150298
-    emailjs.init('user_J6qTVcfRCwXF74Vnqs6JE')
+    // https://www.emailjs.com/docs/sdk/installation/
+    emailjs.init('l-leT1C18Dkw5zcDP')
+    // emailjs.init('user_J6qTVcfRCwXF74Vnqs6JE')
   },
   methods: {
     onSubmit (e) {
       e.preventDefault()
       this.loading = true
-      emailjs.send('service_4c6e8rb', 'template_65qcolf', {
-        from_name: this.form.from_name,
-        reply_to: this.form.reply_to,
-        subject: this.form.subject,
-        message: this.form.message
-      })
+      emailjs
+        // .send('service_4c6e8rb', 'template_65qcolf', {
+        .send('service_q7zsc1g', 'template_xuyv00f', {
+          from_name: this.form.from_name,
+          reply_to: this.form.reply_to,
+          subject: this.form.subject,
+          message: this.form.message
+        })
         .then(resp => {
           this.sent = true
           this.loading = false
